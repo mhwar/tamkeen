@@ -1938,12 +1938,74 @@
        قائمة اللوائح
   ============================== -->
   <div class="sub-panel" id="sub-reglist">
+
+    <!-- بانر التحديثات النظامية الحديثة -->
+    <div class="reg-updates-banner">
+      <div class="rub-head">
+        <div class="rub-icon">!</div>
+        <div class="rub-head-text">
+          <h4>تحديثات نظامية حديثة — تستوجب المراجعة</h4>
+          <p>تطورات تشريعية ولائحية مؤثرة على الجمعيات منذ 2023. تأكّد من توافق لوائحك معها.</p>
+        </div>
+        <span class="rub-badge">٤ تحديثات</span>
+      </div>
+      <div class="rub-list">
+        <div class="rub-item">
+          <div class="rub-date">سبتمبر ٢٠٢٤</div>
+          <div class="rub-body">
+            <div class="rub-title">إنفاذ كامل لنظام حماية البيانات الشخصية (PDPL)</div>
+            <div class="rub-detail">انتهت فترة السماح. الجمعية ملزَمة بتعيين مسؤول حماية البيانات والامتثال لمتطلبات سدايا.</div>
+          </div>
+          <div class="rub-actions">
+            <span class="rub-status mandatory">إلزامي</span>
+            <a href="#" onclick="event.preventDefault();filterRegs('legal',this)">COMP-01 ←</a>
+          </div>
+        </div>
+        <div class="rub-item">
+          <div class="rub-date">فبراير ٢٠٢٥</div>
+          <div class="rub-body">
+            <div class="rub-title">تعديلات نظام العمل السعودي (المرسوم الملكي م/٤٥)</div>
+            <div class="rub-detail">تعديلات على عقود العمل، الإجازات، إنهاء الخدمة، وحقوق الموظفين. تستوجب تحديث لائحة تنظيم العمل الداخلية.</div>
+          </div>
+          <div class="rub-actions">
+            <span class="rub-status mandatory">إلزامي</span>
+            <a href="#" onclick="event.preventDefault();filterRegs('hr',this)">HR-01 ←</a>
+          </div>
+        </div>
+        <div class="rub-item">
+          <div class="rub-date">٢٠٢١ V2</div>
+          <div class="rub-body">
+            <div class="rub-title">تحديث معايير حوكمة المؤسسات الأهلية</div>
+            <div class="rub-detail">إصدار محدَّث من معايير الحوكمة الصادرة عن المركز الوطني. ينعكس مباشرة على درجة التقييم الذاتي.</div>
+          </div>
+          <div class="rub-actions">
+            <span class="rub-status mandatory">إلزامي</span>
+            <a href="#" onclick="event.preventDefault();document.querySelector('[data-tab=&quot;assess&quot;]').click()">التقييم الذاتي ←</a>
+          </div>
+        </div>
+        <div class="rub-item">
+          <div class="rub-date">مستمر</div>
+          <div class="rub-body">
+            <div class="rub-title">الفوترة الإلكترونية المرحلة الثانية (ZATCA Fatoorah)</div>
+            <div class="rub-detail">تطبيق الربط والتكامل مع منصة فاتورة. ينطبق على الجمعيات المسجَّلة في ضريبة القيمة المضافة عند بلوغها عتبة الإيرادات.</div>
+          </div>
+          <div class="rub-actions">
+            <span class="rub-status conditional">مشروط</span>
+            <a href="#" onclick="event.preventDefault();alert('سيتم إضافة سياسة الفوترة الإلكترونية كقالب جديد. أبلغني للمتابعة.')">إضافة سياسة ←</a>
+          </div>
+        </div>
+      </div>
+      <div class="rub-footer">
+        📋 يُنصح بمراجعة لوائحك مع مستشار قانوني عند أي تحديث جوهري · المرجع الرسمي: <a href="https://ncnp.gov.sa" target="_blank">المركز الوطني لتنمية القطاع غير الربحي</a>
+      </div>
+    </div>
+
     <div class="regs-toolbar">
       <div class="regs-filter">
-        <button class="rf-btn active" onclick="filterRegs('all',this)">الكل <span class="cnt">18</span></button>
-        <button class="rf-btn" onclick="filterRegs('approved',this)">معتمدة <span class="cnt">5</span></button>
-        <button class="rf-btn" onclick="filterRegs('draft',this)">مسودة <span class="cnt">3</span></button>
-        <button class="rf-btn" onclick="filterRegs('empty',this)">لم تُضَف <span class="cnt">10</span></button>
+        <button class="rf-btn active" onclick="filterRegs('all',this)">الكل <span class="cnt">25</span></button>
+        <button class="rf-btn" onclick="filterRegs('approved',this)">معتمدة <span class="cnt">6</span></button>
+        <button class="rf-btn" onclick="filterRegs('draft',this)">مسودة <span class="cnt">4</span></button>
+        <button class="rf-btn" onclick="filterRegs('empty',this)">لم تُضَف <span class="cnt">15</span></button>
         <button class="rf-btn" onclick="filterRegs('gov',this)">حوكمة</button>
         <button class="rf-btn" onclick="filterRegs('hr',this)">موارد بشرية</button>
         <button class="rf-btn" onclick="filterRegs('fin',this)">مالية</button>
