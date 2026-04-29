@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=11">
+<link rel="stylesheet" href="assets/style.css?v=12">
 </head>
 <body>
 <div class="qatt-pattern"></div>
@@ -6629,9 +6629,8 @@
             <div class="cp-default" id="cp-default-cover">
               <div class="cp-top-bar"></div>
               <div class="cp-body">
-                <div class="cp-logo-ring" id="cp-logo-ring">
+                <div class="cp-logo-area" id="cp-logo-area">
                   <img class="cp-logo-img" id="cp-logo-img" alt="" style="display:none">
-                  <span id="cp-letter">ج</span>
                 </div>
                 <div class="cp-org" id="cp-org-name">جمعية أنموذج الخيرية</div>
                 <div class="cp-divider"></div>
@@ -6651,23 +6650,16 @@
 
       <!-- 1. شعار الجهة -->
       <div class="pdf-section">
-        <div class="pdf-section-eye">شعار الجهة</div>
-        <div class="pdf-upload-row">
-          <label class="pdf-upload-card" id="logo-upload-card">
-            <input type="file" id="pdf-logo-file" accept="image/png,image/jpeg,image/svg+xml" onchange="handleLogoUpload(event)" style="display:none">
-            <div class="pul-ico" id="logo-ico-default">⬆</div>
-            <div class="pul-text">
-              <div class="pul-title" id="logo-upload-title">رفع شعار الجهة</div>
-              <div class="pul-sub" id="logo-upload-sub">PNG / JPG / SVG — مربّع 256×256 يفضّل</div>
-            </div>
-            <div class="pul-clear" id="logo-clear-btn" onclick="clearLogoUpload(event)" style="display:none">إزالة</div>
-          </label>
-          <div class="pdf-upload-or">أو</div>
-          <div class="pset" style="flex:1;min-width:140px">
-            <label>حرف بديل (إذا لم يُرفع شعار)</label>
-            <input type="text" id="pdf-org-letter" value="" maxlength="2" oninput="updateCoverPreview()" placeholder="مثال: ج">
+        <div class="pdf-section-eye">شعار الجهة <span class="pdf-tip">(اختياري — إذا لم يُرفع، يظهر اسم الجهة فقط)</span></div>
+        <label class="pdf-upload-card pdf-upload-card-wide" id="logo-upload-card">
+          <input type="file" id="pdf-logo-file" accept="image/png,image/jpeg,image/svg+xml" onchange="handleLogoUpload(event)" style="display:none">
+          <div class="pul-ico" id="logo-ico-default">⬆</div>
+          <div class="pul-text">
+            <div class="pul-title" id="logo-upload-title">رفع شعار الجهة</div>
+            <div class="pul-sub" id="logo-upload-sub">PNG / JPG / SVG — مربّع شفاف يفضّل</div>
           </div>
-        </div>
+          <div class="pul-clear" id="logo-clear-btn" onclick="clearLogoUpload(event)" style="display:none">إزالة</div>
+        </label>
       </div>
 
       <!-- 2. غلاف مخصّص (اختياري) -->
@@ -6734,6 +6726,14 @@
             <span class="pt-text">ترويسة وترقيم الصفحات</span>
           </label>
         </div>
+        <div class="pdf-margin-row">
+          <label class="pdf-margin-label">هوامش الصفحة</label>
+          <div class="pdf-margin-options">
+            <label><input type="radio" name="pdf-margin" value="narrow"><span>ضيقة</span></label>
+            <label><input type="radio" name="pdf-margin" value="normal" checked><span>عادية</span></label>
+            <label><input type="radio" name="pdf-margin" value="wide"><span>واسعة</span></label>
+          </div>
+        </div>
       </div>
 
       <!-- شريط التقدم -->
@@ -6757,6 +6757,6 @@
 <!-- Toast -->
 <div class="save-toast" id="save-toast"></div>
 
-  <script src="assets/app.js?v=11"></script>
+  <script src="assets/app.js?v=12"></script>
 </body>
 </html>
