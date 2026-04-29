@@ -1788,3 +1788,61 @@ ${contentHTML}
   });
 
   document.addEventListener('keydown',e=>{if(e.key==='Escape') closeModal();});
+
+  // ============ التقييم الذاتي للحوكمة ============
+  function toggleIndicator(headEl){
+    const card = headEl.closest('.ind-card');
+    card.classList.toggle('expanded');
+  }
+
+  function expandAllIndicators(expand){
+    document.querySelectorAll('#panel-assess .ind-card').forEach(c=>{
+      if(expand) c.classList.add('expanded');
+      else c.classList.remove('expanded');
+    });
+  }
+
+  function startNewAssessment(){
+    if(!confirm('هل تريد بدء تقييم جديد؟ ستُعاد قيم الإجابات الحالية.')) return;
+    document.querySelectorAll('#panel-assess input[type=radio]').forEach(r=>r.checked=false);
+    recalcOverallScore();
+  }
+
+  function exportAssessment(){
+    alert('سيتم تصدير تقرير التقييم الذاتي بصيغة PDF شامل المؤشرات الـ9 والممارسات الـ45 والإجابات الحالية.');
+  }
+
+  function goToReg(target){
+    const tab = document.querySelector('[data-tab="regulations"]');
+    if(tab) tab.click();
+    setTimeout(()=>{
+      const reglistTab = document.querySelector('.snav-tab[onclick*="reglist"]');
+      if(reglistTab) reglistTab.click();
+    },200);
+  }
+
+  function recalcOverallScore(){
+    let totalAnswered = 0, totalYes = 0;
+    document.querySelectorAll('#panel-assess .qrow').forEach(qr=>{
+      const radios = qr.querySelectorAll('input[type=radio]');
+      if(radios.length>=2){
+        totalAnswered++;
+        if(radios[0].checked) totalYes++;
+      }
+    });
+    if(totalAnswered>0){
+      const pct = Math.round((totalYes/totalAnswered)*100);
+      const el = document.getElementById('overall-score');
+      const barCompliance = document.getElementById('bar-compliance');
+      const valCompliance = document.getElementById('val-compliance');
+      if(el) el.textContent = pct;
+      if(barCompliance) barCompliance.style.width = pct+'%';
+      if(valCompliance) valCompliance.textContent = pct+'%';
+    }
+  }
+
+  document.addEventListener('change',function(e){
+    if(e.target && e.target.matches && e.target.matches('#panel-assess input[type=radio]')){
+      recalcOverallScore();
+    }
+  });
