@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>التقييم الذاتي للحوكمة — بُعد التمكين</title>
-  <meta name="description" content="قِس درجة حوكمة جمعيتك على ٣ معايير رئيسية في ٥ دقائق فقط. تقييم مبسّط مبني على معايير المركز الوطني لتنمية القطاع غير الربحي.">
+  <meta name="description" content="قياس درجة حوكمة جمعيتك على ٦٠ مؤشر و٢٥٦ سؤال وفق معايير المركز الوطني لتنمية القطاع غير الربحي.">
   <meta name="theme-color" content="#4f3fdf">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,140 +37,179 @@
     a{color:inherit;text-decoration:none}
     img,svg{display:block;max-width:100%}
     button{font-family:inherit;cursor:pointer}
-    .container{max-width:840px;margin:0 auto;padding:0 24px;width:100%}
+    .container{max-width:960px;margin:0 auto;padding:0 22px;width:100%}
     .gradient-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 
     /* ============= HEADER ============= */
-    header{background:#fff;border-bottom:1px solid var(--line-soft);padding:14px 0;position:sticky;top:0;z-index:30;backdrop-filter:blur(14px)}
+    header{background:#fff;border-bottom:1px solid var(--line-soft);padding:12px 0;position:sticky;top:0;z-index:30;backdrop-filter:blur(14px)}
     .header-row{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1180px;margin:0 auto;padding:0 24px}
     .logo{display:flex;align-items:center;gap:10px}
-    .logo-mark{width:36px;height:36px;flex-shrink:0}
+    .logo-mark{width:34px;height:34px;flex-shrink:0}
     .logo-text{display:flex;flex-direction:column;line-height:1.1}
-    .logo-ar{font-weight:700;font-size:17px;color:var(--ink);letter-spacing:-0.3px}
+    .logo-ar{font-weight:700;font-size:16px;color:var(--ink);letter-spacing:-0.3px}
     .logo-en{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--primary);font-weight:600;margin-top:2px;text-transform:uppercase}
-    .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--muted);padding:8px 14px;border-radius:8px;transition:all 0.2s}
+    .back-link{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--muted);padding:7px 13px;border-radius:8px;transition:all 0.2s}
     .back-link:hover{background:var(--paper-deep);color:var(--primary)}
     .back-link::before{content:"→";font-size:14px}
 
     /* ============= STEPS BAR ============= */
-    .steps-bar{background:#fff;border-bottom:1px solid var(--line-soft);padding:22px 0;position:relative}
-    .steps-row{display:flex;justify-content:space-between;align-items:center;gap:6px;position:relative;max-width:560px;margin:0 auto}
+    .steps-bar{background:#fff;border-bottom:1px solid var(--line-soft);padding:18px 0;position:relative}
+    .steps-row{display:flex;justify-content:space-between;align-items:center;gap:6px;position:relative;max-width:540px;margin:0 auto}
     .step-line{position:absolute;top:18px;right:14%;left:14%;height:2px;background:var(--line);z-index:0}
     .step-line-fill{position:absolute;top:0;right:0;height:100%;background:var(--grad);transition:width 0.5s ease;width:0%;border-radius:2px}
-    .step{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1;position:relative;z-index:1}
-    .step-circle{width:36px;height:36px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;font-weight:700;font-size:14px;color:var(--muted);transition:all 0.4s}
+    .step{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;position:relative;z-index:1}
+    .step-circle{width:34px;height:34px;border-radius:50%;background:#fff;border:2px solid var(--line);display:grid;place-items:center;font-weight:700;font-size:13px;color:var(--muted);transition:all 0.4s}
     .step.active .step-circle{background:var(--ink);border-color:var(--ink);color:#fff}
     .step.done .step-circle{background:var(--accent);border-color:var(--accent);color:#fff}
     .step.done .step-circle::before{content:"✓"}
     .step.done .step-circle .step-num{display:none}
-    .step-label{font-size:12px;font-weight:600;color:var(--muted);transition:color 0.3s}
+    .step-label{font-size:11.5px;font-weight:600;color:var(--muted);transition:color 0.3s}
     .step.active .step-label,.step.done .step-label{color:var(--ink)}
 
     /* ============= MAIN ============= */
-    main{flex:1;padding:50px 0 80px;position:relative;overflow:hidden}
+    main{flex:1;padding:40px 0 60px;position:relative;overflow:hidden}
     main::before,main::after{content:"";position:absolute;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0}
-    main::before{top:-200px;right:-200px;width:500px;height:500px;background:var(--grad);opacity:0.1}
-    main::after{bottom:-200px;left:-200px;width:400px;height:400px;background:linear-gradient(135deg,#22d3a4,#4f3fdf);opacity:0.08}
+    main::before{top:-200px;right:-200px;width:500px;height:500px;background:var(--grad);opacity:0.08}
+    main::after{bottom:-200px;left:-200px;width:400px;height:400px;background:linear-gradient(135deg,#22d3a4,#4f3fdf);opacity:0.06}
     .container{position:relative;z-index:1}
 
     .panel{display:none;animation:fadeUp 0.5s ease}
     .panel.active{display:block}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
-    .panel-head{text-align:center;margin-bottom:36px}
+    .panel-head{text-align:center;margin-bottom:32px}
     .panel-eye{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--primary);font-weight:700;padding:5px 13px;background:rgba(79,63,223,0.08);border-radius:30px;margin-bottom:14px}
-    .panel h1{font-size:clamp(26px,3.8vw,38px);margin-bottom:12px;letter-spacing:-0.8px}
-    .panel-sub{color:var(--muted);font-size:15px;max-width:560px;margin:0 auto;line-height:1.85}
+    .panel h1{font-size:clamp(24px,3.6vw,34px);margin-bottom:10px;letter-spacing:-0.7px}
+    .panel-sub{color:var(--muted);font-size:14.5px;max-width:580px;margin:0 auto;line-height:1.85}
 
     /* ============= STEP 1: FORM ============= */
-    .reg-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:38px 32px;box-shadow:0 24px 60px rgba(13,10,46,0.06)}
-    @media(max-width:540px){.reg-card{padding:28px 22px}}
+    .reg-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:36px 32px;box-shadow:0 24px 60px rgba(13,10,46,0.06);max-width:680px;margin:0 auto}
+    @media(max-width:540px){.reg-card{padding:26px 22px}}
     .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     @media(max-width:560px){.form-grid{grid-template-columns:1fr}}
     .form-row{display:flex;flex-direction:column;gap:6px}
     .form-row.full{grid-column:1/-1}
     .form-row label{font-size:12.5px;font-weight:600;color:var(--ink-soft)}
     .form-row label .req{color:var(--primary)}
-    .form-row input,.form-row select,.form-row textarea{padding:13px 16px;border:1.5px solid var(--line);border-radius:12px;font-size:14px;color:var(--ink);background:#fff;outline:none;transition:all 0.2s;direction:rtl;width:100%}
-    .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(79,63,223,0.1)}
+    .form-row input,.form-row select{padding:13px 16px;border:1.5px solid var(--line);border-radius:12px;font-size:14px;color:var(--ink);background:#fff;outline:none;transition:all 0.2s;direction:rtl;width:100%}
+    .form-row input:focus,.form-row select:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(79,63,223,0.1)}
     .form-error{display:none;padding:12px 14px;background:rgba(230,69,96,0.08);border:1px solid rgba(230,69,96,0.3);border-radius:10px;color:var(--danger);font-size:13px;margin-top:14px}
     .form-error.show{display:block}
 
-    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 30px;border-radius:14px;font-size:14.5px;font-weight:700;cursor:pointer;border:none;transition:all 0.25s ease;text-decoration:none;letter-spacing:-0.2px;font-family:inherit}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 28px;border-radius:14px;font-size:14.5px;font-weight:700;cursor:pointer;border:none;transition:all 0.25s ease;text-decoration:none;letter-spacing:-0.2px;font-family:inherit}
     .btn-primary{background:var(--ink);color:#fff;box-shadow:0 8px 22px rgba(13,10,46,0.18)}
     .btn-primary:hover{background:var(--primary);transform:translateY(-2px);box-shadow:0 14px 34px rgba(79,63,223,0.4)}
     .btn-primary::after{content:"←";transition:transform 0.25s;font-weight:400}
     .btn-primary:hover::after{transform:translateX(-4px)}
     .btn-ghost{background:#fff;color:var(--ink-soft);border:1.5px solid var(--line)}
     .btn-ghost:hover{border-color:var(--ink);color:var(--ink)}
-    .btn-block{width:100%;margin-top:20px}
-    .btn-row{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
-    .btn-row .btn{flex:1;min-width:140px}
+    .btn-block{width:100%;margin-top:18px}
+    .btn-row{display:flex;gap:10px;margin-top:22px;flex-wrap:wrap}
 
-    .priv-note{font-size:12px;color:var(--muted-soft);margin-top:14px;text-align:center;line-height:1.65;display:flex;align-items:center;justify-content:center;gap:8px}
+    .priv-note{font-size:12px;color:var(--muted-soft);margin-top:14px;text-align:center;line-height:1.6;display:flex;align-items:center;justify-content:center;gap:8px}
     .priv-note::before{content:"🔒";font-size:13px}
 
     /* ============= STEP 2: ASSESSMENT ============= */
-    .assess-progress{position:sticky;top:65px;z-index:20;background:rgba(255,255,255,0.92);backdrop-filter:blur(14px);padding:14px 20px;border-radius:14px;margin-bottom:24px;border:1px solid var(--line);box-shadow:0 4px 16px rgba(13,10,46,0.04);display:flex;align-items:center;gap:14px}
+    .assess-progress{position:sticky;top:64px;z-index:20;background:rgba(255,255,255,0.94);backdrop-filter:blur(14px);padding:14px 18px;border-radius:14px;margin-bottom:18px;border:1px solid var(--line);box-shadow:0 4px 16px rgba(13,10,46,0.04);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
     .ap-text{font-size:13px;font-weight:600;color:var(--ink);flex-shrink:0}
     .ap-text strong{color:var(--primary)}
-    .ap-bar{flex:1;height:6px;background:var(--paper-deep);border-radius:3px;overflow:hidden}
+    .ap-bar{flex:1;min-width:120px;height:6px;background:var(--paper-deep);border-radius:3px;overflow:hidden}
     .ap-bar-fill{height:100%;background:var(--grad);width:0%;transition:width 0.4s ease;border-radius:3px}
 
-    .std-section{margin-bottom:30px}
-    .std-section-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:14px}
-    .ssh-num{width:38px;height:38px;border-radius:10px;background:var(--grad);color:#fff;display:grid;place-items:center;font-weight:800;font-size:16px;flex-shrink:0;font-family:'IBM Plex Sans Arabic'}
-    .ssh-info{flex:1;min-width:0}
-    .ssh-info h3{font-size:16px;font-weight:700;margin-bottom:2px}
-    .ssh-info p{font-size:12px;color:var(--muted)}
-    .ssh-meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);font-weight:600}
+    /* تبويبات المعايير */
+    .std-tabs{display:flex;gap:6px;margin-bottom:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:5px;overflow-x:auto;scrollbar-width:none}
+    .std-tabs::-webkit-scrollbar{display:none}
+    .std-tab{flex:1;min-width:160px;padding:10px 16px;background:transparent;border:none;border-radius:10px;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1.3}
+    .std-tab:hover{background:var(--paper-deep)}
+    .std-tab.active{background:var(--ink);color:#fff}
+    .std-tab small{font-size:10.5px;font-family:'JetBrains Mono',monospace;font-weight:500;opacity:0.7;letter-spacing:0.3px}
 
-    .q-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:10px;transition:all 0.2s}
-    .q-card.answered{border-color:var(--accent);background:linear-gradient(180deg,#fff 0%,rgba(34,211,164,0.04) 100%)}
-    .q-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:14px}
-    .q-num{flex:0 0 26px;height:26px;border-radius:50%;background:var(--paper-deep);color:var(--ink-soft);display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;margin-top:1px}
-    .q-card.answered .q-num{background:var(--accent);color:#fff}
-    .q-text{flex:1;font-size:14.5px;color:var(--ink);font-weight:500;line-height:1.7;letter-spacing:-0.1px}
-    .q-options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-right:38px}
-    @media(max-width:520px){.q-options{margin-right:0}}
-    .q-opt{padding:10px 12px;background:var(--paper-warm);border:1.5px solid var(--line);border-radius:10px;font-size:13px;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit}
-    .q-opt:hover{border-color:var(--primary);color:var(--primary)}
-    .q-opt.yes.selected{background:var(--accent);border-color:var(--accent);color:#fff}
-    .q-opt.partial.selected{background:var(--warn);border-color:var(--warn);color:#fff}
-    .q-opt.no.selected{background:var(--danger);border-color:var(--danger);color:#fff}
-    .q-opt .opt-ico{font-size:14px;line-height:1}
+    .std-content{display:none}
+    .std-content.active{display:block;animation:fadeUp 0.35s}
+
+    /* بطاقة المؤشر */
+    .ind-card{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:10px;overflow:hidden;transition:all 0.2s}
+    .ind-card:hover{border-color:var(--line-soft);box-shadow:0 4px 12px rgba(13,10,46,0.04)}
+    .ind-card.expanded{box-shadow:0 8px 22px rgba(13,10,46,0.06);border-color:var(--line-soft)}
+    .ind-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;background:var(--paper-warm);border-bottom:1px solid transparent;transition:background 0.2s}
+    .ind-card.expanded .ind-head{background:linear-gradient(135deg,rgba(79,63,223,0.04) 0%,rgba(34,211,164,0.03) 100%);border-bottom-color:var(--line-soft)}
+    .ind-num{width:36px;height:36px;border-radius:10px;background:var(--grad);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;flex-shrink:0;font-family:'IBM Plex Sans Arabic'}
+    .ind-info{flex:1;min-width:0}
+    .ind-name{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:2px;letter-spacing:-0.2px}
+    .ind-meta{font-size:12px;color:var(--muted)}
+    .ind-stats{display:flex;align-items:center;gap:10px;flex-shrink:0}
+    .ind-mini-pct{font-family:'IBM Plex Sans Arabic';font-weight:800;font-size:14px;color:var(--ink);min-width:38px;text-align:left}
+    .ind-mini-pct.green{color:var(--accent-deep)}
+    .ind-mini-pct.amber{color:var(--warn)}
+    .ind-mini-pct.red{color:var(--danger)}
+    .ind-toggle{width:28px;height:28px;border-radius:50%;background:var(--paper-deep);display:grid;place-items:center;color:var(--muted);font-weight:700;transition:transform 0.3s}
+    .ind-card.expanded .ind-toggle{transform:rotate(180deg);background:var(--ink);color:#fff}
+    .ind-body{display:none;padding:16px}
+    .ind-card.expanded .ind-body{display:block}
+
+    /* الممارسة */
+    .practice-card{background:var(--paper-warm);border:1px solid var(--line-soft);border-radius:12px;padding:14px 16px;margin-bottom:10px}
+    .practice-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed var(--line)}
+    .practice-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--primary);background:rgba(79,63,223,0.08);padding:3px 8px;border-radius:6px}
+    .practice-name{flex:1;font-size:13.5px;font-weight:700;color:var(--ink);letter-spacing:-0.1px}
+    .practice-weight{font-size:11px;color:var(--muted-soft);font-family:'JetBrains Mono',monospace;letter-spacing:0.3px}
+
+    /* الأسئلة */
+    .qrow{display:flex;flex-wrap:wrap;align-items:flex-start;gap:10px;padding:10px 0;border-top:1px solid var(--line-soft)}
+    .qrow:first-child{border-top:none;padding-top:6px}
+    .qn{flex:0 0 22px;height:22px;border-radius:50%;background:var(--paper-deep);color:var(--muted);display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;margin-top:2px}
+    .qrow.answered-yes .qn{background:var(--accent);color:#fff}
+    .qrow.answered-no .qn{background:var(--danger);color:#fff}
+    .qrow.answered-na .qn{background:var(--muted-soft);color:#fff}
+    .qt{flex:1;min-width:0;font-size:13.5px;color:var(--ink);font-weight:500;line-height:1.7;letter-spacing:-0.05px}
+    .qopts{display:flex;gap:5px;flex-shrink:0;margin-top:1px}
+    @media(max-width:520px){.qopts{margin-right:32px;margin-top:6px;width:100%}}
+    .qpill{padding:7px 12px;background:#fff;border:1.5px solid var(--line);border-radius:8px;font-family:inherit;font-size:12px;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+    .qpill:hover{border-color:var(--primary);color:var(--primary)}
+    .qpill.yes.selected{background:var(--accent);border-color:var(--accent);color:#fff}
+    .qpill.no.selected{background:var(--danger);border-color:var(--danger);color:#fff}
+    .qpill.na.selected{background:var(--muted-soft);border-color:var(--muted-soft);color:#fff}
+    .qp-ico{font-size:12px;line-height:1}
+
+    /* أدوات سريعة */
+    .quick-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
+    .quick-actions .left{display:flex;gap:6px}
+    .qa-btn{padding:7px 12px;background:#fff;border:1px solid var(--line);border-radius:8px;font-size:12px;color:var(--ink-soft);font-weight:600;cursor:pointer;transition:all 0.2s;font-family:inherit}
+    .qa-btn:hover{border-color:var(--primary);color:var(--primary)}
+    .std-summary{font-size:12.5px;color:var(--muted);font-family:'JetBrains Mono',monospace}
+    .std-summary strong{color:var(--ink);font-weight:700}
 
     /* ============= STEP 3: RESULTS ============= */
-    .result-hero{background:#fff;border-radius:24px;padding:40px 32px;text-align:center;margin-bottom:24px;border:1px solid var(--line);box-shadow:0 24px 60px rgba(13,10,46,0.08);position:relative;overflow:hidden}
-    .result-hero::before{content:"";position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:var(--grad);border-radius:50%;filter:blur(80px);opacity:0.18}
+    .result-hero{background:#fff;border-radius:24px;padding:38px 30px;text-align:center;margin-bottom:22px;border:1px solid var(--line);box-shadow:0 24px 60px rgba(13,10,46,0.08);position:relative;overflow:hidden}
+    .result-hero::before{content:"";position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:var(--grad);border-radius:50%;filter:blur(80px);opacity:0.16}
     .result-hero>*{position:relative;z-index:1}
-    .res-eye{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--primary);font-weight:700;margin-bottom:14px}
-    .res-org{font-size:14px;color:var(--muted);margin-bottom:24px}
+    .res-eye{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--primary);font-weight:700;margin-bottom:12px}
+    .res-org{font-size:14px;color:var(--muted);margin-bottom:20px}
     .res-org strong{color:var(--ink)}
 
-    .gauge-wrap{position:relative;width:200px;height:200px;margin:0 auto 22px}
+    .gauge-wrap{position:relative;width:200px;height:200px;margin:0 auto 20px}
     .gauge-svg{width:100%;height:100%;transform:rotate(-90deg)}
     .gauge-bg{fill:none;stroke:var(--line);stroke-width:14}
     .gauge-fg{fill:none;stroke:url(#gradFill);stroke-width:14;stroke-linecap:round;stroke-dasharray:0 1000;transition:stroke-dasharray 1.4s cubic-bezier(0.4,0.2,0.2,1)}
     .gauge-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
-    .gauge-num{font-weight:800;font-size:54px;line-height:1;letter-spacing:-2px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-    .gauge-num sup{font-size:24px;margin-right:2px}
+    .gauge-num{font-weight:800;font-size:52px;line-height:1;letter-spacing:-2px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+    .gauge-num sup{font-size:22px;margin-right:2px}
     .gauge-lbl{font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);letter-spacing:1.5px;text-transform:uppercase;font-weight:600}
 
-    .res-tier{display:inline-block;padding:8px 18px;border-radius:30px;font-weight:700;font-size:14px;margin-bottom:16px}
+    .res-tier{display:inline-block;padding:7px 16px;border-radius:30px;font-weight:700;font-size:13.5px;margin-bottom:14px}
     .res-tier.t-low{background:rgba(230,69,96,0.1);color:var(--danger)}
     .res-tier.t-mid{background:rgba(255,122,89,0.12);color:var(--warn)}
     .res-tier.t-good{background:rgba(34,211,164,0.12);color:var(--accent-deep)}
     .res-tier.t-elite{background:rgba(79,63,223,0.1);color:var(--primary)}
 
-    .res-tagline{font-size:16px;color:var(--ink-soft);max-width:480px;margin:0 auto;line-height:1.75}
+    .res-tagline{font-size:15px;color:var(--ink-soft);max-width:480px;margin:0 auto;line-height:1.75}
 
-    .std-results{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px}
+    .std-results{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
     @media(max-width:660px){.std-results{grid-template-columns:1fr}}
-    .sr-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px 22px;text-align:center;transition:transform 0.2s}
+    .sr-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;text-align:center;transition:transform 0.2s}
     .sr-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(13,10,46,0.06)}
-    .sr-num{font-weight:800;font-size:14px;color:var(--muted);margin-bottom:10px;font-family:'JetBrains Mono',monospace}
-    .sr-name{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:14px}
+    .sr-num{font-weight:800;font-size:13px;color:var(--muted);margin-bottom:10px;font-family:'JetBrains Mono',monospace}
+    .sr-name{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:14px}
     .sr-bar{height:10px;background:var(--paper-deep);border-radius:5px;overflow:hidden;margin-bottom:10px}
     .sr-fill{height:100%;border-radius:5px;width:0%;transition:width 1s 0.3s ease;background:var(--grad)}
     .sr-fill.green{background:linear-gradient(90deg,#22d3a4,#0fb487)}
@@ -180,31 +219,26 @@
     .sr-pct sub{font-size:11px;color:var(--muted);font-weight:500}
     .sr-detail{font-size:11.5px;color:var(--muted);margin-top:6px;font-family:'JetBrains Mono',monospace}
 
-    .recs-block{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;margin-bottom:24px}
-    .recs-block h3{display:flex;align-items:center;gap:10px;font-size:17px;margin-bottom:18px}
-    .recs-block h3::before{content:"💡";font-size:20px}
-    .recs-list{display:flex;flex-direction:column;gap:12px}
-    .rec-item{display:flex;gap:12px;padding:14px;background:var(--paper-warm);border-radius:12px}
-    .rec-ico{flex:0 0 32px;height:32px;border-radius:8px;background:var(--grad-soft);color:var(--primary);display:grid;place-items:center;font-size:14px}
-    .rec-text{font-size:13.5px;color:var(--ink-soft);line-height:1.65}
-    .rec-text strong{color:var(--ink);display:block;margin-bottom:2px;font-weight:700}
-
-    .cta-block{background:var(--grad);border-radius:24px;padding:36px 32px;color:#fff;text-align:center;position:relative;overflow:hidden}
+    .cta-block{background:var(--grad);border-radius:24px;padding:34px 30px;color:#fff;text-align:center;position:relative;overflow:hidden}
     .cta-block::before{content:"";position:absolute;top:-80px;right:-50px;width:240px;height:240px;background:#fff;border-radius:50%;filter:blur(80px);opacity:0.15}
     .cta-block>*{position:relative;z-index:1}
     .cta-block h3{color:#fff;font-size:22px;margin-bottom:10px;letter-spacing:-0.5px}
-    .cta-block p{color:rgba(255,255,255,0.9);font-size:14.5px;margin-bottom:22px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.75}
+    .cta-block p{color:rgba(255,255,255,0.9);font-size:14px;margin-bottom:20px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.75}
     .cta-block .btn{background:#fff;color:var(--primary)}
     .cta-block .btn:hover{background:var(--ink);color:#fff;transform:translateY(-2px)}
 
-    .res-actions{display:flex;justify-content:center;gap:10px;margin-top:22px;flex-wrap:wrap}
-    .res-actions .btn{flex:initial}
+    .res-actions{display:flex;justify-content:center;gap:10px;margin-top:20px;flex-wrap:wrap}
 
     /* honeypot */
     .hp{position:absolute;left:-9999px}
 
+    /* loading */
+    .loading{text-align:center;padding:80px 0;color:var(--muted)}
+    .loader{width:36px;height:36px;border:3px solid var(--line);border-top-color:var(--primary);border-radius:50%;margin:0 auto 14px;animation:spin 0.8s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
     /* footer */
-    footer{padding:24px;text-align:center;font-size:12px;color:var(--muted-soft);border-top:1px solid var(--line-soft);background:#fff}
+    footer{padding:22px;text-align:center;font-size:12px;color:var(--muted-soft);border-top:1px solid var(--line-soft);background:#fff}
     footer a{color:var(--primary);font-weight:600}
   </style>
 </head>
@@ -245,7 +279,6 @@
   </div>
 </div>
 
-<!-- ============= MAIN ============= -->
 <main>
   <div class="container">
 
@@ -254,7 +287,7 @@
       <div class="panel-head">
         <span class="panel-eye">الخطوة الأولى</span>
         <h1>سجّل بيانات <span class="gradient-text">جمعيتك</span></h1>
-        <p class="panel-sub">نحتاج بياناتك الأساسية لإرسال تقرير التقييم المفصّل والتواصل معك إن احتجت دعماً. لن تستغرق أكثر من دقيقة.</p>
+        <p class="panel-sub">دقيقة واحدة لتسجيل بياناتك، ثم تبدأ التقييم على ٢٥٦ سؤال موزّعة على ٦٠ مؤشر معتمد. سنرسل تقريراً مفصّلاً على بريدك بعد الانتهاء.</p>
       </div>
       <div class="reg-card">
         <form id="reg-form" name="buad-assessment" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="return submitRegistration(event)">
@@ -264,7 +297,7 @@
           <input type="hidden" name="compliance_score" id="hidden-compliance">
           <input type="hidden" name="transparency_score" id="hidden-transparency">
           <input type="hidden" name="financial_score" id="hidden-financial">
-          <input type="hidden" name="answers_json" id="hidden-answers">
+          <input type="hidden" name="answered_count" id="hidden-answered">
 
           <div class="form-grid">
             <div class="form-row full">
@@ -319,7 +352,7 @@
             </div>
           </div>
           <div class="form-error" id="reg-error"></div>
-          <button type="submit" class="btn btn-primary btn-block">ابدأ التقييم</button>
+          <button type="submit" class="btn btn-primary btn-block">ابدأ التقييم ←</button>
           <p class="priv-note">بياناتك آمنة ومشفّرة. لن نشاركها مع أي طرف ثالث.</p>
         </form>
       </div>
@@ -330,62 +363,26 @@
       <div class="panel-head">
         <span class="panel-eye">الخطوة الثانية</span>
         <h1>قِس درجة <span class="gradient-text">حوكمة جمعيتك</span></h1>
-        <p class="panel-sub">١٨ سؤالاً مختاراً بعناية من ٦٠ مؤشر معتمد. لكل سؤال ٣ خيارات: نعم (تنفيذ كامل)، جزئياً، لا.</p>
+        <p class="panel-sub">٢٥٦ سؤال على ٦٠ مؤشر — كل سؤال له ٣ خيارات: نعم / لا / غير منطبق. اضغط على المؤشر لتوسيعه ورؤية أسئلته.</p>
       </div>
 
       <div class="assess-progress">
-        <div class="ap-text">أُجبت على <strong id="answered-count">٠</strong> من ١٨</div>
+        <div class="ap-text">أُجبت على <strong id="answered-count">٠</strong> من <span id="total-q">…</span></div>
         <div class="ap-bar"><div class="ap-bar-fill" id="answered-bar"></div></div>
+        <span class="std-summary" id="overall-pct">— ٪</span>
       </div>
 
-      <!-- معيار ١ -->
-      <div class="std-section" data-std="compliance">
-        <div class="std-section-head">
-          <div class="ssh-num">١</div>
-          <div class="ssh-info"><h3>معيار الالتزام والامتثال</h3><p>الإطار النظامي للجمعية — اللوائح، المجلس، الإدارة، الامتثال</p></div>
-          <div class="ssh-meta">٧ أسئلة</div>
-        </div>
-        <div class="q-card"><div class="q-row"><div class="q-num">١</div><div class="q-text">هل لدى جمعيتك لائحة أساسية معتمدة من الجمعية العمومية والمركز الوطني؟</div></div><div class="q-options" data-q="c1"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٢</div><div class="q-text">هل تنعقد اجتماعات مجلس الإدارة بصورة منتظمة (٤ مرات على الأقل سنوياً) وتوثَّق محاضرها؟</div></div><div class="q-options" data-q="c2"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٣</div><div class="q-text">هل لدى الجمعية سياسة معتمدة لتعارض المصالح وتُملأ نماذج الإفصاح السنوية؟</div></div><div class="q-options" data-q="c3"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٤</div><div class="q-text">هل تم تشكيل لجنة المراجعة الداخلية وتعمل بشكل مستقل عن الإدارة التنفيذية؟</div></div><div class="q-options" data-q="c4"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٥</div><div class="q-text">هل لديكم لائحة مالية معتمدة بمصفوفة صلاحيات واضحة لكل مستوى تنظيمي؟</div></div><div class="q-options" data-q="c5"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٦</div><div class="q-text">هل لديكم سياسة مُطبَّقة لمكافحة غسل الأموال وتمويل الإرهاب (AML/CFT)؟</div></div><div class="q-options" data-q="c6"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٧</div><div class="q-text">هل تم تعيين مسؤول حماية بيانات شخصية (DPO) وتطبيق متطلبات نظام PDPL؟</div></div><div class="q-options" data-q="c7"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
+      <!-- تبويبات المعايير -->
+      <div class="std-tabs" id="std-tabs"></div>
+
+      <!-- محتوى المعايير -->
+      <div id="std-contents">
+        <div class="loading"><div class="loader"></div>جاري تحميل الأسئلة...</div>
       </div>
 
-      <!-- معيار ٢ -->
-      <div class="std-section" data-std="transparency">
-        <div class="std-section-head">
-          <div class="ssh-num">٢</div>
-          <div class="ssh-info"><h3>معيار الشفافية والإفصاح</h3><p>جودة الإفصاحات المالية والإدارية والبرامجية</p></div>
-          <div class="ssh-meta">٥ أسئلة</div>
-        </div>
-        <div class="q-card"><div class="q-row"><div class="q-num">١</div><div class="q-text">هل لديكم موقع إلكتروني نشط ومحدَّث يحتوي معلومات الجمعية ومجلس الإدارة؟</div></div><div class="q-options" data-q="t1"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٢</div><div class="q-text">هل تنشرون التقرير السنوي للبرامج والأنشطة بشكل دوري؟</div></div><div class="q-options" data-q="t2"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٣</div><div class="q-text">هل تفصحون عن أسماء أعضاء مجلس الإدارة، اختصاصاتهم، ومكافآتهم؟</div></div><div class="q-options" data-q="t3"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٤</div><div class="q-text">هل تم رفع نموذج الإفصاح السنوي على منصة المركز الوطني؟</div></div><div class="q-options" data-q="t4"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٥</div><div class="q-text">هل لديكم آلية واضحة لاستقبال الاستفسارات والشكاوى ومعالجتها؟</div></div><div class="q-options" data-q="t5"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-      </div>
-
-      <!-- معيار ٣ -->
-      <div class="std-section" data-std="financial">
-        <div class="std-section-head">
-          <div class="ssh-num">٣</div>
-          <div class="ssh-info"><h3>معيار السلامة المالية</h3><p>الإدارة المالية، القوائم، الموازنة، المراجعة الخارجية</p></div>
-          <div class="ssh-meta">٦ أسئلة</div>
-        </div>
-        <div class="q-card"><div class="q-row"><div class="q-num">١</div><div class="q-text">هل لديكم سياسة محاسبية ودليل حسابات معتمد وفق IFRS for SMEs؟</div></div><div class="q-options" data-q="f1"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٢</div><div class="q-text">هل تستخدمون برنامجاً محاسبياً معتمداً (Onyx/Edge/SAP/...) وليس أوراقاً يدوية أو Excel؟</div></div><div class="q-options" data-q="f2"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٣</div><div class="q-text">هل تُعدّ القوائم المالية الشهرية أو الربعية بشكل منتظم وتُعرض على المجلس؟</div></div><div class="q-options" data-q="f3"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٤</div><div class="q-text">هل تُعدّ موازنة تقديرية سنوية وتُعتمد من مجلس الإدارة قبل بداية السنة المالية؟</div></div><div class="q-options" data-q="f4"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٥</div><div class="q-text">هل القوائم المالية السنوية مراجعة من مكتب مراجعة خارجي مرخّص؟</div></div><div class="q-options" data-q="f5"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-        <div class="q-card"><div class="q-row"><div class="q-num">٦</div><div class="q-text">هل تُفصل الأموال المقيّدة (للأوقاف والمشاريع) عن الأموال العامة في الحسابات؟</div></div><div class="q-options" data-q="f6"><button type="button" class="q-opt yes" onclick="answer(this)"><span class="opt-ico">✓</span> نعم</button><button type="button" class="q-opt partial" onclick="answer(this)">جزئياً</button><button type="button" class="q-opt no" onclick="answer(this)"><span class="opt-ico">✗</span> لا</button></div></div>
-      </div>
-
-      <div class="btn-row">
+      <div class="btn-row" id="assess-actions" style="display:none">
         <button type="button" class="btn btn-ghost" onclick="goToStep(1)">رجوع</button>
-        <button type="button" class="btn btn-primary" id="finish-btn" onclick="finishAssessment()" disabled style="opacity:0.5;pointer-events:none">عرض النتيجة</button>
+        <button type="button" class="btn btn-primary" id="finish-btn" onclick="finishAssessment()">عرض النتيجة</button>
       </div>
     </section>
 
@@ -438,11 +435,6 @@
         </div>
       </div>
 
-      <div class="recs-block">
-        <h3>التوصيات الفورية لجمعيتك</h3>
-        <div class="recs-list" id="recs-list"></div>
-      </div>
-
       <div class="cta-block">
         <h3 id="cta-title">احجز جلسة تشخيص مجانية</h3>
         <p id="cta-desc">سيتواصل معك أحد مستشارينا خلال ٢٤ ساعة عمل لتقديم خطة عمل مفصّلة بناءً على نتيجتك.</p>
@@ -463,29 +455,22 @@
 </footer>
 
 <script>
-  const answers = {};
-  const TOTAL_Q = 18;
-  const SCORE_MAP = { yes: 3, partial: 1.5, no: 0 };
-  const STD_QS = {
-    compliance:   ['c1','c2','c3','c4','c5','c6','c7'],
-    transparency: ['t1','t2','t3','t4','t5'],
-    financial:    ['f1','f2','f3','f4','f5','f6']
-  };
   const STD_LABELS = {
-    compliance: 'الالتزام والامتثال',
-    transparency: 'الشفافية والإفصاح',
-    financial: 'السلامة المالية'
+    compliance: { name:'الالتزام والامتثال', short:'الالتزام', short_en:'Compliance' },
+    transparency: { name:'الشفافية والإفصاح', short:'الشفافية', short_en:'Transparency' },
+    financial: { name:'السلامة المالية', short:'المالية', short_en:'Financial' }
   };
+  let QUESTIONS = null;
   let userData = {};
+  const answers = {}; // { questionId: 'yes'|'no'|'na' }
+  let currentTab = 'compliance';
 
-  // ----- التنقل بين الخطوات -----
+  // ----- التحكّم بالخطوات -----
   function goToStep(n){
     document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
     if(n === 1) document.getElementById('panel-register').classList.add('active');
     else if(n === 2) document.getElementById('panel-assess').classList.add('active');
     else if(n === 3) document.getElementById('panel-result').classList.add('active');
-
-    // تحديث شريط الخطوات
     const steps = document.querySelectorAll('.step');
     steps.forEach((s, i) => {
       s.classList.remove('active','done');
@@ -493,13 +478,11 @@
       if(sn < n) s.classList.add('done');
       else if(sn === n) s.classList.add('active');
     });
-    const fill = document.getElementById('step-line-fill');
-    fill.style.width = ((n-1) / 2 * 100) + '%';
-
+    document.getElementById('step-line-fill').style.width = ((n-1)/2*100)+'%';
     window.scrollTo({top:0, behavior:'smooth'});
   }
 
-  // ----- الخطوة ١: تسجيل البيانات -----
+  // ----- خطوة ١: تسجيل -----
   function submitRegistration(e){
     e.preventDefault();
     const get = id => document.getElementById(id).value.trim();
@@ -520,149 +503,294 @@
     }
     document.getElementById('reg-error').classList.remove('show');
     goToStep(2);
+    if(!QUESTIONS) loadQuestions();
     return false;
   }
 
-  // ----- الخطوة ٢: الإجابة على الأسئلة -----
-  function answer(btn){
-    const wrap = btn.closest('.q-options');
-    const qid = wrap.dataset.q;
-    wrap.querySelectorAll('.q-opt').forEach(b => b.classList.remove('selected'));
-    btn.classList.add('selected');
-    btn.closest('.q-card').classList.add('answered');
-    const val = btn.classList.contains('yes') ? 'yes'
-              : btn.classList.contains('partial') ? 'partial' : 'no';
-    answers[qid] = val;
-    updateProgress();
+  // ----- جلب الأسئلة وعرضها -----
+  async function loadQuestions(){
+    try{
+      const res = await fetch('questions.json?v=2', { cache:'no-cache' });
+      QUESTIONS = await res.json();
+      renderTabs();
+      renderAllStandards();
+      document.getElementById('total-q').textContent = arNum(totalQuestionCount());
+      document.getElementById('assess-actions').style.display = 'flex';
+    } catch(err){
+      document.getElementById('std-contents').innerHTML =
+        '<div class="loading" style="color:var(--danger)">تعذّر تحميل الأسئلة. أعد تحميل الصفحة.</div>';
+      console.error(err);
+    }
   }
 
-  function updateProgress(){
-    const n = Object.keys(answers).length;
-    document.getElementById('answered-count').textContent = arNum(n);
-    document.getElementById('answered-bar').style.width = (n/TOTAL_Q*100)+'%';
-    const finish = document.getElementById('finish-btn');
-    if(n === TOTAL_Q){
-      finish.disabled = false;
-      finish.style.opacity = '1';
-      finish.style.pointerEvents = 'auto';
-    }
+  function totalQuestionCount(){
+    let n = 0;
+    Object.values(QUESTIONS).forEach(arr => {
+      arr.forEach(ind => ind.practices.forEach(p => n += p.questions.length));
+    });
+    return n;
+  }
+
+  function renderTabs(){
+    const tabsEl = document.getElementById('std-tabs');
+    tabsEl.innerHTML = '';
+    Object.keys(QUESTIONS).forEach((std, idx) => {
+      const cnt = QUESTIONS[std].reduce((s, ind) => s + ind.practices.reduce((s2,p)=>s2+p.questions.length, 0), 0);
+      const inds = QUESTIONS[std].length;
+      const btn = document.createElement('button');
+      btn.className = 'std-tab' + (std === currentTab ? ' active' : '');
+      btn.dataset.std = std;
+      btn.innerHTML = `<span>${STD_LABELS[std].name}</span><small>${arNum(inds)} مؤشر · ${arNum(cnt)} سؤال</small>`;
+      btn.onclick = () => switchTab(std);
+      tabsEl.appendChild(btn);
+    });
+  }
+
+  function switchTab(std){
+    currentTab = std;
+    document.querySelectorAll('.std-tab').forEach(t => t.classList.toggle('active', t.dataset.std===std));
+    document.querySelectorAll('.std-content').forEach(c => c.classList.toggle('active', c.dataset.std===std));
+  }
+
+  function renderAllStandards(){
+    const wrap = document.getElementById('std-contents');
+    wrap.innerHTML = '';
+    Object.entries(QUESTIONS).forEach(([std, indicators]) => {
+      const sec = document.createElement('div');
+      sec.className = 'std-content' + (std === currentTab ? ' active' : '');
+      sec.dataset.std = std;
+
+      // أدوات سريعة
+      const qa = document.createElement('div');
+      qa.className = 'quick-actions';
+      qa.innerHTML = `
+        <div class="left">
+          <button class="qa-btn" onclick="expandAll('${std}', true)">توسيع الكل</button>
+          <button class="qa-btn" onclick="expandAll('${std}', false)">طيّ الكل</button>
+          <button class="qa-btn" onclick="answerAll('${std}','yes')">الإجابة "نعم" للكل</button>
+        </div>
+        <div class="std-summary" id="std-sum-${std}">— من ${arNum(indicators.reduce((s,i)=>s+i.practices.reduce((s2,p)=>s2+p.questions.length,0),0))}</div>
+      `;
+      sec.appendChild(qa);
+
+      // المؤشرات
+      indicators.forEach((ind, idx) => {
+        const card = document.createElement('div');
+        card.className = 'ind-card';
+        card.dataset.std = std;
+        card.dataset.ind = ind.id;
+        if(idx === 0) card.classList.add('expanded');
+
+        const totalQ = ind.practices.reduce((s,p) => s + p.questions.length, 0);
+        const head = document.createElement('div');
+        head.className = 'ind-head';
+        head.onclick = (e) => { if(!e.target.closest('.qpill')) card.classList.toggle('expanded'); };
+        head.innerHTML = `
+          <div class="ind-num">${arNum(ind.id)}</div>
+          <div class="ind-info">
+            <div class="ind-name">${ind.name}</div>
+            <div class="ind-meta">${ind.meta || (ind.practices.length + ' ممارسات · ' + totalQ + ' أسئلة')}</div>
+          </div>
+          <div class="ind-stats">
+            <span class="ind-mini-pct" data-ind-pct="${std}-${ind.id}">—</span>
+          </div>
+          <div class="ind-toggle">▼</div>
+        `;
+        card.appendChild(head);
+
+        const body = document.createElement('div');
+        body.className = 'ind-body';
+        ind.practices.forEach(p => {
+          const pc = document.createElement('div');
+          pc.className = 'practice-card';
+          let qsHtml = p.questions.map(q => `
+            <div class="qrow" data-q="${q.id}">
+              <span class="qn">${q.num}</span>
+              <span class="qt">${q.text}</span>
+              <div class="qopts">
+                <button type="button" class="qpill yes" onclick="answer(this,'yes')"><span class="qp-ico">✓</span> نعم</button>
+                <button type="button" class="qpill no" onclick="answer(this,'no')"><span class="qp-ico">✗</span> لا</button>
+                <button type="button" class="qpill na" onclick="answer(this,'na')">— غ.م</button>
+              </div>
+            </div>
+          `).join('');
+          pc.innerHTML = `
+            <div class="practice-head">
+              <span class="practice-num">${p.num}</span>
+              <span class="practice-name">${p.name}</span>
+              ${p.weight ? `<span class="practice-weight">${p.weight}</span>` : ''}
+            </div>
+            ${qsHtml}
+          `;
+          body.appendChild(pc);
+        });
+        card.appendChild(body);
+        sec.appendChild(card);
+      });
+      wrap.appendChild(sec);
+    });
+  }
+
+  function expandAll(std, expand){
+    document.querySelectorAll(`.std-content[data-std="${std}"] .ind-card`).forEach(c => {
+      c.classList.toggle('expanded', expand);
+    });
+  }
+
+  function answerAll(std, val){
+    if(!confirm(`سيتم تعيين "${val==='yes'?'نعم':val==='no'?'لا':'غير منطبق'}" لكل أسئلة هذا المعيار. متابعة؟`)) return;
+    document.querySelectorAll(`.std-content[data-std="${std}"] .qrow`).forEach(qr => {
+      const btn = qr.querySelector(`.qpill.${val}`);
+      if(btn) answer(btn, val);
+    });
+  }
+
+  // ----- الإجابة على سؤال -----
+  function answer(btn, val){
+    const qrow = btn.closest('.qrow');
+    const qid = qrow.dataset.q;
+    qrow.querySelectorAll('.qpill').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    qrow.classList.remove('answered-yes','answered-no','answered-na');
+    qrow.classList.add('answered-'+val);
+    answers[qid] = val;
+    updateScores();
+  }
+
+  // ----- حساب وعرض الدرجات -----
+  function updateScores(){
+    const total = totalQuestionCount();
+    const answered = Object.keys(answers).length;
+    document.getElementById('answered-count').textContent = arNum(answered);
+    document.getElementById('answered-bar').style.width = (answered/total*100)+'%';
+
+    // درجة كل معيار
+    const scores = computeScores();
+    document.getElementById('overall-pct').innerHTML =
+      'الدرجة المؤقتة <strong style="color:var(--primary);font-family:IBM Plex Sans Arabic;font-size:14px">'+arNum(scores.overall.pct)+'٪</strong>';
+
+    // تحديث ملخص كل معيار
+    Object.entries(scores.byStd).forEach(([std, s]) => {
+      const sumEl = document.getElementById('std-sum-'+std);
+      if(sumEl) sumEl.innerHTML = `<strong>${arNum(s.answered)}</strong> من ${arNum(s.totalQ)} مُجاب · <strong>${arNum(s.pct)}٪</strong>`;
+    });
+
+    // تحديث نسبة كل مؤشر
+    Object.entries(scores.byInd).forEach(([key, pct]) => {
+      const el = document.querySelector(`[data-ind-pct="${key}"]`);
+      if(el){
+        el.textContent = pct == null ? '—' : arNum(pct)+'٪';
+        el.classList.remove('green','amber','red');
+        if(pct != null) el.classList.add(pct >= 70 ? 'green' : pct >= 50 ? 'amber' : 'red');
+      }
+    });
+  }
+
+  function computeScores(){
+    let oYes = 0, oTotal = 0;
+    const byStd = {};
+    const byInd = {};
+    Object.entries(QUESTIONS).forEach(([std, indicators]) => {
+      let stdYes = 0, stdAnswered = 0, stdTotalQ = 0;
+      indicators.forEach(ind => {
+        let yes = 0, total = 0; // total = answered yes + answered no
+        ind.practices.forEach(p => p.questions.forEach(q => {
+          stdTotalQ++;
+          const a = answers[q.id];
+          if(a === 'yes'){ yes++; total++; stdYes++; stdAnswered++; oYes++; oTotal++; }
+          else if(a === 'no'){ total++; stdAnswered++; oTotal++; }
+          else if(a === 'na'){ stdAnswered++; }
+        }));
+        byInd[std+'-'+ind.id] = total > 0 ? Math.round(yes/total*100) : null;
+      });
+      byStd[std] = {
+        pct: stdAnswered ? Math.round(stdYes / Math.max(1, stdAnswered - countNa(std)) * 100) : 0,
+        answered: stdAnswered,
+        totalQ: stdTotalQ
+      };
+    });
+    return {
+      overall: { pct: oTotal>0 ? Math.round(oYes/oTotal*100) : 0 },
+      byStd, byInd
+    };
+  }
+
+  function countNa(std){
+    let n = 0;
+    QUESTIONS[std].forEach(ind => ind.practices.forEach(p => p.questions.forEach(q => {
+      if(answers[q.id] === 'na') n++;
+    })));
+    return n;
   }
 
   function arNum(n){
     return String(n).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
   }
 
-  // ----- الخطوة ٣: حساب وعرض النتيجة -----
+  // ----- إنهاء التقييم -----
   function finishAssessment(){
-    if(Object.keys(answers).length < TOTAL_Q){
-      alert('يرجى الإجابة على جميع الأسئلة');
-      return;
+    const answered = Object.keys(answers).length;
+    if(answered < 30){
+      if(!confirm(`لم تُجب إلا على ${answered} سؤال من أصل ${totalQuestionCount()}. الدرجة قد لا تكون دقيقة. متابعة؟`)) return;
     }
-    const stdScores = {};
-    Object.entries(STD_QS).forEach(([std, qs]) => {
-      let sum = 0; const max = qs.length * 3;
-      qs.forEach(qid => { sum += SCORE_MAP[answers[qid]] || 0; });
-      stdScores[std] = { pct: Math.round(sum/max*100), sum, max, count: qs.length };
-    });
-    const overall = Math.round(
-      (stdScores.compliance.sum + stdScores.transparency.sum + stdScores.financial.sum) /
-      (stdScores.compliance.max + stdScores.transparency.max + stdScores.financial.max) * 100
-    );
+    const scores = computeScores();
+    const overall = scores.overall.pct;
+    const c = scores.byStd.compliance.pct;
+    const t = scores.byStd.transparency.pct;
+    const f = scores.byStd.financial.pct;
 
-    // فئة النتيجة + التوصيات
+    // فئة النتيجة
     let tier, tierClass, tagline, ctaTitle, ctaDesc;
     if(overall < 50){
-      tier = 'يحتاج دعم عاجل'; tierClass = 't-low';
+      tier = 'يحتاج دعم عاجل'; tierClass='t-low';
       tagline = 'هناك فجوات جوهرية في منظومة الحوكمة. الخطر مرتفع على التراخيص ومستحقات النفع العام.';
       ctaTitle = 'احجز جلسة طوارئ مجانية';
       ctaDesc = 'سنخصّص لك جلسة عاجلة (٤٥ دقيقة) لإعداد خطة إنقاذ سريعة قبل التقييم الرسمي القادم.';
     } else if(overall < 70){
-      tier = 'وضع متوسط'; tierClass = 't-mid';
+      tier = 'وضع متوسط'; tierClass='t-mid';
       tagline = 'الأساسيات موجودة، لكن هناك فجوات تمنعك من تجاوز عتبة جمع التبرعات (٥٠٪) بأمان.';
       ctaTitle = 'احجز جلسة تشخيص مفصّل';
       ctaDesc = 'سنحلّل معك الفجوات الـ ٥ الأكثر أثراً ونرسم خارطة طريق للوصول إلى ٧٥٪+.';
     } else if(overall < 85){
-      tier = 'وضع جيّد'; tierClass = 't-good';
+      tier = 'وضع جيّد'; tierClass='t-good';
       tagline = 'حوكمتك في موقف قوي. تحتاج تحسينات استراتيجية للوصول إلى صفة النفع العام.';
       ctaTitle = 'احجز استشارة استراتيجية';
       ctaDesc = 'جلسة موسّعة (ساعة) لنحدّد كيف تتجاوز عتبة الـ ٨٥٪ وتفتح بوابات النفع العام والمكافآت.';
     } else {
-      tier = 'ممتاز'; tierClass = 't-elite';
-      tagline = 'حوكمة استثنائية! أنت في النخبة. استمر بالحفاظ على هذا المستوى.';
+      tier = 'ممتاز'; tierClass='t-elite';
+      tagline = 'حوكمة استثنائية! أنت في النخبة. استمر في الحفاظ على هذا المستوى.';
       ctaTitle = 'احجز مراجعة سنوية';
       ctaDesc = 'حافظ على تميّزك مع نظام مراجعة سنوي يبقي حوكمتك في القمة دون تراجع.';
     }
 
-    // ملء الواجهة
     document.getElementById('r-org').textContent = userData.org_name;
     animateGauge(overall);
     setTimeout(()=>{ document.getElementById('gauge-num').textContent = arNum(overall); }, 1400);
-
     const resTier = document.getElementById('res-tier');
-    resTier.textContent = tier;
-    resTier.className = 'res-tier ' + tierClass;
+    resTier.textContent = tier; resTier.className = 'res-tier '+tierClass;
     document.getElementById('res-tagline').textContent = tagline;
     document.getElementById('cta-title').textContent = ctaTitle;
     document.getElementById('cta-desc').textContent = ctaDesc;
 
-    // أشرطة المعايير
-    setStdResult('c', stdScores.compliance);
-    setStdResult('t', stdScores.transparency);
-    setStdResult('f', stdScores.financial);
+    setStdResult('c', c, scores.byStd.compliance);
+    setStdResult('t', t, scores.byStd.transparency);
+    setStdResult('f', f, scores.byStd.financial);
 
-    // التوصيات
-    buildRecs(stdScores);
-
-    // إرسال إلى Netlify Forms
-    sendToNetlify(overall, stdScores);
-
+    sendToNetlify(overall, c, t, f, answered);
     goToStep(3);
   }
 
-  function setStdResult(prefix, s){
+  function setStdResult(prefix, pct, sd){
     const fill = document.getElementById('sr-'+prefix+'-fill');
-    const pct = document.getElementById('sr-'+prefix+'-pct');
+    const pctEl = document.getElementById('sr-'+prefix+'-pct');
     const det = document.getElementById('sr-'+prefix+'-detail');
     setTimeout(()=>{
-      fill.style.width = s.pct + '%';
+      fill.style.width = pct+'%';
       fill.classList.remove('green','amber','red');
-      fill.classList.add(s.pct >= 70 ? 'green' : s.pct >= 50 ? 'amber' : 'red');
-      pct.textContent = arNum(s.pct);
-      det.textContent = arNum(Math.round(s.sum*10)/10) + ' / ' + arNum(s.max) + ' نقطة';
+      fill.classList.add(pct >= 70 ? 'green' : pct >= 50 ? 'amber' : 'red');
+      pctEl.textContent = arNum(pct);
+      if(sd) det.textContent = arNum(sd.answered)+' من '+arNum(sd.totalQ)+' سؤال';
     }, 200);
-  }
-
-  function buildRecs(stdScores){
-    const recs = [];
-    // معيار الالتزام
-    const cAns = STD_QS.compliance.map(q => answers[q]);
-    if(cAns[0] !== 'yes') recs.push({i:'⚠', t:'اللائحة الأساسية', d:'مطلوبة فوراً للحصول على أي تصريح. ابدأ بإعدادها واعتمادها من الجمعية العمومية.'});
-    if(cAns[1] !== 'yes') recs.push({i:'📅', t:'انتظام اجتماعات المجلس', d:'لازم ٤ اجتماعات على الأقل سنوياً مع توثيق المحاضر — هذا أبسط مؤشر يؤثر مباشرة على درجة التقييم.'});
-    if(cAns[2] !== 'yes') recs.push({i:'⚖', t:'سياسة تعارض المصالح', d:'إلزامية بموجب قواعد الحوكمة V2. اعتمدوها وأطلقوا دورة الإفصاح السنوي.'});
-    if(cAns[5] !== 'yes') recs.push({i:'🛡', t:'سياسة AML/CFT', d:'مطلوبة من جميع الجمعيات بصرف النظر عن حجمها. غيابها يعرّض الجمعية لإلغاء التراخيص.'});
-    if(cAns[6] !== 'yes') recs.push({i:'🔐', t:'الامتثال لـ PDPL', d:'منذ سبتمبر ٢٠٢٤ أصبح إنفاذ نظام حماية البيانات إلزامياً. عيّن مسؤول حماية البيانات (DPO).'});
-
-    // الشفافية
-    const tAns = STD_QS.transparency.map(q => answers[q]);
-    if(tAns[0] !== 'yes') recs.push({i:'🌐', t:'الموقع الإلكتروني', d:'الموقع الإلكتروني المحدَّث مؤشر مباشر على الشفافية. نوصي بإطلاق صفحة بسيطة على الأقل.'});
-    if(tAns[3] !== 'yes') recs.push({i:'📤', t:'نموذج الإفصاح السنوي', d:'يجب رفعه على منصة المركز الوطني سنوياً. غيابه يُسقط نقاطاً مباشرة من معيار الشفافية.'});
-
-    // المالية
-    const fAns = STD_QS.financial.map(q => answers[q]);
-    if(fAns[0] !== 'yes') recs.push({i:'📚', t:'السياسة المحاسبية', d:'دليل الحسابات وفق IFRS for SMEs ضروري لإصدار قوائم مالية مقبولة.'});
-    if(fAns[3] !== 'yes') recs.push({i:'💰', t:'الموازنة التقديرية', d:'ضرورية كأداة تخطيط ورقابة، ومطلب رسمي من المركز الوطني.'});
-    if(fAns[4] !== 'yes') recs.push({i:'🔍', t:'المراجع الخارجي', d:'مطلوب لاعتماد القوائم المالية السنوية. تعاقدوا مع مكتب مرخّص قبل نهاية السنة المالية.'});
-
-    if(recs.length === 0) recs.push({i:'🌟', t:'حافظوا على التميّز', d:'وضعكم ممتاز. استمروا في المراجعة الدورية لضمان عدم تراجع المؤشرات.'});
-
-    const list = document.getElementById('recs-list');
-    list.innerHTML = '';
-    recs.slice(0, 6).forEach(r => {
-      const item = document.createElement('div');
-      item.className = 'rec-item';
-      item.innerHTML = `<div class="rec-ico">${r.i}</div><div class="rec-text"><strong>${r.t}</strong>${r.d}</div>`;
-      list.appendChild(item);
-    });
   }
 
   function animateGauge(pct){
@@ -671,7 +799,6 @@
     const circumference = 2 * Math.PI * r;
     const dash = (pct/100) * circumference;
     fg.style.strokeDasharray = `${dash} ${circumference}`;
-    // رسوم العدّ
     const numEl = document.getElementById('gauge-num');
     let cur = 0;
     const step = Math.max(1, Math.round(pct/40));
@@ -682,30 +809,28 @@
     }, 30);
   }
 
-  function sendToNetlify(overall, stdScores){
+  function sendToNetlify(overall, c, t, f, answered){
     document.getElementById('hidden-overall').value = overall;
-    document.getElementById('hidden-compliance').value = stdScores.compliance.pct;
-    document.getElementById('hidden-transparency').value = stdScores.transparency.pct;
-    document.getElementById('hidden-financial').value = stdScores.financial.pct;
-    document.getElementById('hidden-answers').value = JSON.stringify(answers);
+    document.getElementById('hidden-compliance').value = c;
+    document.getElementById('hidden-transparency').value = t;
+    document.getElementById('hidden-financial').value = f;
+    document.getElementById('hidden-answered').value = answered;
     const form = document.getElementById('reg-form');
     const data = new FormData(form);
     fetch(location.pathname, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
       body: new URLSearchParams(data).toString()
-    }).catch(()=>{}); // فشل صامت
+    }).catch(()=>{});
   }
 
   function restartAssessment(){
     if(!confirm('سيتم مسح كل إجاباتك وبدء تقييم جديد. متأكد؟')) return;
     Object.keys(answers).forEach(k => delete answers[k]);
-    document.querySelectorAll('.q-opt.selected').forEach(b => b.classList.remove('selected'));
-    document.querySelectorAll('.q-card.answered').forEach(c => c.classList.remove('answered'));
+    document.querySelectorAll('.qpill.selected').forEach(b => b.classList.remove('selected'));
+    document.querySelectorAll('.qrow').forEach(r => r.classList.remove('answered-yes','answered-no','answered-na'));
     document.getElementById('answered-count').textContent = '٠';
     document.getElementById('answered-bar').style.width = '0%';
-    const finish = document.getElementById('finish-btn');
-    finish.disabled = true; finish.style.opacity = '0.5'; finish.style.pointerEvents = 'none';
     goToStep(1);
   }
 </script>

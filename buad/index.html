@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>بُعد التمكين — حوكمة الجمعيات الخيرية والمؤسسات الأهلية</title>
-  <meta name="description" content="نقود جمعيتك خطوة بخطوة نحو حوكمة كاملة ودرجة امتثال مرتفعة وفق معايير المركز الوطني لتنمية القطاع غير الربحي. ٤٧ لائحة جاهزة و٦٠ مؤشر تقييم.">
+  <title>بُعد التمكين — حوكمة الجمعيات الخيرية</title>
+  <meta name="description" content="قِس درجة حوكمة جمعيتك في دقائق على ٢٥٦ سؤال وفق معايير المركز الوطني، واحصل على تقرير مفصّل وخطة عمل واضحة.">
   <meta property="og:title" content="بُعد التمكين — حوكمة الجمعيات الخيرية">
-  <meta property="og:description" content="رفع درجة الحوكمة لجمعيتك إلى ٨٥٪ فأكثر مع منهجية موثّقة وفريق متخصص.">
+  <meta property="og:description" content="ابدأ التقييم الذاتي المجاني الآن واحصل على تقرير مفصّل خلال دقائق.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#4f3fdf">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{
       --primary:#4f3fdf;
@@ -31,278 +31,126 @@
       --grad:linear-gradient(135deg,#4f3fdf 0%,#6f4ff0 40%,#22d3a4 100%);
       --grad-soft:linear-gradient(135deg,rgba(79,63,223,0.06) 0%,rgba(34,211,164,0.04) 100%);
     }
-    *{margin:0;padding:0;box-sizing:border-box}
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'IBM Plex Sans Arabic',system-ui,sans-serif}
     html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-    body{font-family:'IBM Plex Sans Arabic','Tajawal',system-ui,sans-serif;background:var(--paper-warm);color:var(--ink);line-height:1.7;font-size:15px;overflow-x:hidden;direction:rtl}
-    h1,h2,h3,h4{font-family:'Tajawal',sans-serif;font-weight:800;color:var(--ink);line-height:1.25;letter-spacing:-0.5px}
+    body{background:var(--paper-warm);color:var(--ink);line-height:1.7;font-size:15px;direction:rtl;min-height:100vh;display:flex;flex-direction:column}
+    h1,h2,h3,h4{font-weight:700;color:var(--ink);line-height:1.25;letter-spacing:-0.5px}
     a{color:inherit;text-decoration:none}
     img,svg{display:block;max-width:100%}
-    .container{max-width:1180px;margin:0 auto;padding:0 24px}
-    .gradient-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block}
+    button{font-family:inherit;cursor:pointer}
+    .container{max-width:1080px;margin:0 auto;padding:0 24px;width:100%}
+    .gradient-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 
     /* ===== شعار ===== */
-    .logo{display:flex;align-items:center;gap:10px;color:var(--primary)}
-    .logo-mark{width:38px;height:38px;flex-shrink:0}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo-mark{width:36px;height:36px;flex-shrink:0}
     .logo-text{display:flex;flex-direction:column;line-height:1.1}
-    .logo-ar{font-family:'Tajawal',sans-serif;font-weight:800;font-size:18px;color:var(--ink);letter-spacing:-0.3px}
+    .logo-ar{font-weight:700;font-size:17px;color:var(--ink);letter-spacing:-0.3px}
     .logo-en{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--primary);font-weight:600;margin-top:2px;text-transform:uppercase}
 
     /* ===== شريط التنقل ===== */
-    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.85);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);border-bottom:1px solid var(--line-soft)}
+    header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.85);backdrop-filter:blur(18px) saturate(180%);border-bottom:1px solid var(--line-soft)}
     nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:20px}
-    .nav-links{display:flex;gap:6px;align-items:center}
-    .nav-links a{padding:8px 14px;border-radius:8px;font-size:14px;font-weight:600;color:var(--ink-soft);transition:all 0.2s}
-    .nav-links a:hover{color:var(--primary);background:var(--paper-deep)}
-    .nav-cta{background:var(--ink);color:#fff;padding:11px 22px !important;border-radius:30px !important;transition:all 0.25s !important}
-    .nav-cta:hover{background:var(--primary) !important;color:#fff !important;transform:translateY(-1px);box-shadow:0 8px 18px rgba(79,63,223,0.35)}
-    .menu-btn{display:none;background:none;border:1px solid var(--line);padding:8px 12px;border-radius:8px;cursor:pointer;font-size:18px}
-    @media(max-width:840px){
-      .nav-links{display:none;position:absolute;top:100%;right:0;left:0;background:#fff;flex-direction:column;align-items:stretch;padding:14px 24px;gap:4px;border-bottom:1px solid var(--line);box-shadow:0 12px 30px rgba(13,10,46,0.08)}
-      .nav-links.open{display:flex}
-      .menu-btn{display:block}
-    }
+    .nav-cta{background:var(--ink);color:#fff;padding:11px 22px;border-radius:30px;font-weight:600;font-size:13.5px;transition:all 0.25s}
+    .nav-cta:hover{background:var(--primary);transform:translateY(-1px);box-shadow:0 8px 18px rgba(79,63,223,0.35)}
 
     /* ===== Hero ===== */
-    .hero{position:relative;padding:60px 0 90px;overflow:hidden}
+    .hero{position:relative;padding:60px 0 70px;overflow:hidden;flex:1}
     .hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
-    .hero-bg::before{content:"";position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:var(--grad);border-radius:50%;filter:blur(120px);opacity:0.18}
-    .hero-bg::after{content:"";position:absolute;bottom:-300px;left:-200px;width:600px;height:600px;background:linear-gradient(135deg,#22d3a4,#4f3fdf);border-radius:50%;filter:blur(140px);opacity:0.13}
+    .hero-bg::before{content:"";position:absolute;top:-200px;right:-200px;width:700px;height:700px;background:var(--grad);border-radius:50%;filter:blur(120px);opacity:0.16}
+    .hero-bg::after{content:"";position:absolute;bottom:-300px;left:-200px;width:600px;height:600px;background:linear-gradient(135deg,#22d3a4,#4f3fdf);border-radius:50%;filter:blur(140px);opacity:0.12}
     .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 0.85fr;gap:60px;align-items:center}
     @media(max-width:880px){.hero-grid{grid-template-columns:1fr;gap:40px;text-align:center}}
 
-    .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:7px 16px;font-size:12.5px;font-weight:600;color:var(--primary);margin-bottom:24px;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;box-shadow:0 4px 14px rgba(79,63,223,0.06)}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:var(--paper);border:1px solid var(--line);border-radius:30px;padding:7px 16px;font-size:12.5px;font-weight:600;color:var(--primary);margin-bottom:22px;font-family:'JetBrains Mono',monospace;letter-spacing:0.5px;box-shadow:0 4px 14px rgba(79,63,223,0.06)}
     .hero-eyebrow::before{content:"";width:8px;height:8px;background:var(--accent);border-radius:50%;animation:pulse 2s ease-in-out infinite}
     @keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:0.6}}
 
-    .hero h1{font-size:clamp(34px,5vw,56px);line-height:1.15;margin-bottom:24px;letter-spacing:-1.2px}
-    .hero h1 .accent{color:var(--primary)}
-    .hero p.lead{font-size:clamp(15px,1.6vw,18px);color:var(--muted);max-width:560px;margin-bottom:36px;line-height:1.85}
+    .hero h1{font-size:clamp(32px,5vw,52px);line-height:1.15;margin-bottom:22px;letter-spacing:-1.2px}
+    .hero p.lead{font-size:clamp(15px,1.6vw,17.5px);color:var(--muted);max-width:560px;margin-bottom:32px;line-height:1.85}
     @media(max-width:880px){.hero p.lead{margin-left:auto;margin-right:auto}}
 
-    .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+    .cta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
     @media(max-width:880px){.cta-row{justify-content:center}}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border-radius:30px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;border:none;transition:all 0.25s ease;text-decoration:none;letter-spacing:-0.2px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;border-radius:30px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;border:none;transition:all 0.25s ease;text-decoration:none;letter-spacing:-0.2px}
     .btn-primary{background:var(--ink);color:#fff;box-shadow:0 10px 28px rgba(13,10,46,0.18)}
     .btn-primary:hover{background:var(--primary);transform:translateY(-2px);box-shadow:0 14px 34px rgba(79,63,223,0.4)}
-    .btn-primary::after{content:"←";transition:transform 0.25s}
+    .btn-primary::after{content:"←";transition:transform 0.25s;font-weight:400}
     .btn-primary:hover::after{transform:translateX(-4px)}
     .btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
     .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
 
-    .hero-trust{display:flex;align-items:center;gap:18px;margin-top:40px;flex-wrap:wrap}
-    @media(max-width:880px){.hero-trust{justify-content:center}}
-    .ht-pic{display:flex}
-    .ht-pic span{width:34px;height:34px;border-radius:50%;background:var(--grad);border:2.5px solid #fff;font-family:'Tajawal',sans-serif;font-weight:800;font-size:12px;color:#fff;display:grid;place-items:center;margin-right:-10px}
-    .ht-pic span:nth-child(1){background:linear-gradient(135deg,#4f3fdf,#7c66ff)}
-    .ht-pic span:nth-child(2){background:linear-gradient(135deg,#22d3a4,#0fb487)}
-    .ht-pic span:nth-child(3){background:linear-gradient(135deg,#ff7a59,#ff3d8b)}
-    .ht-pic span:nth-child(4){background:linear-gradient(135deg,#7c66ff,#22d3a4)}
-    .ht-text{font-size:13px;color:var(--muted);line-height:1.4}
-    .ht-text strong{color:var(--ink);display:block;font-weight:700}
+    .quick-bullets{list-style:none;display:flex;flex-direction:column;gap:11px;margin-top:8px}
+    @media(max-width:880px){.quick-bullets{align-items:center}}
+    .quick-bullets li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-soft);font-weight:500}
+    .quick-bullets li::before{content:"✓";flex:0 0 22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:11px;display:grid;place-items:center;font-weight:900}
 
-    /* ===== Hero Visual ===== */
-    .hero-visual{position:relative;aspect-ratio:1/1;display:grid;place-items:center}
-    .hv-blob{position:absolute;inset:0;background:var(--grad);border-radius:42% 58% 60% 40% / 50% 45% 55% 50%;animation:morph 14s ease-in-out infinite;opacity:0.95}
+    /* ===== Hero Visual (بطاقة مرئية) ===== */
+    .hero-visual{position:relative;display:grid;place-items:center}
+    @media(max-width:880px){.hero-visual{display:none}}
+    .hv-blob{position:absolute;inset:0;background:var(--grad);border-radius:42% 58% 60% 40% / 50% 45% 55% 50%;animation:morph 14s ease-in-out infinite;opacity:0.95;width:100%;aspect-ratio:1/1}
     @keyframes morph{0%,100%{border-radius:42% 58% 60% 40% / 50% 45% 55% 50%;transform:rotate(0deg)}50%{border-radius:60% 40% 30% 70% / 35% 60% 40% 65%;transform:rotate(8deg)}}
-    .hv-card{position:relative;z-index:2;background:#fff;border-radius:24px;padding:36px 32px;box-shadow:0 30px 80px rgba(13,10,46,0.18);width:88%;max-width:380px}
-    .hv-mini-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);letter-spacing:1px;text-transform:uppercase}
+    .hv-card{position:relative;z-index:2;background:#fff;border-radius:24px;padding:32px 28px;box-shadow:0 30px 80px rgba(13,10,46,0.18);width:88%;max-width:360px}
+    .hv-mini-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--muted-soft);letter-spacing:1px;text-transform:uppercase}
     .hv-mini-row span{color:var(--accent);font-weight:600}
-    .hv-score{font-family:'Tajawal',sans-serif;font-weight:900;font-size:88px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-3px;margin-bottom:6px}
-    .hv-score sup{font-size:32px;font-weight:700}
-    .hv-label{color:var(--ink);font-weight:700;font-size:15px;margin-bottom:18px}
-    .hv-bars{display:flex;flex-direction:column;gap:10px;margin-bottom:6px}
+    .hv-score{font-weight:900;font-size:80px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-3px;margin-bottom:6px}
+    .hv-score sup{font-size:30px;font-weight:700}
+    .hv-label{color:var(--ink);font-weight:700;font-size:14px;margin-bottom:16px}
+    .hv-bars{display:flex;flex-direction:column;gap:10px}
     .hv-bar{display:flex;align-items:center;gap:10px;font-size:12px}
-    .hv-bar-name{flex:0 0 95px;color:var(--ink-soft);font-weight:600}
+    .hv-bar-name{flex:0 0 90px;color:var(--ink-soft);font-weight:600}
     .hv-bar-track{flex:1;height:6px;background:var(--paper-deep);border-radius:6px;overflow:hidden}
     .hv-bar-fill{height:100%;border-radius:6px;background:var(--grad);width:0;animation:grow 2.5s 0.4s ease-out forwards}
+    .hv-bar:nth-child(1) .hv-bar-fill{--w:92%}
     .hv-bar:nth-child(2) .hv-bar-fill{animation-delay:0.6s;background:linear-gradient(90deg,#22d3a4,#0fb487);--w:84%}
     .hv-bar:nth-child(3) .hv-bar-fill{animation-delay:0.8s;background:linear-gradient(90deg,#7c66ff,#4f3fdf);--w:76%}
-    .hv-bar:nth-child(1) .hv-bar-fill{--w:92%}
     @keyframes grow{from{width:0}to{width:var(--w)}}
     .hv-bar-val{flex:0 0 36px;text-align:left;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink);font-weight:700}
 
-    .hv-floater{position:absolute;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 12px 30px rgba(13,10,46,0.14);display:flex;align-items:center;gap:10px;font-size:12.5px;z-index:3}
-    .hv-f1{top:-10px;right:-30px;animation:float1 6s ease-in-out infinite}
-    .hv-f2{bottom:20px;left:-30px;animation:float1 6s 1s ease-in-out infinite reverse}
-    .hv-f3{bottom:-20px;right:30%;animation:float1 6s 0.5s ease-in-out infinite}
-    @media(max-width:520px){.hv-f1,.hv-f2,.hv-f3{display:none}}
-    @keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-    .hvf-ico{width:30px;height:30px;border-radius:50%;background:var(--grad-soft);display:grid;place-items:center;color:var(--primary);font-size:14px}
-    .hv-f2 .hvf-ico{color:var(--accent);background:rgba(34,211,164,0.12)}
-    .hv-f3 .hvf-ico{color:#ff7a59;background:rgba(255,122,89,0.12)}
-
-    /* ===== Trust strip ===== */
-    .trust{padding:42px 0;background:#fff;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+    /* ===== شريط الأرقام ===== */
+    .trust{padding:36px 0;background:#fff;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
     .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;text-align:center}
     @media(max-width:720px){.trust-grid{grid-template-columns:repeat(2,1fr);gap:30px 20px}}
-    .ts-num{font-family:'Tajawal',sans-serif;font-weight:900;font-size:clamp(32px,4.5vw,46px);line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;letter-spacing:-1.5px}
+    .ts-num{font-weight:900;font-size:clamp(28px,4vw,42px);line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;letter-spacing:-1.2px}
     .ts-lbl{font-size:13px;color:var(--muted);font-weight:500;line-height:1.5}
 
-    /* ===== أقسام عامة ===== */
-    section.block{padding:96px 0}
-    @media(max-width:760px){section.block{padding:72px 0}}
+    /* ===== كيف يعمل ===== */
+    .how{padding:80px 0}
+    .how-head{text-align:center;margin-bottom:46px}
     .section-eye{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--primary);font-weight:700;margin-bottom:14px;padding:6px 14px;background:rgba(79,63,223,0.08);border-radius:30px}
-    .section-title{font-size:clamp(28px,3.5vw,42px);margin-bottom:18px;max-width:760px;letter-spacing:-1px}
-    .section-sub{color:var(--muted);font-size:clamp(14.5px,1.5vw,17px);max-width:680px;line-height:1.85;margin-bottom:54px}
-    .center{text-align:center}
-    .center .section-title,.center .section-sub{margin-left:auto;margin-right:auto}
+    .section-title{font-size:clamp(26px,3.5vw,38px);margin-bottom:14px;letter-spacing:-0.8px}
+    .section-sub{color:var(--muted);font-size:15px;max-width:560px;margin:0 auto;line-height:1.85}
 
-    /* ===== Problem ===== */
-    .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
-    @media(max-width:880px){.problem-grid{grid-template-columns:1fr;gap:40px}}
-    .pl-list{display:flex;flex-direction:column;gap:16px;margin-top:30px}
-    .pl-item{display:flex;gap:14px;background:#fff;padding:18px 20px;border-radius:16px;border:1px solid var(--line);transition:all 0.25s}
-    .pl-item:hover{transform:translateX(-6px);border-color:var(--primary);box-shadow:0 12px 30px rgba(79,63,223,0.08)}
-    .pl-num{flex:0 0 36px;height:36px;border-radius:50%;background:rgba(255,68,89,0.1);color:#e64560;display:grid;place-items:center;font-family:'Tajawal',sans-serif;font-weight:800;font-size:14px}
-    .pl-text strong{display:block;font-weight:700;color:var(--ink);margin-bottom:3px}
-    .pl-text span{font-size:13px;color:var(--muted);line-height:1.6}
-    .pl-visual{position:relative;background:var(--grad-soft);border-radius:24px;padding:40px;border:1px solid var(--line)}
-    .plv-stat{font-family:'Tajawal',sans-serif;font-weight:900;font-size:120px;line-height:1;color:var(--primary);letter-spacing:-5px}
-    .plv-stat sup{font-size:60px;color:var(--accent)}
-    .plv-cap{font-size:14px;color:var(--ink-soft);font-weight:600;margin-top:6px;line-height:1.6}
-
-    /* ===== Services ===== */
-    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-    @media(max-width:760px){.services-grid{grid-template-columns:1fr}}
-    .svc-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px 28px;position:relative;overflow:hidden;transition:all 0.3s ease}
-    .svc-card::before{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:opacity 0.4s;z-index:0}
-    .svc-card>*{position:relative;z-index:1}
-    .svc-card:hover{transform:translateY(-6px);border-color:transparent;box-shadow:0 24px 50px rgba(79,63,223,0.18)}
-    .svc-card:hover::before{opacity:1}
-    .svc-card:hover .svc-ico,.svc-card:hover h3,.svc-card:hover p,.svc-card:hover .svc-link,.svc-card:hover .svc-num{color:#fff}
-    .svc-card:hover .svc-ico{background:rgba(255,255,255,0.18)}
-    .svc-card:hover .svc-num{opacity:0.4}
-    .svc-num{position:absolute;top:18px;left:24px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted-soft);font-weight:600;letter-spacing:1px;transition:all 0.3s;z-index:1}
-    .svc-ico{width:54px;height:54px;border-radius:14px;background:var(--grad-soft);display:grid;place-items:center;font-size:24px;color:var(--primary);margin-bottom:20px;transition:all 0.3s}
-    .svc-card h3{font-size:20px;margin-bottom:10px;transition:color 0.3s}
-    .svc-card p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:18px;transition:color 0.3s}
-    .svc-link{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:1px;font-weight:700;color:var(--primary);display:inline-flex;align-items:center;gap:6px;transition:all 0.3s}
-
-    /* ===== Process ===== */
-    .process-wrap{position:relative}
-    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
-    @media(max-width:880px){.process-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:520px){.process-grid{grid-template-columns:1fr}}
-    .pr-step{position:relative;padding:28px 24px 28px 24px;border-radius:18px;background:#fff;border:1px solid var(--line);transition:all 0.3s}
-    .pr-step:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 18px 40px rgba(79,63,223,0.1)}
-    .pr-num{display:inline-flex;width:42px;height:42px;border-radius:12px;background:var(--grad);color:#fff;font-family:'Tajawal',sans-serif;font-weight:900;font-size:18px;align-items:center;justify-content:center;margin-bottom:18px;letter-spacing:0}
-    .pr-step h4{font-size:17px;margin-bottom:8px}
-    .pr-step p{font-size:13.5px;color:var(--muted);line-height:1.7}
-    .pr-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;color:var(--accent-deep);background:rgba(34,211,164,0.1);padding:3px 9px;border-radius:30px;margin-top:14px;font-weight:600}
-
-    /* ===== Why us ===== */
-    .why{background:linear-gradient(180deg,#fff 0%,var(--paper-deep) 100%)}
-    .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-    @media(max-width:760px){.why-grid{grid-template-columns:1fr}}
-    .why-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:28px;display:flex;flex-direction:column;gap:14px;transition:all 0.25s}
-    .why-card:hover{border-color:var(--primary)}
-    .why-ico-wrap{display:flex;align-items:center;gap:14px}
-    .why-ico{width:46px;height:46px;border-radius:12px;background:var(--grad);color:#fff;display:grid;place-items:center;font-size:20px;flex-shrink:0;box-shadow:0 8px 20px rgba(79,63,223,0.25)}
-    .why-card h4{font-size:17px;margin:0}
-    .why-card p{color:var(--muted);font-size:13.5px;line-height:1.75}
-
-    /* ===== Pricing ===== */
-    .pricing{background:linear-gradient(180deg,var(--paper-warm) 0%,#fff 100%)}
-    .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
-    @media(max-width:880px){.pricing-grid{grid-template-columns:1fr;max-width:480px;margin:0 auto}}
-    .price-card{background:#fff;border:2px solid var(--line);border-radius:22px;padding:36px 30px;display:flex;flex-direction:column;position:relative;transition:all 0.3s}
-    .price-card:hover{transform:translateY(-4px);box-shadow:0 24px 50px rgba(13,10,46,0.08)}
-    .price-card.featured{border-color:var(--primary);background:linear-gradient(180deg,#fff 0%,rgba(79,63,223,0.03) 100%);box-shadow:0 30px 60px rgba(79,63,223,0.15);transform:scale(1.03)}
-    @media(max-width:880px){.price-card.featured{transform:none}}
-    .price-badge{position:absolute;top:-14px;right:30px;background:var(--grad);color:#fff;padding:6px 16px;border-radius:30px;font-size:11px;font-weight:700;letter-spacing:0.5px}
-    .price-tier{font-family:'Tajawal',sans-serif;font-weight:800;font-size:18px;color:var(--primary);margin-bottom:8px;display:flex;align-items:center;gap:10px}
-    .price-tier-ico{width:34px;height:34px;border-radius:10px;background:var(--grad-soft);display:grid;place-items:center;font-size:14px}
-    .price-card h3{font-size:24px;margin-bottom:6px;letter-spacing:-0.5px}
-    .price-tagline{color:var(--muted);font-size:13px;margin-bottom:24px;line-height:1.7;min-height:42px}
-    .price-amount{display:flex;align-items:baseline;gap:6px;margin-bottom:8px}
-    .price-amount-num{font-family:'Tajawal',sans-serif;font-weight:900;font-size:42px;color:var(--ink);letter-spacing:-1.5px;line-height:1}
-    .price-amount-cur{color:var(--muted);font-size:14px;font-weight:600}
-    .price-amount-note{font-size:12px;color:var(--muted-soft);margin-bottom:24px}
-    .price-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px;flex:1}
-    .price-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;color:var(--ink-soft);line-height:1.6}
-    .price-list li::before{content:"✓";flex:0 0 18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;display:grid;place-items:center;font-weight:900;margin-top:2px}
-    .price-cta{display:block;text-align:center;padding:13px 20px;border-radius:14px;font-weight:700;font-size:14px;background:var(--paper-deep);color:var(--ink);transition:all 0.25s;border:1px solid var(--line)}
-    .price-cta:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
-    .price-card.featured .price-cta{background:var(--ink);color:#fff;border-color:var(--ink)}
-    .price-card.featured .price-cta:hover{background:var(--primary);border-color:var(--primary);box-shadow:0 12px 28px rgba(79,63,223,0.4)}
-
-    /* ===== Testimonial ===== */
-    .testimonial{background:var(--ink);color:#fff;position:relative;overflow:hidden}
-    .testimonial::before{content:"";position:absolute;top:-100px;right:-100px;width:500px;height:500px;background:var(--grad);border-radius:50%;filter:blur(120px);opacity:0.35;pointer-events:none}
-    .testimonial-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;z-index:1}
-    @media(max-width:880px){.testimonial-grid{grid-template-columns:1fr;gap:40px}}
-    .ts-quote{font-family:'Tajawal',sans-serif;font-weight:700;font-size:clamp(22px,3vw,32px);line-height:1.5;letter-spacing:-0.5px;margin-bottom:30px}
-    .ts-quote::before{content:"❝";font-size:64px;color:var(--accent);line-height:0.5;display:block;margin-bottom:8px}
-    .ts-author{display:flex;align-items:center;gap:14px}
-    .ts-avatar{width:54px;height:54px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-family:'Tajawal',sans-serif;font-weight:800;font-size:20px}
-    .ts-author-info strong{display:block;font-weight:700;font-size:15px}
-    .ts-author-info span{color:rgba(255,255,255,0.6);font-size:13px}
-    .ts-side{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:36px;backdrop-filter:blur(10px)}
-    .ts-side h4{color:#fff;font-size:18px;margin-bottom:18px}
-    .ts-stat-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.08)}
-    .ts-stat-row:last-child{border-bottom:none}
-    .ts-stat-row span{font-size:13.5px;color:rgba(255,255,255,0.65)}
-    .ts-stat-row b{font-family:'Tajawal',sans-serif;font-weight:800;color:#fff;font-size:16px}
-    .ts-stat-row b.up{color:var(--accent)}
+    .how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media(max-width:760px){.how-steps{grid-template-columns:1fr}}
+    .hs-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 24px;transition:all 0.25s;position:relative}
+    .hs-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 20px 44px rgba(79,63,223,0.1)}
+    .hs-num{display:inline-flex;width:42px;height:42px;border-radius:12px;background:var(--grad);color:#fff;font-weight:900;font-size:18px;align-items:center;justify-content:center;margin-bottom:18px}
+    .hs-card h3{font-size:18px;margin-bottom:8px}
+    .hs-card p{font-size:13.5px;color:var(--muted);line-height:1.75}
 
     /* ===== CTA Banner ===== */
-    .cta-banner{padding:80px 0}
-    .cta-box{background:var(--grad);border-radius:30px;padding:60px 50px;color:#fff;text-align:center;position:relative;overflow:hidden}
+    .cta-banner{padding:60px 0 80px}
+    .cta-box{background:var(--grad);border-radius:30px;padding:54px 44px;color:#fff;text-align:center;position:relative;overflow:hidden}
     .cta-box::before,.cta-box::after{content:"";position:absolute;border-radius:50%;filter:blur(60px);opacity:0.5}
-    .cta-box::before{width:300px;height:300px;background:#fff;top:-100px;right:-50px;opacity:0.15}
-    .cta-box::after{width:250px;height:250px;background:var(--accent);bottom:-80px;left:-30px;opacity:0.4}
+    .cta-box::before{width:280px;height:280px;background:#fff;top:-100px;right:-50px;opacity:0.15}
+    .cta-box::after{width:240px;height:240px;background:var(--accent);bottom:-80px;left:-30px;opacity:0.4}
     .cta-box>*{position:relative;z-index:1}
-    .cta-box h2{font-size:clamp(26px,3.5vw,40px);color:#fff;margin-bottom:14px;letter-spacing:-1px}
-    .cta-box p{color:rgba(255,255,255,0.85);font-size:16px;margin-bottom:30px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.8}
+    .cta-box h2{font-size:clamp(24px,3.4vw,36px);color:#fff;margin-bottom:14px;letter-spacing:-1px}
+    .cta-box p{color:rgba(255,255,255,0.88);font-size:15px;margin-bottom:28px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.8}
     .cta-box .btn-primary{background:#fff;color:var(--primary);box-shadow:0 12px 30px rgba(0,0,0,0.18)}
     .cta-box .btn-primary:hover{background:var(--ink);color:#fff;transform:translateY(-3px)}
 
-    /* ===== Contact ===== */
-    .contact-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:50px;align-items:start}
-    @media(max-width:880px){.contact-grid{grid-template-columns:1fr;gap:40px}}
-    .contact-info{padding:30px 0}
-    .contact-info h2{font-size:clamp(26px,3vw,36px);margin-bottom:14px;letter-spacing:-0.8px}
-    .contact-info p{color:var(--muted);font-size:15px;margin-bottom:32px;line-height:1.85}
-    .contact-list{display:flex;flex-direction:column;gap:14px;margin-bottom:30px}
-    .ci-item{display:flex;gap:14px;align-items:center}
-    .ci-ico{width:42px;height:42px;border-radius:12px;background:var(--grad-soft);display:grid;place-items:center;font-size:16px;color:var(--primary);flex-shrink:0}
-    .ci-text small{display:block;color:var(--muted-soft);font-size:11.5px;letter-spacing:0.5px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;margin-bottom:2px}
-    .ci-text strong{display:block;color:var(--ink);font-weight:700;font-size:14.5px}
-
-    .contact-form{background:#fff;border:1px solid var(--line);border-radius:24px;padding:36px 32px;box-shadow:0 24px 60px rgba(13,10,46,0.06)}
-    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .form-row{display:flex;flex-direction:column;gap:6px}
-    .form-row.full{grid-column:1/-1}
-    .form-row label{font-size:12.5px;font-weight:600;color:var(--ink-soft);font-family:'IBM Plex Sans Arabic';margin-right:2px}
-    .form-row input,.form-row select,.form-row textarea{font-family:inherit;padding:13px 16px;border:1.5px solid var(--line);border-radius:12px;font-size:14px;color:var(--ink);background:#fff;outline:none;transition:all 0.2s;direction:rtl;width:100%}
-    .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(79,63,223,0.1)}
-    .form-row textarea{resize:vertical;min-height:90px;line-height:1.6}
-    .form-submit{margin-top:16px;width:100%;background:var(--ink);color:#fff;padding:15px 30px;border-radius:14px;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;border:none;transition:all 0.25s;display:flex;align-items:center;justify-content:center;gap:8px}
-    .form-submit:hover{background:var(--primary);transform:translateY(-2px);box-shadow:0 14px 32px rgba(79,63,223,0.35)}
-    .form-note{font-size:12px;color:var(--muted-soft);margin-top:12px;text-align:center;line-height:1.6}
-    .form-success{display:none;padding:20px;background:rgba(34,211,164,0.1);border:1px solid var(--accent);border-radius:12px;color:var(--accent-deep);font-weight:600;text-align:center;margin-top:14px;font-size:14px}
-    .form-success.show{display:block;animation:fadeUp 0.4s}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-    .hp{position:absolute;left:-9999px}
-
     /* ===== Footer ===== */
-    footer{background:var(--ink);color:rgba(255,255,255,0.7);padding:60px 0 30px;font-size:13.5px}
-    .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
-    @media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;gap:30px}}
+    footer{background:var(--ink);color:rgba(255,255,255,0.7);padding:36px 0 24px;font-size:13.5px}
+    .footer-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
+    .footer-brand{display:flex;align-items:center;gap:10px}
     .footer-brand .logo-ar{color:#fff}
-    .footer-about{color:rgba(255,255,255,0.5);margin-top:16px;line-height:1.85;max-width:320px;font-size:13px}
-    .footer-col h5{color:#fff;font-family:'Tajawal',sans-serif;font-weight:700;font-size:14px;margin-bottom:14px}
-    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:9px}
-    .footer-col a{color:rgba(255,255,255,0.6);transition:color 0.2s;font-size:13px}
-    .footer-col a:hover{color:var(--accent)}
-    .footer-bottom{padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.4);flex-wrap:wrap;gap:14px}
-    .social{display:flex;gap:8px}
-    .social a{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.06);display:grid;place-items:center;color:rgba(255,255,255,0.7);transition:all 0.2s;font-size:13px}
-    .social a:hover{background:var(--primary);color:#fff;transform:translateY(-2px)}
-
-    /* ===== Reveal animations ===== */
-    .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.8s ease,transform 0.8s ease}
-    .reveal.in{opacity:1;transform:none}
+    .footer-brand .logo-en{color:rgba(255,255,255,0.5)}
+    .footer-info{display:flex;align-items:center;gap:18px;flex-wrap:wrap;font-size:13px;color:rgba(255,255,255,0.6)}
+    .footer-info a{color:rgba(255,255,255,0.7);transition:color 0.2s}
+    .footer-info a:hover{color:var(--accent)}
+    .footer-bottom{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,0.08);text-align:center;font-size:12px;color:rgba(255,255,255,0.4)}
   </style>
 </head>
 <body>
@@ -329,14 +177,7 @@
           <span class="logo-en">Buad Altamkin</span>
         </span>
       </a>
-      <button class="menu-btn" onclick="document.getElementById('navlinks').classList.toggle('open')" aria-label="القائمة">☰</button>
-      <div class="nav-links" id="navlinks">
-        <a href="#services">خدماتنا</a>
-        <a href="#process">المنهجية</a>
-        <a href="#why">لماذا نحن</a>
-        <a href="#pricing">الباقات</a>
-        <a href="#contact" class="nav-cta">احجز استشارة</a>
-      </div>
+      <a href="assessment/" class="nav-cta">ابدأ التقييم →</a>
     </nav>
   </div>
 </header>
@@ -347,22 +188,17 @@
   <div class="container">
     <div class="hero-grid">
       <div>
-        <span class="hero-eyebrow">حوكمة الجمعيات الخيرية · معتمدة من المركز الوطني</span>
-        <h1>ارفع جمعيتك إلى مرحلة <span class="accent gradient-text">الامتثال الكامل</span></h1>
-        <p class="lead">منهجية موثَّقة ترفع درجة الحوكمة لجمعيتك إلى ٨٥٪ فأكثر — ٦٠ مؤشر تقييم، ٤٧ لائحة جاهزة، ومنصة رقمية تتابع التقدّم خطوة بخطوة وفق معايير المركز الوطني لتنمية القطاع غير الربحي.</p>
+        <span class="hero-eyebrow">حوكمة الجمعيات الخيرية · ٢٠٢٦</span>
+        <h1>اعرف درجة حوكمة جمعيتك في <span class="gradient-text">دقائق</span></h1>
+        <p class="lead">تقييم ذاتي مجاني على ٢٥٦ سؤال موزّعة على ٦٠ مؤشر معتمد من المركز الوطني لتنمية القطاع غير الربحي. ستحصل على تقرير مفصّل بدرجتك على المعايير الثلاثة وتوصيات خطوة بخطوة.</p>
         <div class="cta-row">
           <a href="assessment/" class="btn btn-primary">ابدأ التقييم الذاتي المجاني</a>
-          <a href="#services" class="btn btn-ghost">تعرّف على خدماتنا</a>
         </div>
-        <div class="hero-trust">
-          <div class="ht-pic">
-            <span>أ</span><span>ع</span><span>س</span><span>+</span>
-          </div>
-          <div class="ht-text">
-            <strong>+١٢٠ جهة شريكة</strong>
-            تثق بنا في رحلتها نحو الحوكمة المؤسسية
-          </div>
-        </div>
+        <ul class="quick-bullets">
+          <li>مجاني بالكامل · بدون رسوم أو اشتراك</li>
+          <li>تقرير مفصّل على بريدك الإلكتروني فوراً</li>
+          <li>توصيات عمل واضحة لتحسين كل معيار</li>
+        </ul>
       </div>
       <div class="hero-visual">
         <div class="hv-blob"></div>
@@ -379,9 +215,6 @@
             <div class="hv-bar"><span class="hv-bar-name">السلامة المالية</span><span class="hv-bar-track"><span class="hv-bar-fill"></span></span><span class="hv-bar-val">٧٦٪</span></div>
           </div>
         </div>
-        <div class="hv-floater hv-f1"><div class="hvf-ico">✓</div><div><strong>تم اعتماد ٤٧ لائحة</strong></div></div>
-        <div class="hv-floater hv-f2"><div class="hvf-ico">★</div><div><strong>صفة النفع العام</strong></div></div>
-        <div class="hv-floater hv-f3"><div class="hvf-ico">⤴</div><div><strong>+٣٤ نقطة في ١٠٠ يوم</strong></div></div>
       </div>
     </div>
   </div>
@@ -391,257 +224,37 @@
 <section class="trust">
   <div class="container">
     <div class="trust-grid">
-      <div><div class="ts-num">+١٢٠</div><div class="ts-lbl">جمعية ومؤسسة شريكة</div></div>
+      <div><div class="ts-num">٢٥٦</div><div class="ts-lbl">سؤال موثّق رسمياً</div></div>
       <div><div class="ts-num">٦٠</div><div class="ts-lbl">مؤشر حوكمة معتمد</div></div>
-      <div><div class="ts-num">٤٧</div><div class="ts-lbl">لائحة وسياسة جاهزة</div></div>
-      <div><div class="ts-num">٨٥٪</div><div class="ts-lbl">متوسط رفع درجة الحوكمة</div></div>
+      <div><div class="ts-num">٣</div><div class="ts-lbl">معايير رئيسية للقياس</div></div>
+      <div><div class="ts-num">٥</div><div class="ts-lbl">دقائق فقط لإكمال التقييم</div></div>
     </div>
   </div>
 </section>
 
-<!-- ============= PROBLEM ============= -->
-<section class="block">
+<!-- ============= HOW IT WORKS ============= -->
+<section class="how">
   <div class="container">
-    <div class="problem-grid">
-      <div class="reveal">
-        <span class="section-eye">المشكلة</span>
-        <h2 class="section-title">٩ من ١٠ جمعيات تواجه فجوات حوكمة تُضعف امتثالها</h2>
-        <p class="section-sub">منذ تحديث معايير الحوكمة ٢٠٢١ V2 وإنفاذ نظام حماية البيانات الشخصية، أصبح غياب اللوائح أو تعارضها يكلّف الجمعية فرصها الحقيقية.</p>
-        <div class="pl-list">
-          <div class="pl-item"><div class="pl-num">١</div><div class="pl-text"><strong>لوائح ناقصة أو متعارضة</strong><span>اللائحة الأساسية، المالية، الإدارية، تعارض المصالح، الاستثمار...</span></div></div>
-          <div class="pl-item"><div class="pl-num">٢</div><div class="pl-text"><strong>تأخّر في الإفصاح والتقارير</strong><span>تقرير سنوي، نموذج إفصاح، إفصاح المستفيد الحقيقي، تقارير مالية ربعية...</span></div></div>
-          <div class="pl-item"><div class="pl-num">٣</div><div class="pl-text"><strong>ضعف في توثيق قرارات المجلس</strong><span>محاضر اجتماعات، صلاحيات، لجان دائمة، برنامج تعريف الأعضاء الجدد...</span></div></div>
-          <div class="pl-item"><div class="pl-num">٤</div><div class="pl-text"><strong>أثر مباشر على التراخيص</strong><span>إلغاء تراخيص جمع التبرعات (≥٥٠٪)، حجب صفة النفع العام (≥٨٥٪)...</span></div></div>
-        </div>
-      </div>
-      <div class="pl-visual reveal">
-        <div class="plv-stat">٦٤<sup>٪</sup></div>
-        <div class="plv-cap">من الجمعيات السعودية لم تستوفِ بعد كامل متطلبات قواعد الحوكمة الإصدار الثاني وفق آخر تقرير للمركز الوطني (٢٠٢٥).</div>
-        <div style="margin-top:24px;padding-top:24px;border-top:1px dashed var(--line)">
-          <div style="display:flex;gap:16px;flex-wrap:wrap">
-            <div style="flex:1;min-width:120px"><div style="font-family:'Tajawal',sans-serif;font-weight:800;font-size:24px;color:var(--ink)">١٤</div><div style="font-size:12px;color:var(--muted)">وثيقة إلزامية</div></div>
-            <div style="flex:1;min-width:120px"><div style="font-family:'Tajawal',sans-serif;font-weight:800;font-size:24px;color:var(--ink)">٢٤</div><div style="font-size:12px;color:var(--muted)">مؤشر امتثال أساسي</div></div>
-            <div style="flex:1;min-width:120px"><div style="font-family:'Tajawal',sans-serif;font-weight:800;font-size:24px;color:var(--ink)">٧</div><div style="font-size:12px;color:var(--muted)">نموذج دوري</div></div>
-          </div>
-        </div>
-      </div>
+    <div class="how-head">
+      <span class="section-eye">كيف يعمل</span>
+      <h2 class="section-title">ثلاث خطوات بسيطة</h2>
+      <p class="section-sub">من التسجيل إلى التقرير في أقل من ١٠ دقائق — بدون أي التزام مالي.</p>
     </div>
-  </div>
-</section>
-
-<!-- ============= SERVICES ============= -->
-<section class="block" id="services" style="background:#fff">
-  <div class="container">
-    <div class="center reveal">
-      <span class="section-eye">خدماتنا</span>
-      <h2 class="section-title">حلول حوكمة شاملة وعمليّة — لا توصيات على ورق</h2>
-      <p class="section-sub">نسلّمك لوائح ونماذج معتمدة وجاهزة للتطبيق، ونقود التنفيذ بمعيتك حتى ينعكس الأثر على درجة التقييم.</p>
-    </div>
-    <div class="services-grid">
-      <div class="svc-card reveal">
-        <span class="svc-num">٠١</span>
-        <div class="svc-ico">⚖</div>
-        <h3>تقييم الحوكمة الذاتي</h3>
-        <p>قياس فعلي للجمعية على ٦٠ مؤشر معتمد ضمن المعايير الثلاثة (الالتزام، الشفافية، السلامة المالية)، مع تقرير مرئي يحدّد الفجوات بدقة.</p>
-        <span class="svc-link">١٥٤ ممارسة · ٢٥٦ سؤال →</span>
+    <div class="how-steps">
+      <div class="hs-card">
+        <div class="hs-num">١</div>
+        <h3>سجّل بياناتك</h3>
+        <p>اسم الجهة، اسم المسؤول، الجوال، والبريد الإلكتروني. دقيقة واحدة لتأكيد هويتك.</p>
       </div>
-      <div class="svc-card reveal">
-        <span class="svc-num">٠٢</span>
-        <div class="svc-ico">📜</div>
-        <h3>إعداد اللوائح والسياسات</h3>
-        <p>٤٧ لائحة وسياسة ونموذج جاهز — اللائحة الأساسية، المالية، الإدارية، تعارض المصالح، AML، PDPL، المستفيد الحقيقي، وأكثر.</p>
-        <span class="svc-link">قوالب مخصّصة لجمعيتك →</span>
+      <div class="hs-card">
+        <div class="hs-num">٢</div>
+        <h3>أجِب على الأسئلة</h3>
+        <p>٢٥٦ سؤال موزّعة على ٦٠ مؤشر — لكل سؤال ٣ خيارات: نعم / لا / غير منطبق.</p>
       </div>
-      <div class="svc-card reveal">
-        <span class="svc-num">٠٣</span>
-        <div class="svc-ico">🏛</div>
-        <h3>تأسيس مجلس الإدارة</h3>
-        <p>ميثاق المجلس، تشكيل اللجان الدائمة، برنامج تعريف الأعضاء الجدد، نماذج محاضر الاجتماعات والقرارات، ومصفوفة الصلاحيات.</p>
-        <span class="svc-link">جلسات تدريبية للأعضاء →</span>
-      </div>
-      <div class="svc-card reveal">
-        <span class="svc-num">٠٤</span>
-        <div class="svc-ico">🛡</div>
-        <h3>الامتثال والإفصاح</h3>
-        <p>تطبيق نظام حماية البيانات الشخصية (PDPL)، مكافحة غسل الأموال (AML/CFT)، إدارة المستفيد الحقيقي، والإفصاح السنوي عبر منصة المركز الوطني.</p>
-        <span class="svc-link">مسؤول حماية البيانات →</span>
-      </div>
-      <div class="svc-card reveal">
-        <span class="svc-num">٠٥</span>
-        <div class="svc-ico">📊</div>
-        <h3>الخطة التشغيلية والمالية</h3>
-        <p>خطة تأسيس ١٠٠ يوم، خطة تشغيلية سنوية، موازنة تقديرية، KPIs ومؤشرات قياس الأثر، ودورة تقارير مالية ربعية موثّقة.</p>
-        <span class="svc-link">مرتبطة بأهداف رؤية ٢٠٣٠ →</span>
-      </div>
-      <div class="svc-card reveal">
-        <span class="svc-num">٠٦</span>
-        <div class="svc-ico">⚡</div>
-        <h3>منصة تمكين الرقمية</h3>
-        <p>منصة سحابية لإدارة كل وثائق الحوكمة، تتبّع المهام، تقييم ذاتي مستمر، تنبيهات للوائح المنتهية، وتصدير PDF بهوية جمعيتك.</p>
-        <span class="svc-link">جرّب المنصة مجاناً →</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============= PROCESS ============= -->
-<section class="block" id="process">
-  <div class="container">
-    <div class="center reveal">
-      <span class="section-eye">المنهجية</span>
-      <h2 class="section-title">رحلة من ٤ مراحل تأخذك من التشخيص إلى الاعتماد</h2>
-      <p class="section-sub">معدّل إنجاز المرحلة الكاملة ١٠٠ يوم عمل، وفق المنهجية الرسمية للمركز الوطني لتنمية القطاع غير الربحي.</p>
-    </div>
-    <div class="process-grid">
-      <div class="pr-step reveal">
-        <div class="pr-num">١</div>
-        <h4>التشخيص الأولي</h4>
-        <p>قياس درجة الحوكمة الحالية على ٦٠ مؤشر، تحديد الفجوات والأولويات، وإصدار تقرير مرئي يبيّن الوضع الراهن مقابل المستهدف.</p>
-        <span class="pr-tag">١٤ يوم</span>
-      </div>
-      <div class="pr-step reveal">
-        <div class="pr-num">٢</div>
-        <h4>خطة الحوكمة</h4>
-        <p>تصميم خارطة طريق مفصّلة بالأهداف والمخرجات والمسؤوليات والجدول الزمني، مع تحديد المتغيّرات العالمية للجمعية.</p>
-        <span class="pr-tag">١٤ يوم</span>
-      </div>
-      <div class="pr-step reveal">
-        <div class="pr-num">٣</div>
-        <h4>التنفيذ التشغيلي</h4>
-        <p>إعداد ٤٧ وثيقة، اعتمادها من المجلس، تطبيقها في المنصة، وتدريب الفريق التنفيذي على الالتزام بها يومياً.</p>
-        <span class="pr-tag">٥٦ يوم</span>
-      </div>
-      <div class="pr-step reveal">
-        <div class="pr-num">٤</div>
-        <h4>التقييم النهائي</h4>
-        <p>إعادة قياس درجة الحوكمة، إعداد ملف رفع للمركز الوطني، ومتابعة بعد التسليم لمدة ٣ أشهر مع تحديثات لائحية فورية.</p>
-        <span class="pr-tag">١٦ يوم + متابعة</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============= WHY US ============= -->
-<section class="block why" id="why">
-  <div class="container">
-    <div class="center reveal">
-      <span class="section-eye">لماذا بُعد التمكين</span>
-      <h2 class="section-title">منهجية موثّقة وفريق متخصّص في القطاع غير الربحي</h2>
-      <p class="section-sub">لا نعمل بالمحاولة والخطأ — كل مخرجاتنا مرتبطة بمؤشر تقييم محدّد وقابلة للقياس.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card reveal">
-        <div class="why-ico-wrap"><div class="why-ico">🎯</div><h4>تخصص في الجمعيات</h4></div>
-        <p>سنوات من العمل المباشر مع الجمعيات السعودية، نعرف لائحة المركز الوطني وقواعد الحوكمة بتفاصيلها.</p>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-ico-wrap"><div class="why-ico">⚡</div><h4>منصة رقمية متكاملة</h4></div>
-        <p>منصة "تمكين" السحابية تدير وثائقك ومتغيراتك العالمية، وتولّد ملفاتك تلقائياً بهوية جمعيتك.</p>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-ico-wrap"><div class="why-ico">🛡</div><h4>ضمان رفع الدرجة</h4></div>
-        <p>نضمن رفع درجة حوكمة جمعيتك بحدّ أدنى ٢٥ نقطة خلال ١٠٠ يوم، أو نواصل العمل مجاناً حتى تحقيق الهدف.</p>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-ico-wrap"><div class="why-ico">🔔</div><h4>تنبيهات لائحية فورية</h4></div>
-        <p>نظام تنبيهات يبلغك بأي تحديث تشريعي (PDPL، نظام العمل، AML) قبل أن يؤثر على امتثال جمعيتك.</p>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-ico-wrap"><div class="why-ico">👥</div><h4>تدريب وتمكين</h4></div>
-        <p>كل مخرج يأتي مع جلسة تدريبية لأعضاء المجلس والإدارة التنفيذية، فلا يبقى الالتزام مرتبطاً بنا.</p>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-ico-wrap"><div class="why-ico">🤝</div><h4>متابعة بعد التسليم</h4></div>
-        <p>٣ أشهر متابعة مجانية بعد الانتهاء، تشمل المراجعات الدورية والتحديثات اللائحية ودعم الإجراءات.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============= TESTIMONIAL ============= -->
-<section class="block testimonial">
-  <div class="container">
-    <div class="testimonial-grid">
-      <div class="reveal">
-        <div class="ts-quote">رفعنا درجة الحوكمة من ٤٨٪ إلى ٨٧٪ في ١٠٠ يوم، واستعدنا ترخيص جمع التبرعات ووصلنا إلى صفة النفع العام. الفريق احترف ومنصة تمكين غيّرت طريقة عملنا اليومي.</div>
-        <div class="ts-author">
-          <div class="ts-avatar">د.أ</div>
-          <div class="ts-author-info">
-            <strong>د. عبدالله الأحمد</strong>
-            <span>رئيس مجلس إدارة جمعية أنموذج الخيرية · أبها</span>
-          </div>
-        </div>
-      </div>
-      <div class="ts-side reveal">
-        <h4>قياسات قبل / بعد</h4>
-        <div class="ts-stat-row"><span>درجة الحوكمة الإجمالية</span><b class="up">٤٨٪ → ٨٧٪</b></div>
-        <div class="ts-stat-row"><span>اللوائح المعتمدة</span><b class="up">٥ → ٤٢</b></div>
-        <div class="ts-stat-row"><span>متوسط مدة إصدار قرار</span><b class="up">٣ أسابيع → ٤ أيام</b></div>
-        <div class="ts-stat-row"><span>الموارد المالية السنوية</span><b class="up">+٤٢٪</b></div>
-        <div class="ts-stat-row"><span>المدة الكاملة للمشروع</span><b>١٠٠ يوم عمل</b></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============= PRICING ============= -->
-<section class="block pricing" id="pricing">
-  <div class="container">
-    <div class="center reveal">
-      <span class="section-eye">الباقات</span>
-      <h2 class="section-title">باقة لكل مرحلة من رحلة جمعيتك</h2>
-      <p class="section-sub">أسعار شفافة، ودفعات قابلة للتجزئة على مراحل المشروع. كل الباقات تشمل وصولاً كاملاً لمنصة تمكين.</p>
-    </div>
-    <div class="pricing-grid">
-      <div class="price-card reveal">
-        <div class="price-tier"><div class="price-tier-ico">🌱</div>التأسيسية</div>
-        <h3>للجمعيات حديثة الترخيص</h3>
-        <p class="price-tagline">للجمعيات التي حصلت على الترخيص حديثاً وتحتاج بناء منظومة الحوكمة من الصفر.</p>
-        <div class="price-amount"><span class="price-amount-num">١٨</span><span class="price-amount-cur">ألف ريال</span></div>
-        <div class="price-amount-note">دفعة واحدة · أو ٣ دفعات شهرية</div>
-        <ul class="price-list">
-          <li>اللوائح الأساسية (٨ وثائق إلزامية)</li>
-          <li>تأسيس مجلس الإدارة الأولي</li>
-          <li>تقييم ذاتي على معيار الالتزام فقط</li>
-          <li>منصة تمكين — حساب جمعية واحد</li>
-          <li>متابعة شهرية لمدة ٣ أشهر</li>
-        </ul>
-        <a href="#contact" class="price-cta">احجز هذه الباقة</a>
-      </div>
-      <div class="price-card featured reveal">
-        <div class="price-badge">الأكثر طلباً</div>
-        <div class="price-tier"><div class="price-tier-ico">🚀</div>المتقدّمة</div>
-        <h3>للجمعيات القائمة</h3>
-        <p class="price-tagline">للجمعيات العاملة التي تحتاج رفع درجة حوكمتها للوصول إلى ٨٥٪ وأعلى وفتح بوابات النفع العام.</p>
-        <div class="price-amount"><span class="price-amount-num">٤٢</span><span class="price-amount-cur">ألف ريال</span></div>
-        <div class="price-amount-note">٤ دفعات على مراحل المشروع</div>
-        <ul class="price-list">
-          <li>كل ما في الباقة التأسيسية</li>
-          <li>٤٧ لائحة وسياسة ونموذج كاملة</li>
-          <li>تقييم على المعايير الثلاثة (٦٠ مؤشر)</li>
-          <li>سياسات الامتثال (PDPL · AML · المستفيد الحقيقي)</li>
-          <li>جلسات تدريب للمجلس والتنفيذيين</li>
-          <li>ضمان رفع ٢٥ نقطة أو نُكمل مجاناً</li>
-          <li>متابعة ٦ أشهر بعد التسليم</li>
-        </ul>
-        <a href="#contact" class="price-cta">احجز هذه الباقة</a>
-      </div>
-      <div class="price-card reveal">
-        <div class="price-tier"><div class="price-tier-ico">💎</div>الاستراتيجية</div>
-        <h3>للمؤسسات الأهلية الكبرى</h3>
-        <p class="price-tagline">للمؤسسات الأهلية ذات الفروع المتعددة، أو الجمعيات التي تستهدف صفة النفع العام والاستثمار.</p>
-        <div class="price-amount"><span class="price-amount-num">على الطلب</span></div>
-        <div class="price-amount-note">عرض مخصّص بعد التشخيص</div>
-        <ul class="price-list">
-          <li>كل ما في الباقة المتقدّمة</li>
-          <li>هيكلة الفروع والمكاتب الإقليمية</li>
-          <li>سياسة الاستثمار وإدارة الأوقاف</li>
-          <li>إعداد ملف صفة النفع العام</li>
-          <li>دعم استراتيجي لمدة سنة كاملة</li>
-          <li>مدير حساب مخصّص</li>
-          <li>تقارير ربعية للمجلس والمركز الوطني</li>
-        </ul>
-        <a href="#contact" class="price-cta">طلب عرض سعر</a>
+      <div class="hs-card">
+        <div class="hs-num">٣</div>
+        <h3>احصل على التقرير</h3>
+        <p>درجتك الإجمالية + درجات المعايير الثلاثة + توصيات عمل مخصّصة لجمعيتك.</p>
       </div>
     </div>
   </div>
@@ -650,96 +263,10 @@
 <!-- ============= CTA BANNER ============= -->
 <section class="cta-banner">
   <div class="container">
-    <div class="cta-box reveal">
-      <h2>جاهز ترفع درجة حوكمة جمعيتك؟</h2>
-      <p>ابدأ بتقييم مجاني سريع (٥ دقائق فقط) ستحصل بعده على تقرير مفصّل عن درجة حوكمة جمعيتك على المعايير الثلاثة، بالإضافة إلى توصيات مخصّصة.</p>
-      <a href="assessment/" class="btn btn-primary">ابدأ التقييم الذاتي الآن</a>
-    </div>
-  </div>
-</section>
-
-<!-- ============= CONTACT ============= -->
-<section class="block" id="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="contact-info reveal">
-        <span class="section-eye">تواصل معنا</span>
-        <h2>ابدأ رحلة جمعيتك معنا اليوم</h2>
-        <p>أكمل النموذج وسنتواصل معك خلال ٢٤ ساعة عمل. أو راسلنا مباشرة عبر القنوات أدناه.</p>
-        <div class="contact-list">
-          <div class="ci-item">
-            <div class="ci-ico">✉</div>
-            <div class="ci-text">
-              <small>البريد</small>
-              <strong>info@buadaltamkin.sa</strong>
-            </div>
-          </div>
-          <div class="ci-item">
-            <div class="ci-ico">☏</div>
-            <div class="ci-text">
-              <small>الهاتف</small>
-              <strong>+966 55 295 2477</strong>
-            </div>
-          </div>
-          <div class="ci-item">
-            <div class="ci-ico">⌖</div>
-            <div class="ci-text">
-              <small>المقر</small>
-              <strong>أبها · المملكة العربية السعودية</strong>
-            </div>
-          </div>
-          <div class="ci-item">
-            <div class="ci-ico">⏱</div>
-            <div class="ci-text">
-              <small>أوقات العمل</small>
-              <strong>الأحد – الخميس · ٩ صباحاً – ٥ عصراً</strong>
-            </div>
-          </div>
-        </div>
-        <div style="display:flex;gap:8px;margin-top:8px">
-          <a href="#" class="btn btn-ghost" style="padding:11px 18px;font-size:13px">واتساب مباشر</a>
-        </div>
-      </div>
-      <form class="contact-form reveal" name="buad-contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="return handleSubmit(event)">
-        <input type="hidden" name="form-name" value="buad-contact">
-        <p class="hp"><label>لا تملأ هذا الحقل: <input name="bot-field"></label></p>
-        <div class="form-grid">
-          <div class="form-row">
-            <label>اسم الجهة</label>
-            <input type="text" name="org_name" required placeholder="جمعية أنموذج الخيرية">
-          </div>
-          <div class="form-row">
-            <label>اسم المسؤول</label>
-            <input type="text" name="contact_name" required placeholder="عبدالله الأحمد">
-          </div>
-          <div class="form-row">
-            <label>الجوال</label>
-            <input type="tel" name="phone" required placeholder="05XXXXXXXX" pattern="[0-9+\s\-]{8,}">
-          </div>
-          <div class="form-row">
-            <label>البريد الإلكتروني</label>
-            <input type="email" name="email" required placeholder="info@yourorg.sa">
-          </div>
-          <div class="form-row full">
-            <label>الباقة المطلوبة</label>
-            <select name="package" required>
-              <option value="">اختر الباقة المناسبة</option>
-              <option value="diagnostic">جلسة تشخيص مجانية</option>
-              <option value="starter">الباقة التأسيسية</option>
-              <option value="advanced">الباقة المتقدّمة</option>
-              <option value="strategic">الباقة الاستراتيجية</option>
-              <option value="custom">استشارة مخصّصة</option>
-            </select>
-          </div>
-          <div class="form-row full">
-            <label>وصف الاحتياج (اختياري)</label>
-            <textarea name="message" placeholder="أخبرنا عن مرحلة جمعيتك الحالية والتحديات التي تواجهها..."></textarea>
-          </div>
-        </div>
-        <button type="submit" class="form-submit">إرسال الطلب ←</button>
-        <p class="form-note">بإرسالك النموذج توافق على سياسة الخصوصية. لن نشارك بياناتك مع أي طرف ثالث.</p>
-        <div class="form-success" id="form-success">✓ تم استلام طلبك بنجاح. سنتواصل معك خلال ٢٤ ساعة عمل.</div>
-      </form>
+    <div class="cta-box">
+      <h2>ابدأ تقييم جمعيتك الآن</h2>
+      <p>تقييم ذاتي مجاني تحصل بعده على تقرير مفصّل ودرجة حوكمتك على معايير المركز الوطني الثلاثة. لن تستغرق أكثر من ١٠ دقائق.</p>
+      <a href="assessment/" class="btn btn-primary">ابدأ التقييم الذاتي المجاني</a>
     </div>
   </div>
 </section>
@@ -747,97 +274,33 @@
 <!-- ============= FOOTER ============= -->
 <footer>
   <div class="container">
-    <div class="footer-grid">
+    <div class="footer-row">
       <div class="footer-brand">
-        <div class="logo">
-          <svg class="logo-mark" viewBox="0 0 80 80" fill="none">
-            <defs>
-              <linearGradient id="bgrad2" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#7c66ff"/>
-                <stop offset="100%" stop-color="#22d3a4"/>
-              </linearGradient>
-            </defs>
-            <path d="M55 8 L72 11 L52 28 L36 25 Z" fill="url(#bgrad2)"/>
-            <path d="M28 25 L60 28 L44 44 L14 41 Z" fill="url(#bgrad2)"/>
-            <path d="M5 41 L48 44 L34 60 L-7 57 Z" fill="url(#bgrad2)"/>
-            <circle cx="74" cy="6" r="3" fill="url(#bgrad2)"/>
-          </svg>
-          <span class="logo-text"><span class="logo-ar">بُعد التمكين</span><span class="logo-en" style="color:rgba(255,255,255,0.5)">Buad Altamkin</span></span>
-        </div>
-        <p class="footer-about">نقود الجمعيات الخيرية والمؤسسات الأهلية السعودية في رحلتها نحو حوكمة كاملة ودرجة امتثال مرتفعة وفق معايير المركز الوطني لتنمية القطاع غير الربحي.</p>
+        <svg class="logo-mark" viewBox="0 0 80 80" fill="none">
+          <defs>
+            <linearGradient id="bgrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#7c66ff"/>
+              <stop offset="100%" stop-color="#22d3a4"/>
+            </linearGradient>
+          </defs>
+          <path d="M55 8 L72 11 L52 28 L36 25 Z" fill="url(#bgrad2)"/>
+          <path d="M28 25 L60 28 L44 44 L14 41 Z" fill="url(#bgrad2)"/>
+          <path d="M5 41 L48 44 L34 60 L-7 57 Z" fill="url(#bgrad2)"/>
+          <circle cx="74" cy="6" r="3" fill="url(#bgrad2)"/>
+        </svg>
+        <span class="logo-text"><span class="logo-ar">بُعد التمكين</span><span class="logo-en">Buad Altamkin</span></span>
       </div>
-      <div class="footer-col">
-        <h5>الخدمات</h5>
-        <ul>
-          <li><a href="#services">تقييم الحوكمة</a></li>
-          <li><a href="#services">إعداد اللوائح</a></li>
-          <li><a href="#services">تأسيس المجلس</a></li>
-          <li><a href="#services">الامتثال والإفصاح</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>الشركة</h5>
-        <ul>
-          <li><a href="#why">لماذا نحن</a></li>
-          <li><a href="#process">المنهجية</a></li>
-          <li><a href="#pricing">الأسعار</a></li>
-          <li><a href="#contact">تواصل معنا</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>المراجع</h5>
-        <ul>
-          <li><a href="https://ncnp.gov.sa" target="_blank" rel="noopener">المركز الوطني</a></li>
-          <li><a href="https://www.sdaia.gov.sa" target="_blank" rel="noopener">سدايا · PDPL</a></li>
-          <li><a href="../">منصة تمكين</a></li>
-        </ul>
+      <div class="footer-info">
+        <a href="mailto:info@buadaltamkin.sa">info@buadaltamkin.sa</a>
+        <span style="color:rgba(255,255,255,0.25)">·</span>
+        <a href="tel:+966552952477" dir="ltr">+966 55 295 2477</a>
+        <span style="color:rgba(255,255,255,0.25)">·</span>
+        <span>أبها · المملكة العربية السعودية</span>
       </div>
     </div>
-    <div class="footer-bottom">
-      <span>© ٢٠٢٦ شركة بُعد التمكين · جميع الحقوق محفوظة</span>
-      <div class="social">
-        <a href="#" aria-label="X / Twitter">𝕏</a>
-        <a href="#" aria-label="LinkedIn">in</a>
-        <a href="#" aria-label="Instagram">◉</a>
-        <a href="mailto:info@buadaltamkin.sa" aria-label="Email">@</a>
-      </div>
-    </div>
+    <div class="footer-bottom">© ٢٠٢٦ شركة بُعد التمكين · جميع الحقوق محفوظة</div>
   </div>
 </footer>
-
-<script>
-  // كشف العناصر عند الـ scroll
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-  // إغلاق قائمة الجوال عند الضغط
-  document.querySelectorAll('#navlinks a').forEach(a => {
-    a.addEventListener('click', () => document.getElementById('navlinks').classList.remove('open'));
-  });
-
-  // معالجة النموذج (يستخدم Netlify Forms)
-  function handleSubmit(e){
-    e.preventDefault();
-    const form = e.target;
-    const data = new FormData(form);
-    fetch(location.pathname, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: new URLSearchParams(data).toString()
-    }).then(() => {
-      form.querySelector('#form-success').classList.add('show');
-      form.reset();
-      setTimeout(() => form.querySelector('#form-success').classList.remove('show'), 8000);
-    }).catch(err => {
-      alert('حدث خطأ، حاول مرة أخرى');
-    });
-    return false;
-  }
-</script>
 
 </body>
 </html>
