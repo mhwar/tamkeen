@@ -1889,47 +1889,67 @@ ${contentHTML}
     return String(n).split('').map(c=>m[+c]||c).join('');
   }
 
-  // إعادة حساب درجات المؤشرات والدرجة الإجمالية
+  // إعادة حساب الدرجات لكل معيار وكل مؤشر
   function recalcAllScores(){
-    let totalAll = 0, totalYesAll = 0;
-    document.querySelectorAll('#panel-assess .ind-card').forEach(card=>{
-      let total = 0, yes = 0;
-      card.querySelectorAll('.qrow').forEach(qr=>{
-        if(qr.classList.contains('answered-yes')){ total++; yes++; }
-        else if(qr.classList.contains('answered-no')){ total++; }
-      });
-      const pct = total>0 ? Math.round((yes/total)*100) : 0;
-      const gauge = card.querySelector('.ind-gauge');
-      if(gauge){
-        const circle = gauge.querySelector('.gauge-fill');
-        const text = gauge.querySelector('.gauge-text');
-        if(circle){
-          const circumference = 2 * Math.PI * 28;
-          const offset = circumference * (1 - pct/100);
-          circle.setAttribute('stroke-dashoffset', offset.toFixed(2));
-          circle.classList.remove('green','amber','red');
-          circle.classList.add(pct >= 75 ? 'green' : pct >= 50 ? 'amber' : 'red');
+    const stdScores = { compliance: {t:0, y:0}, transparency: {t:0, y:0}, financial: {t:0, y:0} };
+    let allTotal = 0, allYes = 0;
+
+    // تكرار على كل قسم معيار على حدة
+    ['compliance','transparency','financial'].forEach(stdId=>{
+      const section = document.getElementById('ind-section-'+stdId);
+      if(!section) return;
+      section.querySelectorAll('.ind-card').forEach(card=>{
+        let total = 0, yes = 0;
+        card.querySelectorAll('.qrow').forEach(qr=>{
+          if(qr.classList.contains('answered-yes')){ total++; yes++; }
+          else if(qr.classList.contains('answered-no')){ total++; }
+        });
+        const pct = total>0 ? Math.round((yes/total)*100) : 0;
+        const gauge = card.querySelector('.ind-gauge');
+        if(gauge){
+          const circle = gauge.querySelector('.gauge-fill');
+          const text = gauge.querySelector('.gauge-text');
+          if(circle){
+            // حساب نصف الدائرة من القيمة المسجّلة في dashArray (تتراوح حسب حجم svg)
+            const dashAttr = circle.getAttribute('stroke-dasharray');
+            const circumference = dashAttr ? parseFloat(dashAttr) : 2 * Math.PI * 20;
+            const offset = circumference * (1 - pct/100);
+            circle.setAttribute('stroke-dashoffset', offset.toFixed(2));
+            circle.classList.remove('green','amber','red');
+            circle.classList.add(pct >= 75 ? 'green' : pct >= 50 ? 'amber' : 'red');
+          }
+          if(text) text.textContent = arNum(pct) + '٪';
         }
-        if(text) text.textContent = arNum(pct) + '٪';
-      }
-      totalAll += total;
-      totalYesAll += yes;
+        stdScores[stdId].t += total;
+        stdScores[stdId].y += yes;
+      });
+      allTotal += stdScores[stdId].t;
+      allYes += stdScores[stdId].y;
     });
-    if(totalAll>0){
-      const overall = Math.round((totalYesAll/totalAll)*100);
+
+    // تحديث بطاقات المعايير الثلاث (الحلقات الدائرية على البطاقة)
+    ['compliance','transparency','financial'].forEach(stdId=>{
+      const s = stdScores[stdId];
+      const pct = s.t>0 ? Math.round((s.y/s.t)*100) : 0;
+      updateStdRing(stdId, pct);
+      // تحديث رقم الدرجة في رأس النافذة المنبثقة إن كانت مفتوحة على هذا المعيار
+      const modal = document.getElementById('std-modal');
+      const modalScore = document.getElementById('modal-overall-score');
+      if(modalScore && modal && modal.dataset.activeStd === stdId){
+        modalScore.textContent = arNum(pct) + '٪';
+      }
+    });
+
+    // الدرجة الإجمالية
+    if(allTotal>0){
+      const overall = Math.round((allYes/allTotal)*100);
       const el = document.getElementById('overall-score');
       const barCompliance = document.getElementById('bar-compliance');
       const valCompliance = document.getElementById('val-compliance');
+      const cPct = stdScores.compliance.t>0 ? Math.round((stdScores.compliance.y/stdScores.compliance.t)*100) : 0;
       if(el) el.textContent = overall;
-      if(barCompliance) barCompliance.style.width = overall+'%';
-      if(valCompliance) valCompliance.textContent = overall+'%';
-      // تحديث المقياس الدائري على البطاقة الخارجية
-      updateStdRing('compliance', overall);
-      // تحديث الدرجة في رأس النافذة المنبثقة
-      const modalScore = document.getElementById('modal-overall-score');
-      if(modalScore && document.getElementById('std-modal') && document.getElementById('std-modal').dataset.activeStd === 'compliance'){
-        modalScore.textContent = arNum(overall) + '٪';
-      }
+      if(barCompliance) barCompliance.style.width = cPct+'%';
+      if(valCompliance) valCompliance.textContent = cPct+'%';
     }
   }
 
