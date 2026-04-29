@@ -1790,6 +1790,66 @@ ${contentHTML}
   document.addEventListener('keydown',e=>{if(e.key==='Escape') closeModal();});
 
   // ============ التقييم الذاتي للحوكمة ============
+  // فتح وإغلاق نافذة التقييم
+  function openStdAssessment(stdId){
+    const modal = document.getElementById('std-modal');
+    if(!modal) return;
+    // إخفاء جميع الأقسام ثم إظهار القسم المطلوب
+    document.querySelectorAll('#std-modal .indicators-section').forEach(s=>s.style.display='none');
+    const target = document.getElementById('ind-section-'+stdId);
+    if(target) target.style.display='';
+    // تحديث رأس النافذة
+    const titles = {
+      compliance: { title:'معيار الالتزام والامتثال', meta:'9 مؤشرات · 45 ممارسة · 77 سؤالاً', eye:'المعيار الأول · إصدار 2021 V2' },
+      transparency: { title:'معيار الشفافية والإفصاح', meta:'14 من 21 عنصر · قيد الإعداد', eye:'المعيار الثاني · إصدار 2021 V2' },
+      financial: { title:'معيار السلامة المالية', meta:'16 من 25 عنصر · قيد الإعداد', eye:'المعيار الثالث · قيد الإعداد' }
+    };
+    const info = titles[stdId] || titles.compliance;
+    document.getElementById('std-modal-title').textContent = info.title;
+    document.getElementById('std-modal-meta').textContent = info.meta;
+    document.getElementById('std-modal-eye').textContent = info.eye;
+    // درجة المعيار
+    const scoreEl = document.querySelector('[data-std-text="'+stdId+'"]');
+    const modalScore = document.getElementById('modal-overall-score');
+    if(scoreEl && modalScore) modalScore.textContent = scoreEl.textContent;
+    // فتح النافذة
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+    modal.dataset.activeStd = stdId;
+  }
+
+  function closeStdAssessment(){
+    const modal = document.getElementById('std-modal');
+    if(!modal) return;
+    modal.classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  // إغلاق بـ Escape
+  document.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){
+      const modal = document.getElementById('std-modal');
+      if(modal && modal.classList.contains('show')) closeStdAssessment();
+    }
+  });
+
+  // تحديث المقياس الدائري على البطاقة
+  function updateStdRing(stdId, pct){
+    const fillCircle = document.querySelector('[data-std-score="'+stdId+'"]');
+    const txtSpan = document.querySelector('[data-std-text="'+stdId+'"]');
+    if(fillCircle){
+      const circumference = 2 * Math.PI * 24;
+      fillCircle.setAttribute('stroke-dasharray', circumference.toFixed(2));
+      fillCircle.setAttribute('stroke-dashoffset', (circumference * (1 - pct/100)).toFixed(2));
+      fillCircle.classList.remove('green','amber','red');
+      fillCircle.classList.add(pct >= 75 ? 'green' : pct >= 50 ? 'amber' : 'red');
+    }
+    if(txtSpan){
+      const m = '٠١٢٣٤٥٦٧٨٩';
+      txtSpan.textContent = String(pct).split('').map(c=>m[+c]||c).join('') + '٪';
+    }
+  }
+
   function toggleIndicator(headEl){
     const card = headEl.closest('.ind-card');
     card.classList.toggle('expanded');
@@ -1861,6 +1921,13 @@ ${contentHTML}
       if(el) el.textContent = overall;
       if(barCompliance) barCompliance.style.width = overall+'%';
       if(valCompliance) valCompliance.textContent = overall+'%';
+      // تحديث المقياس الدائري على البطاقة الخارجية
+      updateStdRing('compliance', overall);
+      // تحديث الدرجة في رأس النافذة المنبثقة
+      const modalScore = document.getElementById('modal-overall-score');
+      if(modalScore && document.getElementById('std-modal') && document.getElementById('std-modal').dataset.activeStd === 'compliance'){
+        modalScore.textContent = arNum(overall) + '٪';
+      }
     }
   }
 

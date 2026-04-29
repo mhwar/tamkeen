@@ -2556,60 +2556,97 @@
     </div>
   </div>
 
-  <!-- نظرة على المعايير الثلاثة -->
+  <!-- البطاقات الثلاث — اضغط للتقييم -->
   <div class="standards-grid">
-    <div class="std-card">
-      <div class="std-num">٠١</div>
+    <div class="std-card std-clickable" data-std="compliance" onclick="openStdAssessment('compliance')">
+      <div class="std-card-top">
+        <div class="std-num">٠١</div>
+        <div class="std-score-ring">
+          <svg viewBox="0 0 56 56">
+            <circle class="ring-bg" cx="28" cy="28" r="24"/>
+            <circle class="ring-fill green" cx="28" cy="28" r="24" stroke-dasharray="150.8" stroke-dashoffset="27.14" data-std-score="compliance"/>
+          </svg>
+          <span class="ring-text" data-std-text="compliance">٨٢٪</span>
+        </div>
+      </div>
       <div class="std-title">معيار الالتزام والامتثال</div>
       <div class="std-desc">الإطار النظامي للجمعية — اللوائح، مجلس الإدارة، الإدارة التنفيذية، التقارير، مكافحة غسل الأموال، الإيرادات.</div>
       <div class="std-progress"><span>إجمالي العناصر</span><strong>٤٥ ممارسة · ٧٧ سؤالاً</strong></div>
-      <div class="std-bar"><div class="std-bar-fill green" style="width:82%"></div></div>
       <div class="std-stats">
         <span>الوزن الكلي: 100%</span>
-        <span>تفصيل أدناه ↓</span>
+        <span class="std-cta">ابدأ التقييم ←</span>
       </div>
     </div>
 
-    <div class="std-card">
-      <div class="std-num">٠٢</div>
+    <div class="std-card std-clickable std-soon" data-std="transparency" onclick="openStdAssessment('transparency')">
+      <div class="std-card-top">
+        <div class="std-num">٠٢</div>
+        <div class="std-score-ring">
+          <svg viewBox="0 0 56 56">
+            <circle class="ring-bg" cx="28" cy="28" r="24"/>
+            <circle class="ring-fill amber" cx="28" cy="28" r="24" stroke-dasharray="150.8" stroke-dashoffset="49.76" data-std-score="transparency"/>
+          </svg>
+          <span class="ring-text" data-std-text="transparency">٦٧٪</span>
+        </div>
+      </div>
       <div class="std-title">معيار الشفافية والإفصاح</div>
       <div class="std-desc">جودة الإفصاحات المالية والإدارية والبرامجية، نموذج الإفصاح المعتمد، الموقع الإلكتروني، التقرير السنوي.</div>
       <div class="std-progress"><span>إجمالي العناصر</span><strong>١٤ / ٢١</strong></div>
-      <div class="std-bar"><div class="std-bar-fill amber" style="width:67%"></div></div>
       <div class="std-stats">
         <span>الإصدار: 2021 V2</span>
-        <span>عناصر متبقية: ٧</span>
+        <span class="std-cta">ابدأ التقييم ←</span>
       </div>
     </div>
 
-    <div class="std-card">
-      <div class="std-num">٠٣</div>
+    <div class="std-card std-clickable std-soon" data-std="financial" onclick="openStdAssessment('financial')">
+      <div class="std-card-top">
+        <div class="std-num">٠٣</div>
+        <div class="std-score-ring">
+          <svg viewBox="0 0 56 56">
+            <circle class="ring-bg" cx="28" cy="28" r="24"/>
+            <circle class="ring-fill amber" cx="28" cy="28" r="24" stroke-dasharray="150.8" stroke-dashoffset="54.29" data-std-score="financial"/>
+          </svg>
+          <span class="ring-text" data-std-text="financial">٦٤٪</span>
+        </div>
+      </div>
       <div class="std-title">معيار السلامة المالية</div>
       <div class="std-desc">صحّة الإدارة المالية، فصل الأموال المقيدة، احتياطي السيولة، تنوع التمويل، نسبة المصروفات البرامجية.</div>
       <div class="std-progress"><span>إجمالي العناصر</span><strong>١٦ / ٢٥</strong></div>
-      <div class="std-bar"><div class="std-bar-fill amber" style="width:64%"></div></div>
       <div class="std-stats">
         <span>أيام السيولة: ٧٢</span>
-        <span>عناصر متبقية: ٩</span>
+        <span class="std-cta">ابدأ التقييم ←</span>
       </div>
     </div>
   </div>
 
   <!-- ====================== -->
-  <!-- مؤشرات الامتثال والالتزام -->
+  <!-- النافذة المنبثقة للتقييم -->
   <!-- ====================== -->
-  <div class="indicators-section">
-    <div class="indicators-head">
-      <div>
-        <h2 class="indicators-title">مؤشرات معيار الامتثال والالتزام</h2>
-        <p class="indicators-sub">9 مؤشرات بأوزان مختلفة. اضغط على المؤشر لعرض الممارسات والأسئلة.</p>
+  <div class="std-modal" id="std-modal" onclick="if(event.target===this)closeStdAssessment()">
+   <div class="std-modal-panel">
+    <div class="std-modal-head">
+      <div class="std-modal-head-info">
+        <div class="std-modal-eyebrow" id="std-modal-eye">معيار التقييم الذاتي</div>
+        <h2 id="std-modal-title">معيار الالتزام والامتثال</h2>
+        <div class="std-modal-meta" id="std-modal-meta">9 مؤشرات · 45 ممارسة · 77 سؤالاً</div>
       </div>
-      <div class="indicators-actions">
+      <div class="std-modal-actions">
+        <div class="std-modal-score">
+          <span class="smsl">الدرجة</span>
+          <span class="smsv" id="modal-overall-score">٧١٪</span>
+        </div>
+        <button class="std-modal-close" onclick="closeStdAssessment()" title="إغلاق">✕</button>
+      </div>
+    </div>
+
+    <div class="std-modal-body">
+    <!-- مؤشرات معيار الالتزام والامتثال -->
+    <div class="indicators-section" id="ind-section-compliance">
+      <div class="indicators-actions" style="margin-bottom:16px">
         <button class="ind-btn" onclick="expandAllIndicators(true)">توسيع الكل</button>
         <button class="ind-btn" onclick="expandAllIndicators(false)">طيّ الكل</button>
         <button class="ind-btn primary" onclick="exportAssessment()">تصدير التقرير ↓</button>
       </div>
-    </div>
 
     <div class="indicators-list" id="indicators-list">
       <!-- المؤشرات تُحقن من JS أدناه أو يمكن كتابتها يدوياً. سنكتبها يدوياً للأداء. -->
@@ -2978,6 +3015,38 @@
         </div>
       </div>
     </div>
+    </div>
+
+    <!-- محتوى المعيار الثاني والثالث (placeholder) -->
+    <div class="indicators-section" id="ind-section-transparency" style="display:none">
+      <div class="std-placeholder">
+        <div class="std-placeholder-ico">📋</div>
+        <h3>معيار الشفافية والإفصاح</h3>
+        <p>هذا المعيار يقيس جودة الإفصاحات المالية والإدارية والبرامجية، ووجود نموذج إفصاح معتمد، وموقع إلكتروني نشط، وتقرير سنوي شفاف.</p>
+        <p class="std-placeholder-note">تفصيل المؤشرات والممارسات والأسئلة قيد الإعداد. أرسل لنا أي وثيقة رسمية للمعيار وسنُدرجها فوراً.</p>
+        <div class="std-placeholder-stats">
+          <div><strong>الإصدار الحالي</strong><span>2021 V2</span></div>
+          <div><strong>الدرجة المقدّرة</strong><span>٦٧٪</span></div>
+          <div><strong>عناصر متبقية</strong><span>٧</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="indicators-section" id="ind-section-financial" style="display:none">
+      <div class="std-placeholder">
+        <div class="std-placeholder-ico">💰</div>
+        <h3>معيار السلامة المالية</h3>
+        <p>هذا المعيار يقيس صحّة الإدارة المالية، فصل الأموال المقيّدة، احتياطي السيولة، تنوّع التمويل، ونسبة المصروفات البرامجية.</p>
+        <p class="std-placeholder-note">تفصيل المؤشرات والممارسات والأسئلة قيد الإعداد. أرسل لنا أي وثيقة رسمية للمعيار وسنُدرجها فوراً.</p>
+        <div class="std-placeholder-stats">
+          <div><strong>أيام السيولة</strong><span>٧٢ يوم</span></div>
+          <div><strong>الدرجة المقدّرة</strong><span>٦٤٪</span></div>
+          <div><strong>عناصر متبقية</strong><span>٩</span></div>
+        </div>
+      </div>
+    </div>
+    </div>
+   </div>
   </div>
 </section>
 
