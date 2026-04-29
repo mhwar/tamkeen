@@ -1,0 +1,192 @@
+{
+  "groups": [
+    {
+      "id": "gov",
+      "name": "لوائح الحوكمة",
+      "color": "accent",
+      "required": true
+    },
+    {
+      "id": "hr",
+      "name": "الموارد البشرية",
+      "color": "teal",
+      "required": true
+    },
+    {
+      "id": "legal",
+      "name": "الامتثال والبيانات",
+      "color": "olive",
+      "required": true
+    },
+    {
+      "id": "prog",
+      "name": "البرامج والمستفيدين",
+      "color": "gold",
+      "required": false
+    }
+  ],
+  "regulations": [
+    {
+      "id": "r01",
+      "code": "GOV-01",
+      "name": "اللائحة الأساسية للجمعية",
+      "group": "gov",
+      "status": "approved",
+      "required": true,
+      "vars_count": 8
+    },
+    {
+      "id": "r02",
+      "code": "GOV-02",
+      "name": "اللائحة المالية ومصفوفة الصلاحيات",
+      "group": "gov",
+      "status": "approved",
+      "required": true,
+      "vars_count": 6
+    },
+    {
+      "id": "r03",
+      "code": "GOV-03",
+      "name": "اللائحة الإدارية والهيكل التنظيمي",
+      "group": "gov",
+      "status": "approved",
+      "required": true,
+      "vars_count": 5
+    },
+    {
+      "id": "r04",
+      "code": "GOV-04",
+      "name": "سياسة تعارض المصالح والإفصاح السنوي",
+      "group": "gov",
+      "status": "approved",
+      "required": true,
+      "vars_count": 4
+    },
+    {
+      "id": "r05",
+      "code": "GOV-05",
+      "name": "لائحة المشتريات والتعاقدات",
+      "group": "gov",
+      "status": "approved",
+      "required": true,
+      "vars_count": 3
+    },
+    {
+      "id": "r06",
+      "code": "GOV-06",
+      "name": "لائحة الاستثمار وإدارة الأوقاف",
+      "group": "gov",
+      "status": "empty",
+      "required": true,
+      "vars_count": 0
+    },
+    {
+      "id": "r07",
+      "code": "GOV-07",
+      "name": "سياسة الإبلاغ عن المخالفات",
+      "group": "gov",
+      "status": "empty",
+      "required": true,
+      "vars_count": 0
+    },
+    {
+      "id": "r08",
+      "code": "GOV-08",
+      "name": "ميثاق مجلس الإدارة",
+      "group": "gov",
+      "status": "draft",
+      "required": true,
+      "vars_count": 9
+    },
+    {
+      "id": "r09",
+      "code": "HR-01",
+      "name": "لائحة تنظيم العمل الداخلية",
+      "group": "hr",
+      "status": "approved",
+      "required": true,
+      "vars_count": 7
+    },
+    {
+      "id": "r10",
+      "code": "HR-02",
+      "name": "سياسة إدارة المتطوعين",
+      "group": "hr",
+      "status": "empty",
+      "required": true,
+      "vars_count": 0
+    },
+    {
+      "id": "r11",
+      "code": "HR-03",
+      "name": "سياسة التدريب والتطوير المهني",
+      "group": "hr",
+      "status": "empty",
+      "required": false,
+      "vars_count": 0
+    },
+    {
+      "id": "r12",
+      "code": "HR-04",
+      "name": "دليل موظف الجمعية",
+      "group": "hr",
+      "status": "empty",
+      "required": false,
+      "vars_count": 0
+    },
+    {
+      "id": "r13",
+      "code": "COMP-01",
+      "name": "سياسة حماية البيانات الشخصية (PDPL)",
+      "group": "legal",
+      "status": "empty",
+      "required": true,
+      "vars_count": 0
+    },
+    {
+      "id": "r14",
+      "code": "COMP-02",
+      "name": "سياسة مكافحة غسل الأموال (AML/CFT)",
+      "group": "legal",
+      "status": "empty",
+      "required": true,
+      "vars_count": 0
+    },
+    {
+      "id": "r15",
+      "code": "COMP-03",
+      "name": "سياسة إدارة المستفيد الحقيقي",
+      "group": "legal",
+      "status": "empty",
+      "required": true,
+      "vars_count": 0
+    },
+    {
+      "id": "r16",
+      "code": "PROG-01",
+      "name": "سياسة قبول المستفيدين ومعاييرهم",
+      "group": "prog",
+      "status": "empty",
+      "required": false,
+      "vars_count": 0
+    },
+    {
+      "id": "r17",
+      "code": "PROG-02",
+      "name": "سياسة قبول التبرعات والهبات",
+      "group": "prog",
+      "status": "empty",
+      "required": false,
+      "vars_count": 0
+    },
+    {
+      "id": "r18",
+      "code": "PROG-03",
+      "name": "إطار قياس الأثر الاجتماعي",
+      "group": "prog",
+      "status": "empty",
+      "required": false,
+      "vars_count": 0
+    }
+  ]
+}
