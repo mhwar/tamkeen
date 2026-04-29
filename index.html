@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=9">
+<link rel="stylesheet" href="assets/style.css?v=10">
 </head>
 <body>
 <div class="qatt-pattern"></div>
@@ -1852,7 +1852,7 @@
         <p>كل قيمة تُسجَّلها هنا تُحلّ محلّ الـ<span style="font-family:JetBrains Mono;color:var(--gold);font-size:12px">{{متغير}}</span> في جميع اللوائح والسياسات تلقائياً.</p>
         <div class="vi-stats">
           <div class="vi-stat"><div class="n" id="vars-count">24</div><div class="l">متغير محدَّد</div></div>
-          <div class="vi-stat"><div class="n" id="docs-count">8</div><div class="l">وثيقة مرتبطة</div></div>
+          <div class="vi-stat"><div class="n" id="docs-count">47</div><div class="l">وثيقة مرتبطة</div></div>
           <div class="vi-stat"><div class="n" id="pending-count">3</div><div class="l">في انتظار القيمة</div></div>
         </div>
       </div>
@@ -2002,85 +2002,373 @@
 
     <div class="regs-toolbar">
       <div class="regs-filter">
-        <button class="rf-btn active" onclick="filterRegs('all',this)">الكل <span class="cnt">25</span></button>
-        <button class="rf-btn" onclick="filterRegs('approved',this)">معتمدة <span class="cnt">6</span></button>
-        <button class="rf-btn" onclick="filterRegs('draft',this)">مسودة <span class="cnt">4</span></button>
-        <button class="rf-btn" onclick="filterRegs('empty',this)">لم تُضَف <span class="cnt">15</span></button>
+        <button class="rf-btn active" onclick="filterRegs('all',this)">الكل <span class="cnt">47</span></button>
+        <button class="rf-btn" onclick="filterRegs('approved',this)">معتمدة <span class="cnt">7</span></button>
+        <button class="rf-btn" onclick="filterRegs('draft',this)">مسودة <span class="cnt">2</span></button>
+        <button class="rf-btn" onclick="filterRegs('empty',this)">لم تُضَف <span class="cnt">38</span></button>
         <button class="rf-btn" onclick="filterRegs('gov',this)">حوكمة</button>
         <button class="rf-btn" onclick="filterRegs('hr',this)">موارد بشرية</button>
         <button class="rf-btn" onclick="filterRegs('fin',this)">مالية</button>
+        <button class="rf-btn" onclick="filterRegs('legal',this)">امتثال</button>
+        <button class="rf-btn" onclick="filterRegs('prog',this)">برامج</button>
+        <button class="rf-btn" onclick="filterRegs('forms',this)">نماذج</button>
       </div>
       <button class="add-reg-btn" onclick="openAddRegModal()">إضافة لائحة أو سياسة</button>
     </div>
 
-    <!-- لوائح الحوكمة -->
+    <!-- ============== لوائح الحوكمة ============== -->
     <div class="reg-group" data-group="gov">
       <div class="reg-group-head">
         <div class="reg-group-ico" style="background:var(--accent)">ح</div>
-        <div class="reg-group-title"><h3>لوائح الحوكمة — إلزامية بموجب قواعد الحوكمة الإصدار الثاني</h3><p>غيابها يُخفض درجة معيار الالتزام مباشرةً</p></div>
-        <div class="reg-group-meta"><strong>5 / 8</strong>معتمد</div>
+        <div class="reg-group-title"><h3>لوائح الحوكمة الأساسية</h3><p>إلزامية بموجب قواعد الحوكمة 2021 V2 — غيابها يخفض درجة معيار الالتزام مباشرةً</p></div>
+        <div class="reg-group-meta"><strong>5 / 16</strong>معتمد</div>
       </div>
-      <div class="reg-card required" data-status="approved" data-group="gov" data-id="r01"><div class="reg-status"><div class="status-dot approved"></div><div class="status-label">معتمدة</div></div><div class="reg-info"><div class="reg-num">GOV-01</div><div class="reg-name">اللائحة الأساسية للجمعية</div><div class="reg-meta-row"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">اعتُمدت: 15 / 1 / 2025</span><span class="reg-meta-vars">8 متغيرات</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r01')">تحرير</button><button class="reg-act" onclick="previewReg('r01')">معاينة</button><button class="reg-act" onclick="openPdfModal('r01')" style="color:var(--accent);border-color:var(--accent)">⬇ PDF</button></div><div class="reg-governance-badge"><div class="rgb-inner gov">✓</div></div></div>
-      <div class="reg-card required" data-status="approved" data-group="gov fin" data-id="r02"><div class="reg-status"><div class="status-dot approved"></div><div class="status-label">معتمدة</div></div><div class="reg-info"><div class="reg-num">GOV-02</div><div class="reg-name">اللائحة المالية ومصفوفة الصلاحيات</div><div class="reg-meta-row"><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">اعتُمدت: 20 / 1 / 2025</span><span class="reg-meta-vars">6 متغيرات</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r02')">تحرير</button><button class="reg-act" onclick="previewReg('r02')">معاينة</button><button class="reg-act" onclick="openPdfModal('r02')" style="color:var(--accent);border-color:var(--accent)">⬇ PDF</button></div><div class="reg-governance-badge"><div class="rgb-inner gov">✓</div></div></div>
-      <div class="reg-card required" data-status="approved" data-group="gov" data-id="r03"><div class="reg-status"><div class="status-dot approved"></div><div class="status-label">معتمدة</div></div><div class="reg-info"><div class="reg-num">GOV-03</div><div class="reg-name">اللائحة الإدارية والهيكل التنظيمي</div><div class="reg-meta-row"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">اعتُمدت: 20 / 1 / 2025</span><span class="reg-meta-vars">5 متغيرات</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r03')">تحرير</button><button class="reg-act" onclick="previewReg('r03')">معاينة</button></div><div class="reg-governance-badge"><div class="rgb-inner gov">✓</div></div></div>
-      <div class="reg-card required" data-status="approved" data-group="gov" data-id="r04"><div class="reg-status"><div class="status-dot approved"></div><div class="status-label">معتمدة</div></div><div class="reg-info"><div class="reg-num">GOV-04</div><div class="reg-name">سياسة تعارض المصالح والإفصاح السنوي</div><div class="reg-meta-row"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">اعتُمدت: 25 / 1 / 2025</span><span class="reg-meta-vars">4 متغيرات</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r04')">تحرير</button><button class="reg-act" onclick="previewReg('r04')">معاينة</button></div><div class="reg-governance-badge"><div class="rgb-inner gov">✓</div></div></div>
-      <div class="reg-card required" data-status="approved" data-group="gov" data-id="r05"><div class="reg-status"><div class="status-dot approved"></div><div class="status-label">معتمدة</div></div><div class="reg-info"><div class="reg-num">GOV-05</div><div class="reg-name">لائحة المشتريات والتعاقدات</div><div class="reg-meta-row"><span class="reg-tag gov">حوكمة</span><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">اعتُمدت: 5 / 6 / 2025</span><span class="reg-meta-vars">3 متغيرات</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r05')">تحرير</button><button class="reg-act" onclick="submitForApproval('r05')">رفع للاعتماد</button></div><div class="reg-governance-badge"><div class="rgb-inner gov">✓</div></div></div>
-      <div class="reg-card required" data-status="empty" data-group="gov fin" data-id="r06"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم تُضَف</div></div><div class="reg-info"><div class="reg-num">GOV-06</div><div class="reg-name empty-name">لائحة الاستثمار وإدارة الأوقاف</div><div class="reg-meta-row"><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r06')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">!</div></div></div>
-      <div class="reg-card required" data-status="empty" data-group="gov" data-id="r07"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم تُضَف</div></div><div class="reg-info"><div class="reg-num">GOV-07</div><div class="reg-name empty-name">سياسة الإبلاغ عن المخالفات (Whistleblowing)</div><div class="reg-meta-row"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r07')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">!</div></div></div>
-      <div class="reg-card required" data-status="draft" data-group="gov" data-id="r08"><div class="reg-status"><div class="status-dot draft"></div><div class="status-label">مسودة</div></div><div class="reg-info"><div class="reg-num">GOV-08</div><div class="reg-name">ميثاق مجلس الإدارة (Board Charter)</div><div class="reg-meta-row"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">آخر تعديل: 10 / 6 / 2025</span><span class="reg-meta-vars">9 متغيرات</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r08')">تحرير</button><button class="reg-act" onclick="submitForApproval('r08')">رفع للاعتماد</button></div><div class="reg-governance-badge"><div class="rgb-inner">◌</div></div></div>
+      <div class="reg-grid">
+        <div class="reg-card required" data-status="approved" data-group="gov" data-id="r01">
+          <div class="reg-card-top"><span class="reg-num">GOV-01</span><span class="reg-status-pill approved"><span class="status-dot"></span>معتمدة</span></div>
+          <div class="reg-info"><div class="reg-name">اللائحة الأساسية للجمعية</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-date">15 / 1 / 2025</span><span class="reg-meta-link">المؤشر 1</span><span class="reg-meta-vars">8 متغيرات</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r01')">تحرير</button><button class="reg-act" onclick="previewReg('r01')">معاينة</button><button class="reg-act pdf" onclick="openPdfModal('r01')">⬇ PDF</button></div>
+          <div class="reg-corner-badge gov">✓</div>
+        </div>
+        <div class="reg-card required" data-status="approved" data-group="gov fin" data-id="r02">
+          <div class="reg-card-top"><span class="reg-num">GOV-02</span><span class="reg-status-pill approved"><span class="status-dot"></span>معتمدة</span></div>
+          <div class="reg-info"><div class="reg-name">اللائحة المالية ومصفوفة الصلاحيات</div><div class="reg-tags"><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-date">20 / 1 / 2025</span><span class="reg-meta-link">المؤشر 46</span><span class="reg-meta-vars">6 متغيرات</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r02')">تحرير</button><button class="reg-act" onclick="previewReg('r02')">معاينة</button><button class="reg-act pdf" onclick="openPdfModal('r02')">⬇ PDF</button></div>
+          <div class="reg-corner-badge gov">✓</div>
+        </div>
+        <div class="reg-card required" data-status="approved" data-group="gov" data-id="r03">
+          <div class="reg-card-top"><span class="reg-num">GOV-03</span><span class="reg-status-pill approved"><span class="status-dot"></span>معتمدة</span></div>
+          <div class="reg-info"><div class="reg-name">اللائحة الإدارية والهيكل التنظيمي</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-date">20 / 1 / 2025</span><span class="reg-meta-link">المؤشر 15</span><span class="reg-meta-vars">5 متغيرات</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r03')">تحرير</button><button class="reg-act" onclick="previewReg('r03')">معاينة</button></div>
+          <div class="reg-corner-badge gov">✓</div>
+        </div>
+        <div class="reg-card required" data-status="approved" data-group="gov" data-id="r04">
+          <div class="reg-card-top"><span class="reg-num">GOV-04</span><span class="reg-status-pill approved"><span class="status-dot"></span>معتمدة</span></div>
+          <div class="reg-info"><div class="reg-name">سياسة تعارض المصالح والإفصاح السنوي</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-date">25 / 1 / 2025</span><span class="reg-meta-link">المؤشر 8</span><span class="reg-meta-vars">4 متغيرات</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r04')">تحرير</button><button class="reg-act" onclick="previewReg('r04')">معاينة</button></div>
+          <div class="reg-corner-badge gov">✓</div>
+        </div>
+        <div class="reg-card required" data-status="approved" data-group="gov fin" data-id="r05">
+          <div class="reg-card-top"><span class="reg-num">GOV-05</span><span class="reg-status-pill approved"><span class="status-dot"></span>معتمدة</span></div>
+          <div class="reg-info"><div class="reg-name">لائحة المشتريات والتعاقدات</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-date">5 / 6 / 2025</span><span class="reg-meta-link">المؤشر 52</span><span class="reg-meta-vars">3 متغيرات</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r05')">تحرير</button><button class="reg-act" onclick="submitForApproval('r05')">للاعتماد</button></div>
+          <div class="reg-corner-badge gov">✓</div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="gov fin" data-id="r06">
+          <div class="reg-card-top"><span class="reg-num">GOV-06</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">لائحة الاستثمار وإدارة الأوقاف</div><div class="reg-tags"><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 24 · 54</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r06')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="gov" data-id="r07">
+          <div class="reg-card-top"><span class="reg-num">GOV-07</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة الإبلاغ عن المخالفات (Whistleblowing)</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 16</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r07')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="draft" data-group="gov" data-id="r08">
+          <div class="reg-card-top"><span class="reg-num">GOV-08</span><span class="reg-status-pill draft"><span class="status-dot"></span>مسودة</span></div>
+          <div class="reg-info"><div class="reg-name">ميثاق مجلس الإدارة (Board Charter)</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-date">10 / 6 / 2025</span><span class="reg-meta-link">المؤشر 11</span><span class="reg-meta-vars">9 متغيرات</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r08')">تحرير</button><button class="reg-act" onclick="submitForApproval('r08')">للاعتماد</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="gov" data-id="r19">
+          <div class="reg-card-top"><span class="reg-num">GOV-09</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة العضوية والاشتراكات في الجمعية العمومية</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 2 · 28</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r19')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="gov" data-id="r20">
+          <div class="reg-card-top"><span class="reg-num">GOV-10</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">لائحة انتخابات مجلس الإدارة وآلية الترشح</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 3</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r20')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="gov" data-id="r21">
+          <div class="reg-card-top"><span class="reg-num">GOV-11</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة انعقاد الجمعية العمومية (عادية وغير عادية)</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 4 · 5 · 6</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r21')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="gov" data-id="r22">
+          <div class="reg-card-top"><span class="reg-num">GOV-12</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">لائحة عمل اللجان الدائمة والمؤقتة</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 29 · 33</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r22')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="gov" data-id="r23">
+          <div class="reg-card-top"><span class="reg-num">GOV-13</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة المراجع الداخلي ونظام الرقابة الداخلية</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 7 · 49</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r23')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="gov" data-id="r24">
+          <div class="reg-card-top"><span class="reg-num">GOV-14</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة فروع الجمعية ومكاتبها داخل المملكة</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 17 · 35</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r24')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="gov" data-id="r25">
+          <div class="reg-card-top"><span class="reg-num">GOV-15</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة حفظ الوثائق والسجلات الرسمية</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 25 · 26 · 27</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r25')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="gov" data-id="r26">
+          <div class="reg-card-top"><span class="reg-num">GOV-16</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة الأنشطة الدولية والاتفاقيات</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag legal">امتثال</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 21</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r26')">إنشاء من قالب</button></div>
+        </div>
+      </div>
     </div>
 
-    <!-- لوائح الموارد البشرية -->
+    <!-- ============== الموارد البشرية ============== -->
     <div class="reg-group" data-group="hr">
       <div class="reg-group-head">
         <div class="reg-group-ico" style="background:var(--teal)">ب</div>
         <div class="reg-group-title"><h3>لوائح وسياسات الموارد البشرية</h3><p>متوافقة مع تعديلات نظام العمل 2024 (نافذة 19 فبراير 2025)</p></div>
-        <div class="reg-group-meta"><strong>1 / 4</strong>معتمد</div>
+        <div class="reg-group-meta"><strong>1 / 5</strong>معتمد</div>
       </div>
-      <div class="reg-card required" data-status="approved" data-group="hr" data-id="r09"><div class="reg-status"><div class="status-dot approved"></div><div class="status-label">معتمدة</div></div><div class="reg-info"><div class="reg-num">HR-01</div><div class="reg-name">لائحة تنظيم العمل الداخلية</div><div class="reg-meta-row"><span class="reg-tag hr">موارد بشرية</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">اعتُمدت: 5 / 2 / 2025</span><span class="reg-meta-vars">7 متغيرات</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r09')">تحرير</button><button class="reg-act" onclick="previewReg('r09')">معاينة</button></div><div class="reg-governance-badge"><div class="rgb-inner gov">✓</div></div></div>
-      <div class="reg-card required" data-status="empty" data-group="hr" data-id="r10"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم تُضَف</div></div><div class="reg-info"><div class="reg-num">HR-02</div><div class="reg-name empty-name">سياسة إدارة المتطوعين وعقودهم</div><div class="reg-meta-row"><span class="reg-tag hr">موارد بشرية</span><span class="reg-tag req">إلزامي</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r10')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">!</div></div></div>
-      <div class="reg-card optional" data-status="empty" data-group="hr" data-id="r11"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم تُضَف</div></div><div class="reg-info"><div class="reg-num">HR-03</div><div class="reg-name empty-name">سياسة التدريب والتطوير المهني</div><div class="reg-meta-row"><span class="reg-tag hr">موارد بشرية</span><span class="reg-tag opt">اختياري</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r11')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">○</div></div></div>
-      <div class="reg-card optional" data-status="empty" data-group="hr" data-id="r12"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم تُضَف</div></div><div class="reg-info"><div class="reg-num">HR-04</div><div class="reg-name empty-name">دليل موظف الجمعية (Employee Handbook)</div><div class="reg-meta-row"><span class="reg-tag hr">موارد بشرية</span><span class="reg-tag opt">اختياري</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r12')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">○</div></div></div>
+      <div class="reg-grid">
+        <div class="reg-card required" data-status="approved" data-group="hr" data-id="r09">
+          <div class="reg-card-top"><span class="reg-num">HR-01</span><span class="reg-status-pill approved"><span class="status-dot"></span>معتمدة</span></div>
+          <div class="reg-info"><div class="reg-name">لائحة تنظيم العمل الداخلية</div><div class="reg-tags"><span class="reg-tag hr">موارد بشرية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-date">5 / 2 / 2025</span><span class="reg-meta-link">المؤشر 10</span><span class="reg-meta-vars">7 متغيرات</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r09')">تحرير</button><button class="reg-act" onclick="previewReg('r09')">معاينة</button></div>
+          <div class="reg-corner-badge gov">✓</div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="hr" data-id="r10">
+          <div class="reg-card-top"><span class="reg-num">HR-02</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة إدارة المتطوعين وعقودهم</div><div class="reg-tags"><span class="reg-tag hr">موارد بشرية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 10</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r10')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="hr" data-id="r27">
+          <div class="reg-card-top"><span class="reg-num">HR-03</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة الإدارة التنفيذية والمحاسب — الاختصاصات والصلاحيات</div><div class="reg-tags"><span class="reg-tag hr">موارد بشرية</span><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 15 · 47</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r27')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card optional" data-status="empty" data-group="hr" data-id="r11">
+          <div class="reg-card-top"><span class="reg-num">HR-04</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة التدريب والتطوير المهني</div><div class="reg-tags"><span class="reg-tag hr">موارد بشرية</span><span class="reg-tag opt">اختياري</span></div></div>
+          <div class="reg-meta-row"></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r11')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card optional" data-status="empty" data-group="hr" data-id="r12">
+          <div class="reg-card-top"><span class="reg-num">HR-05</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">دليل موظف الجمعية (Employee Handbook)</div><div class="reg-tags"><span class="reg-tag hr">موارد بشرية</span><span class="reg-tag opt">اختياري</span></div></div>
+          <div class="reg-meta-row"></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r12')">إنشاء من قالب</button></div>
+        </div>
+      </div>
     </div>
 
-    <!-- الامتثال والبيانات -->
+    <!-- ============== الامتثال والبيانات ============== -->
     <div class="reg-group" data-group="legal">
       <div class="reg-group-head">
         <div class="reg-group-ico" style="background:var(--olive)">ا</div>
         <div class="reg-group-title"><h3>الامتثال والبيانات الشخصية</h3><p>مرتبطة بـ PDPL ونظام مكافحة غسل الأموال ومتطلبات المستفيد الحقيقي</p></div>
         <div class="reg-group-meta"><strong>0 / 3</strong>معتمد</div>
       </div>
-      <div class="reg-card required" data-status="empty" data-group="legal" data-id="r13"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم تُضَف</div></div><div class="reg-info"><div class="reg-num">COMP-01</div><div class="reg-name empty-name">سياسة حماية البيانات الشخصية (PDPL)</div><div class="reg-meta-row"><span class="reg-tag legal">امتثال</span><span class="reg-tag req">إلزامي</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r13')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">!</div></div></div>
-      <div class="reg-card required" data-status="empty" data-group="legal fin" data-id="r14"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم تُضَف</div></div><div class="reg-info"><div class="reg-num">COMP-02</div><div class="reg-name empty-name">سياسة مكافحة غسل الأموال (AML/CFT)</div><div class="reg-meta-row"><span class="reg-tag legal">امتثال</span><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r14')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">!</div></div></div>
-      <div class="reg-card required" data-status="empty" data-group="legal" data-id="r15"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم تُضَف</div></div><div class="reg-info"><div class="reg-num">COMP-03</div><div class="reg-name empty-name">سياسة إدارة المستفيد الحقيقي والإفصاح</div><div class="reg-meta-row"><span class="reg-tag legal">امتثال</span><span class="reg-tag req">إلزامي</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r15')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">!</div></div></div>
+      <div class="reg-grid">
+        <div class="reg-card required" data-status="empty" data-group="legal" data-id="r13">
+          <div class="reg-card-top"><span class="reg-num">COMP-01</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة حماية البيانات الشخصية (PDPL)</div><div class="reg-tags"><span class="reg-tag legal">امتثال</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">سدايا · إنفاذ سبتمبر 2024</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r13')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="legal fin" data-id="r14">
+          <div class="reg-card-top"><span class="reg-num">COMP-02</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة مكافحة غسل الأموال (AML/CFT)</div><div class="reg-tags"><span class="reg-tag legal">امتثال</span><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 19</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r14')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="legal" data-id="r15">
+          <div class="reg-card-top"><span class="reg-num">COMP-03</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة إدارة المستفيد الحقيقي والإفصاح</div><div class="reg-tags"><span class="reg-tag legal">امتثال</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 19 · 31</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r15')">إنشاء من قالب</button></div>
+        </div>
+      </div>
     </div>
 
-    <!-- البرامج والمستفيدين -->
+    <!-- ============== البرامج والمستفيدين ============== -->
     <div class="reg-group" data-group="prog">
       <div class="reg-group-head">
         <div class="reg-group-ico" style="background:var(--gold)">بر</div>
-        <div class="reg-group-title"><h3>سياسات البرامج والمستفيدين</h3><p>اختيارية في البداية، إلزامية مع نضج البرامج</p></div>
-        <div class="reg-group-meta"><strong>0 / 3</strong>معتمد</div>
+        <div class="reg-group-title"><h3>سياسات البرامج والمستفيدين</h3><p>تنظّم العلاقة مع المستفيدين والمتبرعين وتُغذّي مؤشرات الشفافية والإفصاح</p></div>
+        <div class="reg-group-meta"><strong>0 / 7</strong>معتمد</div>
       </div>
-      <div class="reg-card optional" data-status="empty" data-group="prog" data-id="r16"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم تُضَف</div></div><div class="reg-info"><div class="reg-num">PROG-01</div><div class="reg-name empty-name">سياسة قبول المستفيدين ومعاييرهم</div><div class="reg-meta-row"><span class="reg-tag prog">برامج</span><span class="reg-tag opt">اختياري</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r16')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">○</div></div></div>
-      <div class="reg-card optional" data-status="empty" data-group="prog" data-id="r17"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم تُضَف</div></div><div class="reg-info"><div class="reg-num">PROG-02</div><div class="reg-name empty-name">سياسة قبول التبرعات والهبات</div><div class="reg-meta-row"><span class="reg-tag prog">برامج</span><span class="reg-tag fin">مالية</span><span class="reg-tag opt">اختياري</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r17')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">○</div></div></div>
-      <div class="reg-card optional" data-status="empty" data-group="prog" data-id="r18"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم تُضَف</div></div><div class="reg-info"><div class="reg-num">PROG-03</div><div class="reg-name empty-name">إطار قياس الأثر الاجتماعي ومؤشراته</div><div class="reg-meta-row"><span class="reg-tag prog">برامج</span><span class="reg-tag opt">اختياري</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r18')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">○</div></div></div>
+      <div class="reg-grid">
+        <div class="reg-card required" data-status="empty" data-group="prog" data-id="r16">
+          <div class="reg-card-top"><span class="reg-num">PROG-01</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة قبول المستفيدين ومعاييرهم</div><div class="reg-tags"><span class="reg-tag prog">برامج</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 9</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r16')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="prog fin" data-id="r17">
+          <div class="reg-card-top"><span class="reg-num">PROG-02</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة قبول التبرعات والهبات</div><div class="reg-tags"><span class="reg-tag prog">برامج</span><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 22</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r17')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card optional" data-status="empty" data-group="prog" data-id="r18">
+          <div class="reg-card-top"><span class="reg-num">PROG-03</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">إطار قياس الأثر الاجتماعي ومؤشراته</div><div class="reg-tags"><span class="reg-tag prog">برامج</span><span class="reg-tag opt">اختياري</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 39 · 40</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r18')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="prog fin" data-id="r28">
+          <div class="reg-card-top"><span class="reg-num">PROG-04</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة حملات التبرعات والترخيص لها</div><div class="reg-tags"><span class="reg-tag prog">برامج</span><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 22</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r28')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="prog fin" data-id="r29">
+          <div class="reg-card-top"><span class="reg-num">PROG-05</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة الإعانات الخارجية والمعونات</div><div class="reg-tags"><span class="reg-tag prog">برامج</span><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 23</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r29')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="prog" data-id="r30">
+          <div class="reg-card-top"><span class="reg-num">PROG-06</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة الاستفسارات والشكاوى</div><div class="reg-tags"><span class="reg-tag prog">برامج</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 37</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r30')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="prog" data-id="r31">
+          <div class="reg-card-top"><span class="reg-num">PROG-07</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة قياس رضا المستفيدين</div><div class="reg-tags"><span class="reg-tag prog">برامج</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 38</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r31')">إنشاء من قالب</button></div>
+        </div>
+      </div>
     </div>
 
-    <!-- نماذج وتقارير الحوكمة -->
+    <!-- ============== السياسات المالية المتخصصة ============== -->
+    <div class="reg-group" data-group="fin">
+      <div class="reg-group-head">
+        <div class="reg-group-ico" style="background:#3d5a39">م</div>
+        <div class="reg-group-title"><h3>السياسات المالية المتخصصة</h3><p>تُغذّي معيار السلامة المالية — مرتبطة مباشرة بمؤشرات السياسات والقوائم المالية والموازنة</p></div>
+        <div class="reg-group-meta"><strong>0 / 4</strong>معتمد</div>
+      </div>
+      <div class="reg-grid">
+        <div class="reg-card required" data-status="empty" data-group="fin" data-id="r32">
+          <div class="reg-card-top"><span class="reg-num">FIN-01</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">السياسة المحاسبية ودليل الحسابات</div><div class="reg-tags"><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 50 · 56 · 57</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r32')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="fin" data-id="r33">
+          <div class="reg-card-top"><span class="reg-num">FIN-02</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">دليل الإجراءات المالية التشغيلية</div><div class="reg-tags"><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 51</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r33')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="fin" data-id="r34">
+          <div class="reg-card-top"><span class="reg-num">FIN-03</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة الموازنة التقديرية والميزانية السنوية</div><div class="reg-tags"><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 60</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r34')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="fin" data-id="r35">
+          <div class="reg-card-top"><span class="reg-num">FIN-04</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم تُضَف</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سياسة التقارير المالية الدورية والربعية</div><div class="reg-tags"><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 18 · 59</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('r35')">إنشاء من قالب</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============== النماذج والتقارير ============== -->
     <div class="reg-group" data-group="forms">
       <div class="reg-group-head">
         <div class="reg-group-ico" style="background:var(--ink)">ن</div>
-        <div class="reg-group-title"><h3>نماذج وتقارير الحوكمة — مرتبطة بمعيار الامتثال والإفصاح</h3><p>وثائق دورية يطلبها المركز الوطني، ويعتمدها رئيس مجلس الإدارة. غيابها ينعكس مباشرة على درجة التقييم الذاتي.</p></div>
-        <div class="reg-group-meta"><strong>1 / 7</strong>مكتمل</div>
+        <div class="reg-group-title"><h3>نماذج وتقارير الحوكمة</h3><p>وثائق دورية يطلبها المركز الوطني، ويعتمدها رئيس المجلس. غيابها ينعكس مباشرة على درجة التقييم الذاتي.</p></div>
+        <div class="reg-group-meta"><strong>1 / 12</strong>مكتمل</div>
       </div>
-      <div class="reg-card required" data-status="approved" data-group="forms gov" data-id="f01"><div class="reg-status"><div class="status-dot approved"></div><div class="status-label">معتمد</div></div><div class="reg-info"><div class="reg-num">FORM-01</div><div class="reg-name">نموذج الإفصاح السنوي</div><div class="reg-meta-row"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">رُفع: 30 / 3 / 2025</span><span class="reg-meta-vars">الشفافية · المؤشر 7</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f01')">تحرير</button><button class="reg-act" onclick="openPdfModal('f01')" style="color:var(--accent);border-color:var(--accent)">⬇ PDF</button></div><div class="reg-governance-badge"><div class="rgb-inner gov">✓</div></div></div>
-      <div class="reg-card required" data-status="empty" data-group="forms gov" data-id="f02"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم يُعَدّ</div></div><div class="reg-info"><div class="reg-num">FORM-02</div><div class="reg-name empty-name">التقرير السنوي للبرامج والأنشطة</div><div class="reg-meta-row"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">المؤشر 5 · ممارسة 5.3</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f02')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">!</div></div></div>
-      <div class="reg-card required" data-status="empty" data-group="forms fin legal" data-id="f03"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم يُعَدّ</div></div><div class="reg-info"><div class="reg-num">FORM-03</div><div class="reg-name empty-name">مصفوفة مخاطر تمويل الإرهاب وغسل الأموال</div><div class="reg-meta-row"><span class="reg-tag legal">امتثال</span><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">المؤشر 6 · ممارسة 6.4</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f03')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">!</div></div></div>
-      <div class="reg-card required" data-status="empty" data-group="forms gov" data-id="f04"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم يُعَدّ</div></div><div class="reg-info"><div class="reg-num">FORM-04</div><div class="reg-name empty-name">سجل الإفصاح عن المستفيد الحقيقي</div><div class="reg-meta-row"><span class="reg-tag legal">امتثال</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">دورية ربع سنوية</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f04')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">!</div></div></div>
-      <div class="reg-card required" data-status="draft" data-group="forms gov" data-id="f05"><div class="reg-status"><div class="status-dot draft"></div><div class="status-label">مسودة</div></div><div class="reg-info"><div class="reg-num">FORM-05</div><div class="reg-name">نموذج محضر اعتماد اللائحة الأساسية</div><div class="reg-meta-row"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">آخر تعديل: 12 / 3 / 2025</span><span class="reg-meta-vars">المؤشر 1 · ممارسة 1.3</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f05')">تحرير</button><button class="reg-act" onclick="submitForApproval('f05')">رفع للاعتماد</button></div><div class="reg-governance-badge"><div class="rgb-inner">◌</div></div></div>
-      <div class="reg-card required" data-status="empty" data-group="forms gov" data-id="f06"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم يُعَدّ</div></div><div class="reg-info"><div class="reg-num">FORM-06</div><div class="reg-name empty-name">قالب محضر اجتماع مجلس الإدارة</div><div class="reg-meta-row"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">المؤشر 2 · ممارسة 2.9</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f06')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">!</div></div></div>
-      <div class="reg-card required" data-status="empty" data-group="forms gov" data-id="f07"><div class="reg-status"><div class="status-dot empty"></div><div class="status-label">لم يُعَدّ</div></div><div class="reg-info"><div class="reg-num">FORM-07</div><div class="reg-name empty-name">برنامج التعريف بالأعضاء الجدد (Onboarding)</div><div class="reg-meta-row"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span><span class="reg-meta-date">المؤشر 2 · ممارسة 2.4</span></div></div><div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f07')">إنشاء من قالب</button></div><div class="reg-governance-badge"><div class="rgb-inner">!</div></div></div>
+      <div class="reg-grid">
+        <div class="reg-card required" data-status="approved" data-group="forms gov" data-id="f01">
+          <div class="reg-card-top"><span class="reg-num">FORM-01</span><span class="reg-status-pill approved"><span class="status-dot"></span>معتمد</span></div>
+          <div class="reg-info"><div class="reg-name">نموذج الإفصاح السنوي</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-date">رُفع: 30 / 3 / 2025</span><span class="reg-meta-link">الشفافية · المؤشر 7</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f01')">تحرير</button><button class="reg-act pdf" onclick="openPdfModal('f01')">⬇ PDF</button></div>
+          <div class="reg-corner-badge gov">✓</div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="forms gov" data-id="f02">
+          <div class="reg-card-top"><span class="reg-num">FORM-02</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم يُعَدّ</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">التقرير السنوي للبرامج والأنشطة</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 40</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f02')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="forms fin legal" data-id="f03">
+          <div class="reg-card-top"><span class="reg-num">FORM-03</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم يُعَدّ</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">مصفوفة مخاطر تمويل الإرهاب وغسل الأموال</div><div class="reg-tags"><span class="reg-tag legal">امتثال</span><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 19</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f03')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="forms gov" data-id="f04">
+          <div class="reg-card-top"><span class="reg-num">FORM-04</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم يُعَدّ</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">سجل الإفصاح عن المستفيد الحقيقي</div><div class="reg-tags"><span class="reg-tag legal">امتثال</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">دورية ربع سنوية</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f04')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="draft" data-group="forms gov" data-id="f05">
+          <div class="reg-card-top"><span class="reg-num">FORM-05</span><span class="reg-status-pill draft"><span class="status-dot"></span>مسودة</span></div>
+          <div class="reg-info"><div class="reg-name">نموذج محضر اعتماد اللائحة الأساسية</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-date">12 / 3 / 2025</span><span class="reg-meta-link">المؤشر 1</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f05')">تحرير</button><button class="reg-act" onclick="submitForApproval('f05')">للاعتماد</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="forms gov" data-id="f06">
+          <div class="reg-card-top"><span class="reg-num">FORM-06</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم يُعَدّ</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">قالب محضر اجتماع مجلس الإدارة</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 12 · 32</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f06')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="forms gov" data-id="f07">
+          <div class="reg-card-top"><span class="reg-num">FORM-07</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم يُعَدّ</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">برنامج التعريف بالأعضاء الجدد (Onboarding)</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 14</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f07')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="forms gov" data-id="f08">
+          <div class="reg-card-top"><span class="reg-num">FORM-08</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم يُعَدّ</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">نموذج محضر الجمعية العمومية العادية</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 5 · 6 · 26</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f08')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="forms gov" data-id="f09">
+          <div class="reg-card-top"><span class="reg-num">FORM-09</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم يُعَدّ</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">نموذج محضر الجمعية العمومية غير العادية</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 4</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f09')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="forms fin" data-id="f10">
+          <div class="reg-card-top"><span class="reg-num">FORM-10</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم يُعَدّ</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">نموذج التقرير المالي السنوي</div><div class="reg-tags"><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 18 · 43 · 58</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f10')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="forms gov" data-id="f11">
+          <div class="reg-card-top"><span class="reg-num">FORM-11</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم يُعَدّ</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">نموذج بطاقة عضوية الجمعية العمومية</div><div class="reg-tags"><span class="reg-tag gov">حوكمة</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 28</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f11')">إنشاء من قالب</button></div>
+        </div>
+        <div class="reg-card required" data-status="empty" data-group="forms fin" data-id="f12">
+          <div class="reg-card-top"><span class="reg-num">FORM-12</span><span class="reg-status-pill empty"><span class="status-dot"></span>لم يُعَدّ</span></div>
+          <div class="reg-info"><div class="reg-name empty-name">نموذج الموازنة التقديرية السنوية</div><div class="reg-tags"><span class="reg-tag fin">مالية</span><span class="reg-tag req">إلزامي</span></div></div>
+          <div class="reg-meta-row"><span class="reg-meta-link">المؤشر 60</span></div>
+          <div class="reg-actions"><button class="reg-act primary" onclick="openEditor('f12')">إنشاء من قالب</button></div>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -6458,6 +6746,6 @@
 <!-- Toast -->
 <div class="save-toast" id="save-toast"></div>
 
-  <script src="assets/app.js?v=9"></script>
+  <script src="assets/app.js?v=10"></script>
 </body>
 </html>

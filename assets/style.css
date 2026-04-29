@@ -909,56 +909,89 @@
   .add-reg-btn::before{content:"+";font-size:18px;font-weight:300}
 
   /* مجموعة اللوائح */
-  .reg-group{margin-bottom:32px}
-  .reg-group-head{display:flex;align-items:center;gap:14px;margin-bottom:14px;padding:14px 18px;background:var(--paper-warm);border:1px solid var(--line);border-radius:4px}
-  .reg-group-ico{width:36px;height:36px;border-radius:4px;display:grid;place-items:center;font-size:16px;font-weight:800;font-family:'Tajawal';color:var(--paper);flex-shrink:0}
+  .reg-group{margin-bottom:36px}
+  .reg-group-head{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding:16px 20px;background:linear-gradient(180deg,var(--paper-warm) 0%,var(--paper) 100%);border:1px solid var(--line);border-radius:10px;box-shadow:0 1px 0 rgba(26,24,22,0.02)}
+  .reg-group-ico{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-size:16px;font-weight:800;font-family:'Tajawal';color:var(--paper);flex-shrink:0;box-shadow:0 4px 12px rgba(26,24,22,0.12)}
   .reg-group-title{flex:1}
-  .reg-group-title h3{font-family:'Tajawal';font-weight:700;font-size:16px;margin-bottom:3px}
-  .reg-group-title p{font-size:12px;color:var(--muted)}
-  .reg-group-meta{font-family:'JetBrains Mono';font-size:11px;color:var(--muted);text-align:left}
-  .reg-group-meta strong{color:var(--ink);font-size:13px;display:block;text-align:left}
+  .reg-group-title h3{font-family:'Tajawal';font-weight:700;font-size:16px;margin-bottom:3px;letter-spacing:-0.2px}
+  .reg-group-title p{font-size:12px;color:var(--muted);line-height:1.5}
+  .reg-group-meta{font-family:'JetBrains Mono';font-size:11px;color:var(--muted);text-align:left;line-height:1.4}
+  .reg-group-meta strong{color:var(--ink);font-size:14px;display:block;text-align:left;font-family:'Tajawal';font-weight:800}
 
-  /* بطاقة اللائحة */
-  .reg-card{background:var(--paper);border:1px solid var(--line);border-radius:4px;margin-bottom:8px;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:0;overflow:hidden;transition:all 0.15s}
-  .reg-card:hover{border-color:var(--line-soft);box-shadow:0 2px 8px rgba(26,24,22,0.06)}
-  .reg-card.required{border-right:3px solid var(--accent)}
-  .reg-card.optional{border-right:3px solid var(--olive)}
+  /* شبكة بطاقات اللوائح */
+  .reg-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
 
-  .reg-status{width:56px;padding:16px 12px;display:flex;flex-direction:column;align-items:center;gap:4px;border-left:1px solid var(--line-soft);background:var(--paper-warm);align-self:stretch;justify-content:center}
-  .status-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-  .status-dot.approved{background:var(--good)}
-  .status-dot.draft{background:var(--gold)}
-  .status-dot.empty{background:var(--line);border:1.5px dashed var(--muted-soft)}
-  .status-dot.review{background:var(--teal)}
-  .status-label{font-family:'JetBrains Mono';font-size:8px;letter-spacing:0.5px;text-transform:uppercase;color:var(--muted);text-align:center;line-height:1.3;margin-top:2px}
+  /* بطاقة اللائحة — التصميم الجديد */
+  .reg-card{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:0;overflow:hidden;transition:transform 0.18s ease,box-shadow 0.18s ease,border-color 0.18s ease;display:flex;flex-direction:column;min-height:185px}
+  .reg-card::before{content:"";position:absolute;top:0;right:0;width:4px;height:100%;background:var(--line-soft);transition:background 0.2s}
+  .reg-card.required::before{background:linear-gradient(180deg,var(--accent) 0%,#a14a2c 100%)}
+  .reg-card.optional::before{background:linear-gradient(180deg,var(--olive) 0%,#7a7950 100%)}
+  .reg-card:hover{transform:translateY(-2px);border-color:var(--ink-soft);box-shadow:0 8px 20px rgba(26,24,22,0.08),0 2px 4px rgba(26,24,22,0.04)}
+  .reg-card.required:hover::before{width:5px}
 
-  .reg-info{padding:16px 20px}
-  .reg-num{font-family:'JetBrains Mono';font-size:10px;color:var(--accent);letter-spacing:0.8px;margin-bottom:5px}
-  .reg-name{font-family:'Tajawal';font-weight:700;font-size:16px;line-height:1.3;margin-bottom:6px}
-  .reg-name.empty-name{color:var(--muted);font-style:italic;font-weight:500}
-  .reg-meta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:6px}
-  .reg-tag{font-family:'JetBrains Mono';font-size:10px;padding:2px 8px;border-radius:2px;font-weight:500}
-  .reg-tag.gov{background:#e8d8b9;color:#7a5a1a}
-  .reg-tag.fin{background:#cfdbcc;color:#3d5a39}
-  .reg-tag.hr{background:#d9d2e0;color:#564670}
-  .reg-tag.legal{background:#e0c8c0;color:#754237}
-  .reg-tag.prog{background:#d8d1bc;color:#665a2c}
-  .reg-tag.req{background:rgba(139,58,31,0.12);color:var(--accent);font-weight:600}
+  /* رأس البطاقة (الكود + الحالة) */
+  .reg-card-top{display:flex;justify-content:space-between;align-items:center;padding:14px 18px 0 16px;gap:8px}
+  .reg-num{font-family:'JetBrains Mono';font-size:11px;color:var(--accent);letter-spacing:1px;font-weight:700;background:rgba(139,58,31,0.07);padding:3px 9px;border-radius:5px;display:inline-block}
+  .reg-status-pill{display:inline-flex;align-items:center;gap:5px;font-family:'IBM Plex Sans Arabic';font-size:10.5px;padding:3px 9px;border-radius:30px;font-weight:600;letter-spacing:0.2px;line-height:1}
+  .reg-status-pill .status-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;border:none}
+  .reg-status-pill.approved{background:rgba(63,107,58,0.1);color:var(--good)}
+  .reg-status-pill.approved .status-dot{background:var(--good);box-shadow:0 0 0 3px rgba(63,107,58,0.18)}
+  .reg-status-pill.draft{background:rgba(168,132,62,0.12);color:var(--gold)}
+  .reg-status-pill.draft .status-dot{background:var(--gold);box-shadow:0 0 0 3px rgba(168,132,62,0.18)}
+  .reg-status-pill.empty{background:rgba(107,105,98,0.08);color:var(--muted)}
+  .reg-status-pill.empty .status-dot{background:var(--muted-soft);border:1.5px dashed var(--muted)}
+  .reg-status-pill.review{background:rgba(45,94,90,0.1);color:var(--teal)}
+  .reg-status-pill.review .status-dot{background:var(--teal);box-shadow:0 0 0 3px rgba(45,94,90,0.18)}
+
+  /* الجسم — الاسم والوصف */
+  .reg-info{padding:8px 18px 12px 18px;flex:1;display:flex;flex-direction:column}
+  .reg-name{font-family:'Tajawal';font-weight:700;font-size:15.5px;line-height:1.4;margin-bottom:6px;color:var(--ink);letter-spacing:-0.2px}
+  .reg-name.empty-name{color:var(--muted);font-weight:600}
+  .reg-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
+  .reg-tag{font-family:'IBM Plex Sans Arabic';font-size:10.5px;padding:2px 9px;border-radius:30px;font-weight:600;line-height:1.5;letter-spacing:0.1px}
+  .reg-tag.gov{background:rgba(168,132,62,0.13);color:#7a5a1a}
+  .reg-tag.fin{background:rgba(63,107,58,0.12);color:#3d5a39}
+  .reg-tag.hr{background:rgba(86,70,112,0.13);color:#564670}
+  .reg-tag.legal{background:rgba(117,66,55,0.13);color:#754237}
+  .reg-tag.prog{background:rgba(102,90,44,0.13);color:#665a2c}
+  .reg-tag.req{background:rgba(139,58,31,0.1);color:var(--accent)}
   .reg-tag.opt{background:rgba(107,105,72,0.1);color:var(--olive)}
-  .reg-meta-date{font-size:11px;color:var(--muted);font-family:'JetBrains Mono'}
-  .reg-meta-vars{font-size:11px;color:var(--teal);font-family:'JetBrains Mono';display:flex;align-items:center;gap:4px}
+
+  /* صف بيانات وصفية */
+  .reg-meta-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;padding:0 18px 10px 18px;font-size:11px;color:var(--muted);font-family:'JetBrains Mono'}
+  .reg-meta-row > span{display:inline-flex;align-items:center;gap:5px;line-height:1.3}
+  .reg-meta-date::before{content:"📅";font-size:10px;filter:saturate(0.4)}
+  .reg-meta-vars{color:var(--teal)}
   .reg-meta-vars::before{content:"◆";font-size:8px}
+  .reg-meta-link{color:var(--accent);font-weight:600}
+  .reg-meta-link::before{content:"↳";font-size:11px}
 
-  .reg-actions{padding:16px 14px;display:flex;flex-direction:column;gap:6px;border-right:1px solid var(--line-soft)}
-  .reg-act{padding:6px 12px;background:transparent;border:1px solid var(--line);border-radius:3px;font-family:inherit;font-size:11px;cursor:pointer;color:var(--ink-soft);font-weight:500;transition:all 0.13s;white-space:nowrap}
-  .reg-act:hover{border-color:var(--teal);color:var(--teal)}
-  .reg-act.primary{background:var(--teal);color:var(--paper);border-color:var(--teal)}
-  .reg-act.primary:hover{background:var(--accent);border-color:var(--accent)}
-  .reg-act.danger{border-color:var(--accent);color:var(--accent)}
+  /* تذييل البطاقة — الأزرار */
+  .reg-actions{display:flex;align-items:center;gap:6px;padding:10px 12px;border-top:1px solid var(--line-soft);background:linear-gradient(180deg,transparent 0%,rgba(245,241,234,0.5) 100%);flex-wrap:wrap}
+  .reg-act{flex:1;min-width:0;padding:7px 10px;background:transparent;border:1px solid var(--line);border-radius:8px;font-family:'IBM Plex Sans Arabic';font-size:12px;cursor:pointer;color:var(--ink-soft);font-weight:600;transition:all 0.15s;white-space:nowrap;text-align:center;display:inline-flex;align-items:center;justify-content:center;gap:4px;line-height:1.3;letter-spacing:-0.1px}
+  .reg-act:hover{border-color:var(--ink);background:var(--paper-warm);color:var(--ink);transform:translateY(-1px)}
+  .reg-act.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .reg-act.primary:hover{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+  .reg-act.pdf{flex:0 0 auto;color:var(--accent);border-color:rgba(139,58,31,0.25);font-family:'JetBrains Mono';font-size:11px;padding:7px 10px}
+  .reg-act.pdf:hover{background:var(--accent);color:var(--paper);border-color:var(--accent)}
+  .reg-act.danger{border-color:rgba(139,58,31,0.25);color:var(--accent)}
 
-  .reg-governance-badge{padding:0 12px;display:flex;align-items:center}
-  .rgb-inner{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-family:'Tajawal';font-weight:800;font-size:11px;border:2px dashed var(--line);color:var(--muted)}
-  .rgb-inner.gov{border-color:var(--accent);color:var(--accent);border-style:solid}
+  /* أيقونة شارة الحوكمة (في الزاوية) */
+  .reg-card .reg-corner-badge{position:absolute;top:12px;left:14px;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-family:'Tajawal';font-weight:800;font-size:11px;border:1.5px dashed var(--line);color:var(--muted-soft);background:var(--paper);opacity:0;transition:opacity 0.18s}
+  .reg-card:hover .reg-corner-badge{opacity:1}
+  .reg-card .reg-corner-badge.gov{border-color:var(--accent);color:var(--accent);border-style:solid;background:rgba(139,58,31,0.05)}
+
+  /* تتوافق مع التصميم القديم (إخفاء العناصر القديمة في حال وجودها) */
+  .reg-status:not(.reg-status-pill){display:none}
+  .reg-governance-badge{display:none}
+
+  /* استجابة للجوال */
+  @media(max-width:760px){
+    .reg-grid{grid-template-columns:1fr}
+    .reg-card{min-height:auto}
+    .reg-actions{padding:10px}
+    .reg-act{font-size:11px;padding:6px 8px}
+  }
 
   /* ---- المحرر ---- */
   .editor-layout{display:grid;grid-template-columns:280px 1fr;gap:20px;height:calc(100vh - 260px);min-height:600px}
