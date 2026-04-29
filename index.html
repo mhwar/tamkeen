@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=10">
+<link rel="stylesheet" href="assets/style.css?v=11">
 </head>
 <body>
 <div class="qatt-pattern"></div>
@@ -6620,40 +6620,77 @@
     </div>
     <div class="pdf-modal-body">
 
-      <!-- معاينة الغلاف -->
-      <div>
-        <div style="font-family:'JetBrains Mono';font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:12px">معاينة الغلاف</div>
+      <!-- معاينة الغلاف الحيّة -->
+      <div class="pdf-section">
+        <div class="pdf-section-eye">معاينة الغلاف</div>
         <div class="cover-preview-wrap">
-          <div class="cover-preview">
-            <div class="cp-top-bar"></div>
-            <div class="cp-body">
-              <div class="cp-qatt">ت</div>
-              <div class="cp-logo-ring"><span id="cp-letter">ج</span></div>
-              <div class="cp-org" id="cp-org-name">جمعية أنموذج الخيرية</div>
-              <div class="cp-divider"></div>
-              <div class="cp-title" id="cp-doc-title">اللائحة المالية ومصفوفة الصلاحيات</div>
-              <div class="cp-code" id="cp-doc-code">GOV-02</div>
+          <div class="cover-preview" id="cover-preview-box">
+            <img class="cp-custom-img" id="cp-custom-img" alt="" style="display:none">
+            <div class="cp-default" id="cp-default-cover">
+              <div class="cp-top-bar"></div>
+              <div class="cp-body">
+                <div class="cp-logo-ring" id="cp-logo-ring">
+                  <img class="cp-logo-img" id="cp-logo-img" alt="" style="display:none">
+                  <span id="cp-letter">ج</span>
+                </div>
+                <div class="cp-org" id="cp-org-name">جمعية أنموذج الخيرية</div>
+                <div class="cp-divider"></div>
+                <div class="cp-eyebrow">وثيقة حوكمة مؤسسية</div>
+                <div class="cp-title" id="cp-doc-title">اللائحة المالية ومصفوفة الصلاحيات</div>
+                <div class="cp-code" id="cp-doc-code">GOV-02</div>
+                <div class="cp-meta-row">
+                  <span class="cp-meta-item"><b id="cp-year">2025م</b><i>السنة</i></span>
+                  <span class="cp-meta-item"><b id="cp-status-badge">مسودة</b><i>الحالة</i></span>
+                </div>
+              </div>
+              <div class="cp-bottom-bar"></div>
             </div>
-            <div class="cp-bottom">
-              <div class="cp-year" id="cp-year">2025م</div>
-              <div class="cp-badge" id="cp-status-badge">مسودة</div>
-            </div>
-            <div class="cp-top-bar" style="position:absolute;bottom:0;height:6px;width:100%;background:linear-gradient(90deg,#a8843e,#8b3a1f)"></div>
           </div>
         </div>
       </div>
 
-      <!-- إعدادات الهوية -->
-      <div>
-        <div style="font-family:'JetBrains Mono';font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:12px">هوية الجهة على الغلاف</div>
+      <!-- 1. شعار الجهة -->
+      <div class="pdf-section">
+        <div class="pdf-section-eye">شعار الجهة</div>
+        <div class="pdf-upload-row">
+          <label class="pdf-upload-card" id="logo-upload-card">
+            <input type="file" id="pdf-logo-file" accept="image/png,image/jpeg,image/svg+xml" onchange="handleLogoUpload(event)" style="display:none">
+            <div class="pul-ico" id="logo-ico-default">⬆</div>
+            <div class="pul-text">
+              <div class="pul-title" id="logo-upload-title">رفع شعار الجهة</div>
+              <div class="pul-sub" id="logo-upload-sub">PNG / JPG / SVG — مربّع 256×256 يفضّل</div>
+            </div>
+            <div class="pul-clear" id="logo-clear-btn" onclick="clearLogoUpload(event)" style="display:none">إزالة</div>
+          </label>
+          <div class="pdf-upload-or">أو</div>
+          <div class="pset" style="flex:1;min-width:140px">
+            <label>حرف بديل (إذا لم يُرفع شعار)</label>
+            <input type="text" id="pdf-org-letter" value="" maxlength="2" oninput="updateCoverPreview()" placeholder="مثال: ج">
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. غلاف مخصّص (اختياري) -->
+      <div class="pdf-section">
+        <div class="pdf-section-eye">غلاف مخصّص <span class="pdf-tip">(اختياري — يحلّ محلّ التصميم الافتراضي)</span></div>
+        <label class="pdf-upload-card pdf-upload-card-wide" id="cover-upload-card">
+          <input type="file" id="pdf-cover-file" accept="image/png,image/jpeg" onchange="handleCoverUpload(event)" style="display:none">
+          <div class="pul-ico" id="cover-ico-default">🖼</div>
+          <div class="pul-text">
+            <div class="pul-title" id="cover-upload-title">رفع صورة غلاف كاملة</div>
+            <div class="pul-sub" id="cover-upload-sub">صورة A4 عمودية 794×1123 بكسل · PNG / JPG</div>
+          </div>
+          <div class="pul-clear" id="cover-clear-btn" onclick="clearCoverUpload(event)" style="display:none">إزالة</div>
+        </label>
+      </div>
+
+      <!-- 3. بيانات الوثيقة -->
+      <div class="pdf-section">
+        <div class="pdf-section-eye">بيانات الوثيقة</div>
         <div class="pdf-settings">
           <div class="pset">
-            <label>اسم الجمعية</label>
+            <label>اسم الجهة</label>
             <input type="text" id="pdf-org-name" value="" oninput="updateCoverPreview()">
-          </div>
-          <div class="pset">
-            <label>الحرف / الشعار</label>
-            <input type="text" id="pdf-org-letter" value="" maxlength="2" oninput="updateCoverPreview()" placeholder="مثال: ج">
           </div>
           <div class="pset">
             <label>اسم الوثيقة</label>
@@ -6675,14 +6712,6 @@
               <option value="معتمدة">معتمدة</option>
             </select>
           </div>
-          <div class="pset pset-full">
-            <label>وصف مختصر (اختياري — يظهر في الغلاف)</label>
-            <input type="text" id="pdf-doc-desc" placeholder="وثيقة حوكمة لائحة مالية معتمدة من مجلس الإدارة" oninput="updateCoverPreview()">
-          </div>
-          <div class="pset">
-            <label>المُعدّ / القسم</label>
-            <input type="text" id="pdf-preparer" placeholder="المدير التنفيذي">
-          </div>
           <div class="pset">
             <label>تاريخ الاعتماد</label>
             <input type="date" id="pdf-approve-date">
@@ -6690,40 +6719,20 @@
         </div>
       </div>
 
-      <!-- خيارات المحتوى -->
-      <div>
-        <div style="font-family:'JetBrains Mono';font-size:10px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase;margin-bottom:12px">محتوى التصدير</div>
-        <div class="pdf-options-grid">
-          <div class="popt active" id="opt-cover" onclick="toggleOpt(this,'cover')">
-            <div class="popt-ico">🎨</div>
-            <div class="popt-lbl">صفحة الغلاف</div>
-            <div class="popt-sub">تصميم A4 كامل</div>
-          </div>
-          <div class="popt active" id="opt-content" onclick="toggleOpt(this,'content')">
-            <div class="popt-ico">📄</div>
-            <div class="popt-lbl">نص الوثيقة</div>
-            <div class="popt-sub">المتغيرات مطبَّقة</div>
-          </div>
-          <div class="popt active" id="opt-sig" onclick="toggleOpt(this,'sig')">
-            <div class="popt-ico">✍️</div>
-            <div class="popt-lbl">خانات التوقيع</div>
-            <div class="popt-sub">رئيس + مدير تنفيذي</div>
-          </div>
-          <div class="popt" id="opt-stamp" onclick="toggleOpt(this,'stamp')">
-            <div class="popt-ico">🔖</div>
-            <div class="popt-lbl">ختم الاعتماد</div>
-            <div class="popt-sub">للوثائق المعتمدة</div>
-          </div>
-          <div class="popt active" id="opt-header" onclick="toggleOpt(this,'header')">
-            <div class="popt-ico">📌</div>
-            <div class="popt-lbl">ترويسة الصفحات</div>
-            <div class="popt-sub">الاسم + الرقم</div>
-          </div>
-          <div class="popt active" id="opt-footer" onclick="toggleOpt(this,'footer')">
-            <div class="popt-ico">📋</div>
-            <div class="popt-lbl">تذييل + ترقيم</div>
-            <div class="popt-sub">رقم الصفحة</div>
-          </div>
+      <!-- 4. خيارات بسيطة (toggle بدل البطاقات) -->
+      <div class="pdf-section">
+        <div class="pdf-section-eye">خيارات إضافية</div>
+        <div class="pdf-toggles">
+          <label class="pdf-toggle">
+            <input type="checkbox" id="opt-sig" checked>
+            <span class="pt-track"></span>
+            <span class="pt-text">خانات التوقيع <i>رئيس المجلس + المدير التنفيذي</i></span>
+          </label>
+          <label class="pdf-toggle">
+            <input type="checkbox" id="opt-pages" checked>
+            <span class="pt-track"></span>
+            <span class="pt-text">ترويسة وترقيم الصفحات</span>
+          </label>
         </div>
       </div>
 
@@ -6738,14 +6747,16 @@
     </div>
     <div class="pdf-modal-foot">
       <button class="pdf-btn primary" id="pdf-download-btn" onclick="generatePDF()">⬇ تنزيل PDF</button>
-      <button class="pdf-btn secondary" onclick="previewPdfOnly()">◎ معاينة قبل التنزيل</button>
       <button class="pdf-btn secondary" onclick="closePdfModal()">إلغاء</button>
     </div>
   </div>
 </div>
+
+<!-- منطقة الرسم المخفية لـ html2canvas -->
+<div id="pdf-render-zone" aria-hidden="true"></div>
 <!-- Toast -->
 <div class="save-toast" id="save-toast"></div>
 
-  <script src="assets/app.js?v=10"></script>
+  <script src="assets/app.js?v=11"></script>
 </body>
 </html>

@@ -223,19 +223,13 @@
 
   
   // =========================================================
-  //  نظام تصدير PDF
+  //  نظام تصدير PDF — مبسَّط بخلفية بيضاء + رفع شعار/غلاف
   // =========================================================
-  const pdfOpts = { cover:true, content:true, sig:true, stamp:false, header:true, footer:true };
+  const pdfState = { logoDataUrl: null, coverDataUrl: null };
   let currentExportId = null;
-
-  function toggleOpt(el, key) {
-    pdfOpts[key] = !pdfOpts[key];
-    el.classList.toggle('active', pdfOpts[key]);
-  }
 
   function openPdfModal(docId) {
     currentExportId = docId || null;
-    // ملء القيم من المتغيرات
     const orgName = VARS['اسم_الجمعية'] || 'جمعية خيرية';
     const orgLetter = orgName.charAt(0) || 'ج';
     const docTitle = document.getElementById('editor-title')?.textContent || 'وثيقة';
@@ -251,13 +245,12 @@
     set('pdf-year', VARS['السنة_المالية'] ? VARS['السنة_المالية'] + 'م' : new Date().getFullYear() + 'م');
     const statusEl = document.getElementById('pdf-status');
     if(statusEl) statusEl.value = status;
-    set('pdf-preparer', VARS['المدير_التنفيذي'] || '');
 
     // إعادة شريط التقدم
     const prog = document.getElementById('pdf-progress');
     if(prog) prog.classList.remove('show');
     const btn = document.getElementById('pdf-download-btn');
-    if(btn) { btn.disabled = false; btn.textContent = '⬇ تنزيل PDF'; }
+    if(btn) { btn.disabled = false; btn.textContent = '⬇ تنزيل PDF'; btn.style.background=''; }
 
     updateCoverPreview();
     document.getElementById('pdf-export-modal').classList.add('show');
@@ -267,10 +260,93 @@
     document.getElementById('pdf-export-modal').classList.remove('show');
   }
 
+  // ---- رفع الشعار ----
+  function handleLogoUpload(ev) {
+    const file = ev.target.files && ev.target.files[0];
+    if(!file) return;
+    if(file.size > 4*1024*1024) { showToast('حجم الشعار كبير — الحد الأقصى 4 ميجا'); return; }
+    const reader = new FileReader();
+    reader.onload = e => {
+      pdfState.logoDataUrl = e.target.result;
+      const img = document.getElementById('cp-logo-img');
+      const letter = document.getElementById('cp-letter');
+      if(img && letter){ img.src = pdfState.logoDataUrl; img.style.display='block'; letter.style.display='none'; }
+      const card = document.getElementById('logo-upload-card');
+      const clear = document.getElementById('logo-clear-btn');
+      const title = document.getElementById('logo-upload-title');
+      const sub = document.getElementById('logo-upload-sub');
+      if(card) card.classList.add('has-file');
+      if(clear) clear.style.display='block';
+      if(title) title.textContent = 'تم رفع الشعار ✓';
+      if(sub) sub.textContent = file.name;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function clearLogoUpload(ev) {
+    if(ev){ ev.preventDefault(); ev.stopPropagation(); }
+    pdfState.logoDataUrl = null;
+    const img = document.getElementById('cp-logo-img');
+    const letter = document.getElementById('cp-letter');
+    if(img && letter){ img.style.display='none'; img.src=''; letter.style.display='block'; }
+    const card = document.getElementById('logo-upload-card');
+    const clear = document.getElementById('logo-clear-btn');
+    const title = document.getElementById('logo-upload-title');
+    const sub = document.getElementById('logo-upload-sub');
+    const input = document.getElementById('pdf-logo-file');
+    if(card) card.classList.remove('has-file');
+    if(clear) clear.style.display='none';
+    if(title) title.textContent = 'رفع شعار الجهة';
+    if(sub) sub.textContent = 'PNG / JPG / SVG — مربّع 256×256 يفضّل';
+    if(input) input.value='';
+  }
+
+  // ---- رفع غلاف مخصّص ----
+  function handleCoverUpload(ev) {
+    const file = ev.target.files && ev.target.files[0];
+    if(!file) return;
+    if(file.size > 8*1024*1024) { showToast('حجم الغلاف كبير — الحد الأقصى 8 ميجا'); return; }
+    const reader = new FileReader();
+    reader.onload = e => {
+      pdfState.coverDataUrl = e.target.result;
+      const img = document.getElementById('cp-custom-img');
+      const def = document.getElementById('cp-default-cover');
+      if(img && def){ img.src = pdfState.coverDataUrl; img.style.display='block'; def.style.display='none'; }
+      const card = document.getElementById('cover-upload-card');
+      const clear = document.getElementById('cover-clear-btn');
+      const title = document.getElementById('cover-upload-title');
+      const sub = document.getElementById('cover-upload-sub');
+      if(card) card.classList.add('has-file');
+      if(clear) clear.style.display='block';
+      if(title) title.textContent = 'تم رفع الغلاف ✓';
+      if(sub) sub.textContent = file.name + ' — سيُستخدم بدل الغلاف الافتراضي';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  function clearCoverUpload(ev) {
+    if(ev){ ev.preventDefault(); ev.stopPropagation(); }
+    pdfState.coverDataUrl = null;
+    const img = document.getElementById('cp-custom-img');
+    const def = document.getElementById('cp-default-cover');
+    if(img && def){ img.style.display='none'; img.src=''; def.style.display='flex'; }
+    const card = document.getElementById('cover-upload-card');
+    const clear = document.getElementById('cover-clear-btn');
+    const title = document.getElementById('cover-upload-title');
+    const sub = document.getElementById('cover-upload-sub');
+    const input = document.getElementById('pdf-cover-file');
+    if(card) card.classList.remove('has-file');
+    if(clear) clear.style.display='none';
+    if(title) title.textContent = 'رفع صورة غلاف كاملة';
+    if(sub) sub.textContent = 'صورة A4 عمودية 794×1123 بكسل · PNG / JPG';
+    if(input) input.value='';
+  }
+
+  // ---- تحديث المعاينة الحيّة ----
   function updateCoverPreview() {
     const v = id => document.getElementById(id)?.value || '';
     const org = v('pdf-org-name');
-    const letter = v('pdf-org-letter') || (org.charAt(0)) || 'ج';
+    const letter = (v('pdf-org-letter') || org.charAt(0) || 'ج').charAt(0);
     const title = v('pdf-doc-title');
     const code = v('pdf-doc-code');
     const year = v('pdf-year');
@@ -284,7 +360,7 @@
     set('cp-year', year);
     set('cp-status-badge', status);
     const badge = document.getElementById('cp-status-badge');
-    if(badge) badge.style.color = status === 'معتمدة' ? '#3f6b3a' : status === 'قيد المراجعة' ? '#2d5e5a' : '#a8843e';
+    if(badge) badge.style.color = status === 'معتمدة' ? 'var(--good)' : status === 'قيد المراجعة' ? 'var(--teal)' : 'var(--gold)';
   }
 
   function setProgress(pct, msg) {
@@ -296,428 +372,271 @@
     if(msgEl) msgEl.textContent = msg;
   }
 
-  // بناء HTML الوثيقة الكاملة
-  function buildDocumentHTML(opts) {
-    const v = id => document.getElementById(id)?.value || '';
-    const orgName = v('pdf-org-name');
-    const orgLetter = v('pdf-org-letter') || orgName.charAt(0) || 'ج';
-    const docTitle = v('pdf-doc-title');
-    const docCode = v('pdf-doc-code');
-    const year = v('pdf-year');
-    const status = document.getElementById('pdf-status')?.value || 'مسودة';
-    const preparer = v('pdf-preparer');
-    const approveDate = v('pdf-approve-date');
-    const desc = v('pdf-doc-desc');
-
-    // تطبيق المتغيرات على نص الوثيقة
+  // ---- تحويل النص الخام إلى HTML منسّق مع تطبيق المتغيرات ----
+  function buildContentHtml() {
     let rawText = document.getElementById('doc-raw')?.value || '';
     Object.entries(VARS).forEach(([k,val]) => {
       rawText = rawText.replace(new RegExp('\\{\\{' + k + '\\}\\}', 'g'), val || ('{{' + k + '}}'));
     });
-
-    // تحويل النص إلى HTML منسّق
-    function textToHtml(text) {
-      const lines = text.split('\n');
-      let out = '';
-      lines.forEach(line => {
-        const t = line.trim();
-        if(!t) { out += '<br>'; return; }
-        if(t.match(/^(أولاً|ثانياً|ثالثاً|رابعاً|خامساً|سادساً|سابعاً|ثامناً|تاسعاً|عاشراً)/) || (t.endsWith(':') && t.length < 60 && !t.startsWith(' '))) {
-          out += `<h3>${t}</h3>`;
-        } else {
-          out += `<p>${t}</p>`;
-        }
-      });
-      return out;
-    }
-
-    const now = new Date().toLocaleDateString('ar-SA');
-
-    // صفحة الغلاف
-    let coverHTML = '';
-    if(opts.cover) {
-      coverHTML = `
-      <div class="pdf-cover-page">
-        <div class="pdf-cover-top-stripe"></div>
-        <div class="pdf-cover-body">
-          <div class="pdf-cover-watermark">ت</div>
-          <div class="pdf-cover-logo-ring">
-            <span class="pdf-cover-logo-letter">${orgLetter}</span>
-          </div>
-          <div class="pdf-cover-org-name">${orgName}</div>
-          <div class="pdf-cover-org-sub">${desc || 'منصة تمكين للجمعيات الخيرية'}</div>
-          <div class="pdf-cover-separator"></div>
-          <div class="pdf-cover-doc-type">وثيقة حوكمة مؤسسية</div>
-          <div class="pdf-cover-doc-title">${docTitle}</div>
-          <div class="pdf-cover-doc-code">${docCode}</div>
-          <div class="pdf-cover-meta-row">
-            <div class="pdf-cover-meta-item">
-              <div class="pdf-cover-meta-label">الحالة</div>
-              <div class="pdf-cover-meta-value">${status}</div>
-            </div>
-            <div class="pdf-cover-meta-item">
-              <div class="pdf-cover-meta-label">السنة</div>
-              <div class="pdf-cover-meta-value">${year}</div>
-            </div>
-            ${approveDate ? `<div class="pdf-cover-meta-item">
-              <div class="pdf-cover-meta-label">تاريخ الاعتماد</div>
-              <div class="pdf-cover-meta-value">${approveDate}</div>
-            </div>` : ''}
-          </div>
-        </div>
-        <div class="pdf-cover-bottom">
-          <div class="pdf-cover-bottom-left">© ${year} ${orgName} · جميع الحقوق محفوظة</div>
-          <div class="pdf-cover-bottom-right">منصة تمكين</div>
-        </div>
-        <div class="pdf-cover-bottom-stripe"></div>
-      </div>`;
-    }
-
-    // ختم الاعتماد
-    const stampHTML = (opts.stamp && status === 'معتمدة') ? `
-      <div class="pdf-approved-stamp">
-        <div class="pdf-approved-stamp-text">معتمدة<br>${approveDate || year}</div>
-      </div>` : '';
-
-    // ترويسة وتذييل صفحة المحتوى
-    const headerHTML = opts.header ? `
-      <div class="pdf-content-header">
-        <div class="pdf-content-header-logo">
-          <div class="pdf-content-header-letter">${orgLetter}</div>
-          <div>
-            <div class="pdf-content-header-org">${orgName}</div>
-            <div class="pdf-content-header-sub">منصة تمكين للجمعيات الخيرية</div>
-          </div>
-        </div>
-        <div class="pdf-content-header-meta">
-          ${docCode}<br>
-          ${status}<br>
-          ${now}
-        </div>
-      </div>` : '';
-
-    const footerHTML = opts.footer ? `
-      <div class="pdf-content-footer">
-        <div class="pdf-content-footer-right">
-          <div class="pdf-content-footer-dot"></div>
-          <span>${orgName}</span>
-          <div class="pdf-content-footer-dot"></div>
-          <span>${docCode}</span>
-        </div>
-        <div>وثيقة سرية للاستخدام الداخلي · منصة تمكين</div>
-      </div>` : '';
-
-    // خانات التوقيع
-    const sigHTML = opts.sig ? `
-      <div class="pdf-content-sig-block">
-        <div class="pdf-content-sig-item">
-          <div class="pdf-content-sig-line"></div>
-          <div class="pdf-content-sig-role">رئيس مجلس الإدارة</div>
-          <div class="pdf-content-sig-name">${VARS['رئيس_المجلس'] || '.....................'}</div>
-        </div>
-        <div class="pdf-content-sig-item">
-          <div class="pdf-content-sig-line"></div>
-          <div class="pdf-content-sig-role">المدير التنفيذي</div>
-          <div class="pdf-content-sig-name">${VARS['المدير_التنفيذي'] || '.....................'}</div>
-        </div>
-      </div>` : '';
-
-    // صفحة المحتوى
-    let contentHTML = '';
-    if(opts.content) {
-      contentHTML = `
-      <div class="pdf-content-page">
-        ${stampHTML}
-        ${headerHTML}
-        <div class="pdf-content-doc-title">${docTitle}</div>
-        <div class="pdf-content-doc-code">${docCode} · ${orgName}</div>
-        <div class="pdf-content-body">${textToHtml(rawText)}</div>
-        ${sigHTML}
-        ${footerHTML}
-      </div>`;
-    }
-
-    return `<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Tajawal:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  html,body{background:#fff;direction:rtl;font-family:'IBM Plex Sans Arabic',sans-serif}
-  ${pdf_css_value}
-</style>
-</head>
-<body>
-${coverHTML}
-${contentHTML}
-</body></html>`;
+    const lines = rawText.split('\n');
+    let out = '';
+    lines.forEach(line => {
+      const t = line.trim();
+      if(!t) { out += '<div style="height:8px"></div>'; return; }
+      const isHead = /^(أولاً|ثانياً|ثالثاً|رابعاً|خامساً|سادساً|سابعاً|ثامناً|تاسعاً|عاشراً)/.test(t)
+        || (t.endsWith(':') && t.length < 65);
+      if(isHead) out += `<h3 class="pdoc-h">${t}</h3>`;
+      else out += `<p class="pdoc-p">${t}</p>`;
+    });
+    return out || '<p class="pdoc-p" style="color:#999">لا يوجد محتوى. اكتب نص الوثيقة في المحرر أولاً.</p>';
   }
 
-  // الدالة الرئيسية لتوليد PDF
+  // ---- بناء صفحة الغلاف كـ DOM ----
+  function buildCoverNode() {
+    const v = id => document.getElementById(id)?.value || '';
+    const orgName = v('pdf-org-name') || 'الجهة';
+    const orgLetter = (v('pdf-org-letter') || orgName.charAt(0) || 'ج').charAt(0);
+    const docTitle = v('pdf-doc-title') || 'وثيقة';
+    const docCode = v('pdf-doc-code') || '';
+    const year = v('pdf-year') || (new Date().getFullYear()+'م');
+    const status = document.getElementById('pdf-status')?.value || 'مسودة';
+    const approveDate = v('pdf-approve-date');
+
+    const wrap = document.createElement('div');
+    wrap.className = 'pdf-cover-page';
+
+    if(pdfState.coverDataUrl){
+      wrap.classList.add('pdf-cover-custom');
+      wrap.innerHTML = `<img src="${pdfState.coverDataUrl}" alt="">`;
+      return wrap;
+    }
+
+    const logoInner = pdfState.logoDataUrl
+      ? `<img class="pdf-cover-logo-img" src="${pdfState.logoDataUrl}" alt="">`
+      : `<span class="pdf-cover-logo-letter">${orgLetter}</span>`;
+
+    wrap.innerHTML = `
+      <div class="pdf-cover-top-stripe"></div>
+      <div class="pdf-cover-body">
+        <div class="pdf-cover-watermark">${orgLetter}</div>
+        <div class="pdf-cover-logo-ring">${logoInner}</div>
+        <div class="pdf-cover-org-name">${orgName}</div>
+        <div class="pdf-cover-org-sub">منصة تمكين للجمعيات الخيرية السعودية</div>
+        <div class="pdf-cover-separator"></div>
+        <div class="pdf-cover-doc-type">وثيقة حوكمة مؤسسية</div>
+        <div class="pdf-cover-doc-title">${docTitle}</div>
+        ${docCode ? `<div class="pdf-cover-doc-code-wrap"><span class="pdf-cover-doc-code">${docCode}</span></div>` : ''}
+        <div class="pdf-cover-meta-row">
+          <div class="pdf-cover-meta-item">
+            <div class="pdf-cover-meta-label">الحالة</div>
+            <div class="pdf-cover-meta-value">${status}</div>
+          </div>
+          <div class="pdf-cover-meta-item">
+            <div class="pdf-cover-meta-label">السنة</div>
+            <div class="pdf-cover-meta-value">${year}</div>
+          </div>
+          ${approveDate ? `<div class="pdf-cover-meta-item">
+            <div class="pdf-cover-meta-label">تاريخ الاعتماد</div>
+            <div class="pdf-cover-meta-value">${approveDate}</div>
+          </div>` : ''}
+        </div>
+      </div>
+      <div class="pdf-cover-bottom">
+        <div class="pdf-cover-bottom-left">© ${year} ${orgName} — جميع الحقوق محفوظة</div>
+        <div class="pdf-cover-bottom-right">منصة تمكين</div>
+      </div>
+      <div class="pdf-cover-bottom-stripe"></div>`;
+    return wrap;
+  }
+
+  // ---- بناء صفحة المحتوى (تُقصَّ لاحقاً عبر canvas) ----
+  function buildContentNode(opts){
+    const v = id => document.getElementById(id)?.value || '';
+    const orgName = v('pdf-org-name') || 'الجهة';
+    const orgLetter = (v('pdf-org-letter') || orgName.charAt(0) || 'ج').charAt(0);
+    const docTitle = v('pdf-doc-title') || 'وثيقة';
+    const docCode = v('pdf-doc-code') || '';
+    const status = document.getElementById('pdf-status')?.value || 'مسودة';
+
+    const headerLogo = pdfState.logoDataUrl
+      ? `<img src="${pdfState.logoDataUrl}" style="width:36px;height:36px;border-radius:4px;object-fit:contain;background:#fff;border:1px solid #e3dccc">`
+      : `<div class="pdf-content-header-letter">${orgLetter}</div>`;
+
+    const sigBlock = opts.sig ? `
+      <div style="display:flex;gap:60px;justify-content:space-between;margin-top:60px;padding-top:30px;border-top:1px dashed #ccc">
+        <div style="text-align:center;flex:1">
+          <div style="height:1px;background:#1a1816;margin-bottom:10px"></div>
+          <div style="font-family:Tajawal,sans-serif;font-weight:700;font-size:13px;color:#1a1816">رئيس مجلس الإدارة</div>
+          <div style="font-size:12px;color:#6b6259;margin-top:4px">${VARS['رئيس_المجلس'] || '...........................'}</div>
+        </div>
+        <div style="text-align:center;flex:1">
+          <div style="height:1px;background:#1a1816;margin-bottom:10px"></div>
+          <div style="font-family:Tajawal,sans-serif;font-weight:700;font-size:13px;color:#1a1816">المدير التنفيذي</div>
+          <div style="font-size:12px;color:#6b6259;margin-top:4px">${VARS['المدير_التنفيذي'] || '...........................'}</div>
+        </div>
+      </div>` : '';
+
+    const headerBlock = opts.pages ? `
+      <div class="pdf-content-header">
+        <div class="pdf-content-header-logo">
+          ${headerLogo}
+          <div>
+            <div class="pdf-content-header-org">${orgName}</div>
+            <div class="pdf-content-header-sub">منصة تمكين</div>
+          </div>
+        </div>
+        <div class="pdf-content-header-meta">${docCode}<br>${status}</div>
+      </div>` : '';
+
+    const wrap = document.createElement('div');
+    wrap.className = 'pdf-content-page';
+    wrap.innerHTML = `
+      ${headerBlock}
+      <div class="pdf-content-doc-title">${docTitle}</div>
+      <div class="pdf-content-doc-code">${docCode}${docCode && orgName ? ' · ' : ''}${orgName}</div>
+      <div class="pdoc-body">${buildContentHtml()}</div>
+      ${sigBlock}
+    `;
+    return wrap;
+  }
+
+  // ---- التوليد الفعلي عبر html2canvas + jsPDF ----
   async function generatePDF() {
     const btn = document.getElementById('pdf-download-btn');
-    if(btn) { btn.disabled = true; btn.textContent = '⏳ جاري التوليد...'; }
+    if(btn){ btn.disabled = true; btn.textContent = '⏳ جاري التوليد...'; btn.style.background=''; }
 
     try {
-      setProgress(10, 'تحضير مكتبة jsPDF...');
-      await new Promise(r => setTimeout(r, 150));
-
-      const { jsPDF } = window.jspdf;
+      if(typeof html2canvas === 'undefined') throw new Error('مكتبة html2canvas غير محملة');
+      const { jsPDF } = window.jspdf || {};
       if(!jsPDF) throw new Error('مكتبة jsPDF غير محملة');
 
-      const docTitle = document.getElementById('pdf-doc-title')?.value || 'وثيقة';
-      const orgName = document.getElementById('pdf-org-name')?.value || 'جمعية';
-      const status = document.getElementById('pdf-status')?.value || 'مسودة';
+      setProgress(8, 'تحضير منطقة الرسم...');
+      const zone = document.getElementById('pdf-render-zone');
+      if(!zone) throw new Error('منطقة الرسم غير موجودة');
+      zone.innerHTML = '';
 
+      const opts = {
+        sig: !!document.getElementById('opt-sig')?.checked,
+        pages: !!document.getElementById('opt-pages')?.checked,
+      };
+
+      // ابني الغلاف والمحتوى داخل zone
+      const coverNode = buildCoverNode();
+      const contentNode = buildContentNode(opts);
+      zone.appendChild(coverNode);
+      zone.appendChild(contentNode);
+
+      // انتظر تحميل الصور (الشعار / الغلاف المخصص)
+      await waitForImages(zone);
+
+      setProgress(25, 'رسم صفحة الغلاف...');
+      const coverCanvas = await html2canvas(coverNode, {
+        scale: 2, backgroundColor:'#ffffff', useCORS:true, logging:false,
+        width: 794, height: 1123, windowWidth: 794, windowHeight: 1123
+      });
+
+      setProgress(55, 'رسم صفحة المحتوى...');
+      // رسم المحتوى — اسمح بأكثر من صفحة
+      const contentCanvas = await html2canvas(contentNode, {
+        scale: 2, backgroundColor:'#ffffff', useCORS:true, logging:false,
+        width: 794, windowWidth: 794
+      });
+
+      setProgress(80, 'تجميع الصفحات...');
       const pdf = new jsPDF({ orientation:'portrait', unit:'mm', format:'a4', compress:true });
       const pageW = 210, pageH = 297;
 
-      setProgress(20, 'بناء محتوى الوثيقة...');
+      // 1) الغلاف
+      pdf.addImage(coverCanvas.toDataURL('image/jpeg', 0.94), 'JPEG', 0, 0, pageW, pageH, undefined, 'FAST');
 
-      // ----- صفحة الغلاف بالرسم المباشر -----
-      if(pdfOpts.cover) {
-        setProgress(30, 'رسم صفحة الغلاف...');
+      // 2) المحتوى — قسّم على صفحات إذا تجاوز الطول
+      const contentW = pageW;
+      const contentH = (contentCanvas.height * pageW) / contentCanvas.width;
+      // كم صفحة سنحتاج؟
+      const pagesNeeded = Math.max(1, Math.ceil(contentH / pageH));
 
-        // الخلفية الداكنة
-        pdf.setFillColor(26, 24, 22);
-        pdf.rect(0, 0, pageW, pageH, 'F');
-
-        // شريط لوني علوي
-        const grad = (x, y, w, h) => {
-          pdf.setFillColor(139, 58, 31); pdf.rect(x, y, w/2, h, 'F');
-          pdf.setFillColor(168, 132, 62); pdf.rect(x+w/2, y, w/2, h, 'F');
-        };
-        grad(0, 0, pageW, 10);
-
-        // دائرة الشعار
-        const cx = pageW/2, cy = 105;
-        pdf.setDrawColor(168, 132, 62); pdf.setLineWidth(0.8);
-        pdf.circle(cx, cy, 20, 'S');
-
-        // حرف الجمعية في الدائرة
-        const orgLetter = (document.getElementById('pdf-org-letter')?.value || orgName.charAt(0) || 'ج').charAt(0);
-        pdf.setTextColor(168, 132, 62);
-        pdf.setFont('helvetica','bold'); pdf.setFontSize(22);
-        pdf.text(orgLetter, cx, cy + 5, {align:'center'});
-
-        // اسم الجمعية
-        pdf.setTextColor(245, 241, 234);
-        pdf.setFont('helvetica','bold'); pdf.setFontSize(16);
-        const orgLines = pdf.splitTextToSize(orgName, 140);
-        pdf.text(orgLines, cx, cy + 38, {align:'center', lineHeightFactor:1.5});
-
-        // الفاصل الذهبي
-        pdf.setDrawColor(168, 132, 62); pdf.setLineWidth(0.5);
-        pdf.line(cx-25, cy+54, cx+25, cy+54);
-
-        // نوع الوثيقة
-        pdf.setTextColor(168, 132, 62); pdf.setFont('helvetica','normal'); pdf.setFontSize(10);
-        pdf.text('GOVERNANCE DOCUMENT', cx, cy + 66, {align:'center'});
-
-        // عنوان الوثيقة
-        pdf.setTextColor(245, 241, 234); pdf.setFont('helvetica','bold'); pdf.setFontSize(18);
-        const titleLines = pdf.splitTextToSize(docTitle, 150);
-        pdf.text(titleLines, cx, cy + 82, {align:'center', lineHeightFactor:1.6});
-
-        // الرمز
-        const docCode = document.getElementById('pdf-doc-code')?.value || '';
-        pdf.setTextColor(168, 132, 62); pdf.setFont('helvetica','normal'); pdf.setFontSize(11);
-        pdf.text(docCode, cx, cy + 82 + (titleLines.length * 11) + 8, {align:'center'});
-
-        // بيانات التذييل
-        pdf.setFillColor(245, 241, 234, 0.08);
-        pdf.setDrawColor(245, 241, 234, 0.1); pdf.setLineWidth(0.3);
-        pdf.line(20, pageH - 30, pageW - 20, pageH - 30);
-
-        pdf.setTextColor(150, 140, 130); pdf.setFont('helvetica','normal'); pdf.setFontSize(9);
-        const year = document.getElementById('pdf-year')?.value || new Date().getFullYear()+'م';
-        pdf.text('© ' + year + ' ' + orgName, 20, pageH - 20);
-        pdf.text(status, pageW - 20, pageH - 20, {align:'right'});
-
-        // شريط لوني سفلي
-        grad(0, pageH - 8, pageW, 8);
-
-        setProgress(50, 'صفحة الغلاف جاهزة...');
-      }
-
-      // ----- صفحة المحتوى -----
-      if(pdfOpts.content) {
+      if(pagesNeeded === 1){
         pdf.addPage('a4','p');
-        setProgress(60, 'تنسيق محتوى الوثيقة...');
-
-        const margin = 18, contentWidth = pageW - margin*2;
-        let y = margin;
-
-        // ترويسة
-        if(pdfOpts.header) {
-          pdf.setFillColor(245, 241, 234);
-          pdf.rect(margin, y, contentWidth, 18, 'F');
-          pdf.setFillColor(26, 24, 22);
-          pdf.rect(margin, y, 12, 18, 'F');
-          pdf.setTextColor(245, 241, 234);
-          pdf.setFont('helvetica','bold'); pdf.setFontSize(10);
-          pdf.text(orgLetter, margin+6, y+12, {align:'center'});
-          pdf.setTextColor(26, 24, 22);
-          pdf.setFont('helvetica','bold'); pdf.setFontSize(11);
-          pdf.text(orgName, margin+16, y+8);
-          pdf.setFont('helvetica','normal'); pdf.setFontSize(9); pdf.setTextColor(107, 98, 89);
-          pdf.text('\u0645\u0646\u0635\u0629 \u062a\u0645\u0643\u064a\u0646', margin+16, y+14);
-          // جانب أيسر
-          pdf.setFont('helvetica','normal'); pdf.setFontSize(9); pdf.setTextColor(107, 98, 89);
-          const docCode2 = document.getElementById('pdf-doc-code')?.value || '';
-          pdf.text(docCode2 + ' · ' + status, pageW - margin, y+12, {align:'right'});
-          y += 24;
-        }
-
-        // ختم اعتماد
-        if(pdfOpts.stamp && status === 'معتمدة') {
-          pdf.setDrawColor(63, 107, 58); pdf.setLineWidth(0.8);
-          pdf.circle(margin + 14, y + 14, 12, 'S');
-          pdf.setTextColor(63, 107, 58); pdf.setFont('helvetica','bold'); pdf.setFontSize(7);
-          pdf.text('\u0645\u0639\u062a\u0645\u062f\u0629', margin + 14, y + 12, {align:'center'});
-          const ad = document.getElementById('pdf-approve-date')?.value || '';
-          pdf.setFontSize(6);
-          pdf.text(ad || year, margin + 14, y + 16, {align:'center'});
-        }
-
-        // عنوان الوثيقة
-        pdf.setTextColor(26, 24, 22); pdf.setFont('helvetica','bold'); pdf.setFontSize(20);
-        const titleLines2 = pdf.splitTextToSize(docTitle, contentWidth);
-        pdf.text(titleLines2, pageW - margin, y, {align:'right'});
-        y += titleLines2.length * 9 + 2;
-
-        const docCode3 = document.getElementById('pdf-doc-code')?.value || '';
-        pdf.setFont('helvetica','normal'); pdf.setFontSize(9); pdf.setTextColor(139, 58, 31);
-        pdf.text(docCode3 + ' · ' + orgName, pageW - margin, y, {align:'right'});
-        y += 8;
-
-        // فاصل
-        pdf.setDrawColor(220, 211, 192); pdf.setLineWidth(0.5);
-        pdf.line(margin, y, pageW - margin, y); y += 8;
-
-        // نص الوثيقة
-        setProgress(72, 'معالجة نص الوثيقة...');
-        let rawText = document.getElementById('doc-raw')?.value || '';
-        Object.entries(VARS).forEach(([k,val]) => {
-          rawText = rawText.replace(new RegExp('\\{\\{' + k + '\\}\\}', 'g'), val || '');
-        });
-
-        const lines = rawText.split('\n');
-        pdf.setFont('helvetica','normal'); pdf.setFontSize(12); pdf.setTextColor(26, 24, 22);
-
-        for(const line of lines) {
-          const t = line.trim();
-          if(!t) { y += 4; continue; }
-          const isH = t.match(/^(أولاً|ثانياً|ثالثاً|رابعاً|خامساً|سادساً)/) || (t.endsWith(':') && t.length < 60);
-
-          if(isH) {
-            if(y > pageH - 50) { pdf.addPage('a4','p'); y = margin + 10; }
-            y += 6;
-            pdf.setFillColor(245, 241, 234);
-            pdf.rect(margin, y-4, contentWidth, 10, 'F');
-            pdf.setFont('helvetica','bold'); pdf.setFontSize(13); pdf.setTextColor(26, 24, 22);
-            const hl = pdf.splitTextToSize(t, contentWidth - 4);
-            pdf.text(hl, pageW - margin - 2, y + 3, {align:'right'});
-            y += hl.length * 6 + 6;
-          } else {
-            pdf.setFont('helvetica','normal'); pdf.setFontSize(11); pdf.setTextColor(45, 41, 37);
-            const pl = pdf.splitTextToSize(t, contentWidth);
-            if(y + pl.length * 6 > pageH - (pdfOpts.footer ? 24 : 14)) {
-              pdf.addPage('a4','p'); y = margin + (pdfOpts.header ? 28 : 10);
-            }
-            pdf.text(pl, pageW - margin, y, {align:'right', lineHeightFactor:1.7});
-            y += pl.length * 7 + 3;
-          }
-        }
-
-        // خانات التوقيع
-        if(pdfOpts.sig) {
-          setProgress(84, 'إضافة خانات التوقيع...');
-          if(y > pageH - 70) { pdf.addPage('a4','p'); y = margin + 10; }
-          y += 16;
-          pdf.setDrawColor(200,200,200); pdf.setLineWidth(0.4);
-          pdf.line(margin, y, margin+8, y);
-          const sigY = y + 5;
-          const halfW = (contentWidth - 20) / 2;
-
-          // رئيس المجلس (يمين)
-          const sLine1X = pageW - margin - halfW;
-          pdf.setLineWidth(0.5); pdf.setDrawColor(26,24,22);
-          pdf.line(sLine1X, sigY, pageW - margin, sigY);
-          pdf.setFont('helvetica','bold'); pdf.setFontSize(11); pdf.setTextColor(26,24,22);
-          pdf.text('\u0631\u0626\u064a\u0633 \u0645\u062c\u0644\u0633 \u0627\u0644\u0625\u062f\u0627\u0631\u0629', pageW - margin - halfW/2, sigY + 6, {align:'center'});
-          pdf.setFont('helvetica','normal'); pdf.setFontSize(9); pdf.setTextColor(107,98,89);
-          pdf.text(VARS['\u0631\u0626\u064a\u0633_\u0627\u0644\u0645\u062c\u0644\u0633'] || '...........', pageW - margin - halfW/2, sigY + 11, {align:'center'});
-
-          // المدير التنفيذي (يسار)
-          pdf.setLineWidth(0.5); pdf.setDrawColor(26,24,22);
-          pdf.line(margin, sigY, margin + halfW, sigY);
-          pdf.setFont('helvetica','bold'); pdf.setFontSize(11); pdf.setTextColor(26,24,22);
-          pdf.text('\u0627\u0644\u0645\u062f\u064a\u0631 \u0627\u0644\u062a\u0646\u0641\u064a\u0630\u064a', margin + halfW/2, sigY + 6, {align:'center'});
-          pdf.setFont('helvetica','normal'); pdf.setFontSize(9); pdf.setTextColor(107,98,89);
-          pdf.text(VARS['\u0627\u0644\u0645\u062f\u064a\u0631_\u0627\u0644\u062a\u0646\u0641\u064a\u0630\u064a'] || '...........', margin + halfW/2, sigY + 11, {align:'center'});
-        }
-
-        // تذييل كل الصفحات
-        if(pdfOpts.footer) {
-          setProgress(92, 'إضافة الترقيم والتذييل...');
-          const totalPages = pdf.internal.getNumberOfPages();
-          for(let i = 1; i <= totalPages; i++) {
-            pdf.setPage(i);
-            if(i === 1 && pdfOpts.cover) continue;
-            pdf.setDrawColor(220, 211, 192); pdf.setLineWidth(0.4);
-            pdf.line(margin, pageH - 14, pageW - margin, pageH - 14);
-            pdf.setFont('helvetica','normal'); pdf.setFontSize(8); pdf.setTextColor(138, 128, 118);
-            pdf.text(orgName + ' · ' + docCode3 + ' · \u0648\u062b\u064a\u0642\u0629 \u062f\u0627\u062e\u0644\u064a\u0629', margin, pageH - 9);
-            pdf.text('\u0635\u0641\u062d\u0629 ' + i + ' \u0645\u0646 ' + totalPages, pageW - margin, pageH - 9, {align:'right'});
-          }
+        pdf.addImage(contentCanvas.toDataURL('image/jpeg', 0.94), 'JPEG', 0, 0, contentW, contentH, undefined, 'FAST');
+      } else {
+        // قسّم الـ canvas إلى شرائح بطول pageH
+        const sliceHpx = (pageH / contentW) * contentCanvas.width;
+        for(let i = 0; i < pagesNeeded; i++){
+          const sy = Math.floor(i * sliceHpx);
+          const remainPx = contentCanvas.height - sy;
+          const thisH = Math.min(sliceHpx, remainPx);
+          if(thisH <= 0) break;
+          const slice = document.createElement('canvas');
+          slice.width = contentCanvas.width;
+          slice.height = thisH;
+          const ctx = slice.getContext('2d');
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0,0,slice.width,slice.height);
+          ctx.drawImage(contentCanvas, 0, sy, contentCanvas.width, thisH, 0, 0, contentCanvas.width, thisH);
+          pdf.addPage('a4','p');
+          const drawH = (thisH * pageW) / contentCanvas.width;
+          pdf.addImage(slice.toDataURL('image/jpeg', 0.94), 'JPEG', 0, 0, contentW, drawH, undefined, 'FAST');
         }
       }
 
-      setProgress(98, 'حفظ الملف...');
-      await new Promise(r => setTimeout(r, 200));
+      // 3) ترقيم الصفحات (اختياري)
+      if(opts.pages){
+        const totalPages = pdf.internal.getNumberOfPages();
+        for(let i = 2; i <= totalPages; i++){
+          pdf.setPage(i);
+          pdf.setDrawColor(220, 211, 192);
+          pdf.setLineWidth(0.3);
+          pdf.line(15, pageH - 12, pageW - 15, pageH - 12);
+          pdf.setFont('helvetica','normal');
+          pdf.setFontSize(8);
+          pdf.setTextColor(138, 128, 118);
+          pdf.text(String(i) + ' / ' + totalPages, pageW/2, pageH - 7, {align:'center'});
+        }
+      }
 
-      // اسم الملف
-      const safeTitle = docTitle.replace(/[^a-zA-Z\u0600-\u06FF\s]/g,'').trim().replace(/\s+/g,'-');
-      const safeOrg = orgName.replace(/[^a-zA-Z\u0600-\u06FF]/g,'');
-      const fileName = safeOrg + '-' + safeTitle + '.pdf';
+      setProgress(95, 'حفظ الملف...');
+      const orgName = document.getElementById('pdf-org-name')?.value || 'document';
+      const docTitle = document.getElementById('pdf-doc-title')?.value || 'doc';
+      const safe = s => s.replace(/[^a-zA-Z؀-ۿ\s\-_]/g,'').trim().replace(/\s+/g,'-');
+      const fileName = `${safe(orgName)}-${safe(docTitle)}.pdf`;
 
       pdf.save(fileName);
       setProgress(100, 'تم التنزيل بنجاح ✓');
 
-      if(btn) { btn.textContent = '✓ تم التنزيل'; btn.style.background = 'var(--good)'; }
-      showToast('تم تنزيل "' + fileName + '" بنجاح ✓');
+      // تنظيف
+      zone.innerHTML = '';
+
+      if(btn){ btn.textContent = '✓ تم التنزيل'; btn.style.background = 'var(--good)'; }
+      showToast('تم تنزيل "' + fileName + '"');
 
       setTimeout(() => {
-        if(btn) { btn.disabled = false; btn.textContent = '⬇ تنزيل PDF'; btn.style.background = ''; }
+        if(btn){ btn.disabled = false; btn.textContent = '⬇ تنزيل PDF'; btn.style.background=''; }
         const prog = document.getElementById('pdf-progress');
         if(prog) prog.classList.remove('show');
       }, 3500);
 
-    } catch(err) {
+    } catch(err){
       console.error('PDF error:', err);
       setProgress(0, 'خطأ: ' + (err.message || 'فشل التوليد'));
-      if(btn) { btn.disabled = false; btn.textContent = '⬇ إعادة المحاولة'; btn.style.background = 'var(--accent)'; }
+      if(btn){ btn.disabled = false; btn.textContent = '⬇ إعادة المحاولة'; btn.style.background = 'var(--accent)'; }
       showToast('خطأ في توليد PDF: ' + (err.message || 'يرجى المحاولة مرة أخرى'));
     }
   }
 
-  // معاينة في نافذة جديدة
-  async function previewPdfOnly() {
-    showToast('⏳ جاري فتح المعاينة...');
-    try {
-      const { jsPDF } = window.jspdf;
-      if(!jsPDF) throw new Error('المكتبة غير محملة');
-      // نفس generatePDF لكن بـ output('bloburl') للمعاينة
-      await generatePDF();
-    } catch(e) {
-      showToast('خطأ في المعاينة');
-    }
+  // مساعد — انتظر تحميل كل <img> داخل عقدة
+  function waitForImages(node){
+    const imgs = Array.from(node.querySelectorAll('img'));
+    if(!imgs.length) return Promise.resolve();
+    return Promise.all(imgs.map(img => {
+      if(img.complete && img.naturalWidth) return Promise.resolve();
+      return new Promise(res => {
+        img.onload = () => res();
+        img.onerror = () => res();
+        setTimeout(res, 3000);
+      });
+    }));
   }
 
-  // أضف css_value placeholder
-  const pdf_css_value = '';
 
   
   // =========================================================
