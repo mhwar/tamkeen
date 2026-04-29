@@ -5,30 +5,30 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>التقييم الذاتي للحوكمة — بُعد التمكين</title>
   <meta name="description" content="قياس درجة حوكمة جمعيتك على ٦٠ مؤشر و٢٥٦ سؤال وفق معايير المركز الوطني لتنمية القطاع غير الربحي.">
-  <meta name="theme-color" content="#4f3fdf">
+  <meta name="theme-color" content="#00197D">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root{
-      --primary:#4f3fdf;
-      --primary-deep:#3a29c9;
-      --primary-soft:#7c66ff;
+      --primary:#00197D;
+      --primary-deep:#00126b;
+      --primary-soft:#2a3ea0;
       --accent:#22d3a4;
       --accent-deep:#0fb487;
       --warn:#ff7a59;
       --danger:#e64560;
-      --ink:#0d0a2e;
-      --ink-soft:#2a234d;
-      --muted:#6b6584;
-      --muted-soft:#9590ab;
-      --line:#e7e3f3;
-      --line-soft:#f0edf8;
+      --ink:#0a0e2a;
+      --ink-soft:#1f2547;
+      --muted:#5e6280;
+      --muted-soft:#9092a8;
+      --line:#dde0ee;
+      --line-soft:#eceefa;
       --paper:#ffffff;
-      --paper-warm:#f9f7fc;
-      --paper-deep:#f3effa;
-      --grad:linear-gradient(135deg,#4f3fdf 0%,#6f4ff0 40%,#22d3a4 100%);
-      --grad-soft:linear-gradient(135deg,rgba(79,63,223,0.06) 0%,rgba(34,211,164,0.04) 100%);
+      --paper-warm:#f7f8fc;
+      --paper-deep:#eef0f8;
+      --grad:linear-gradient(135deg,#00197D 0%,#1f3da6 40%,#22d3a4 100%);
+      --grad-soft:linear-gradient(135deg,rgba(0,25,125,0.06) 0%,rgba(34,211,164,0.04) 100%);
     }
     *{margin:0;padding:0;box-sizing:border-box;font-family:'IBM Plex Sans Arabic',system-ui,sans-serif}
     html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
@@ -43,8 +43,8 @@
     /* ============= HEADER ============= */
     header{background:#fff;border-bottom:1px solid var(--line-soft);padding:12px 0;position:sticky;top:0;z-index:30;backdrop-filter:blur(14px)}
     .header-row{display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1180px;margin:0 auto;padding:0 24px}
-    .logo{display:flex;align-items:center;gap:10px}
-    .logo-mark{width:34px;height:34px;flex-shrink:0}
+    .logo{display:flex;align-items:center;gap:10px;color:var(--primary)}
+    .logo-mark{width:40px;height:33px;flex-shrink:0}
     .logo-text{display:flex;flex-direction:column;line-height:1.1}
     .logo-ar{font-weight:700;font-size:16px;color:var(--ink);letter-spacing:-0.3px}
     .logo-en{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:var(--primary);font-weight:600;margin-top:2px;text-transform:uppercase}
@@ -70,7 +70,7 @@
     main{flex:1;padding:40px 0 60px;position:relative;overflow:hidden}
     main::before,main::after{content:"";position:absolute;border-radius:50%;filter:blur(140px);pointer-events:none;z-index:0}
     main::before{top:-200px;right:-200px;width:500px;height:500px;background:var(--grad);opacity:0.08}
-    main::after{bottom:-200px;left:-200px;width:400px;height:400px;background:linear-gradient(135deg,#22d3a4,#4f3fdf);opacity:0.06}
+    main::after{bottom:-200px;left:-200px;width:400px;height:400px;background:linear-gradient(135deg,#22d3a4,#00197D);opacity:0.06}
     .container{position:relative;z-index:1}
 
     .panel{display:none;animation:fadeUp 0.5s ease}
@@ -78,12 +78,12 @@
     @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
     .panel-head{text-align:center;margin-bottom:32px}
-    .panel-eye{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--primary);font-weight:700;padding:5px 13px;background:rgba(79,63,223,0.08);border-radius:30px;margin-bottom:14px}
+    .panel-eye{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--primary);font-weight:700;padding:5px 13px;background:rgba(0,25,125,0.08);border-radius:30px;margin-bottom:14px}
     .panel h1{font-size:clamp(24px,3.6vw,34px);margin-bottom:10px;letter-spacing:-0.7px}
     .panel-sub{color:var(--muted);font-size:14.5px;max-width:580px;margin:0 auto;line-height:1.85}
 
     /* ============= STEP 1: FORM ============= */
-    .reg-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:36px 32px;box-shadow:0 24px 60px rgba(13,10,46,0.06);max-width:680px;margin:0 auto}
+    .reg-card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:36px 32px;box-shadow:0 24px 60px rgba(10,14,42,0.06);max-width:680px;margin:0 auto}
     @media(max-width:540px){.reg-card{padding:26px 22px}}
     .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     @media(max-width:560px){.form-grid{grid-template-columns:1fr}}
@@ -92,13 +92,13 @@
     .form-row label{font-size:12.5px;font-weight:600;color:var(--ink-soft)}
     .form-row label .req{color:var(--primary)}
     .form-row input,.form-row select{padding:13px 16px;border:1.5px solid var(--line);border-radius:12px;font-size:14px;color:var(--ink);background:#fff;outline:none;transition:all 0.2s;direction:rtl;width:100%}
-    .form-row input:focus,.form-row select:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(79,63,223,0.1)}
+    .form-row input:focus,.form-row select:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(0,25,125,0.1)}
     .form-error{display:none;padding:12px 14px;background:rgba(230,69,96,0.08);border:1px solid rgba(230,69,96,0.3);border-radius:10px;color:var(--danger);font-size:13px;margin-top:14px}
     .form-error.show{display:block}
 
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 28px;border-radius:14px;font-size:14.5px;font-weight:700;cursor:pointer;border:none;transition:all 0.25s ease;text-decoration:none;letter-spacing:-0.2px;font-family:inherit}
-    .btn-primary{background:var(--ink);color:#fff;box-shadow:0 8px 22px rgba(13,10,46,0.18)}
-    .btn-primary:hover{background:var(--primary);transform:translateY(-2px);box-shadow:0 14px 34px rgba(79,63,223,0.4)}
+    .btn-primary{background:var(--ink);color:#fff;box-shadow:0 8px 22px rgba(10,14,42,0.18)}
+    .btn-primary:hover{background:var(--primary);transform:translateY(-2px);box-shadow:0 14px 34px rgba(0,25,125,0.4)}
     .btn-primary::after{content:"←";transition:transform 0.25s;font-weight:400}
     .btn-primary:hover::after{transform:translateX(-4px)}
     .btn-ghost{background:#fff;color:var(--ink-soft);border:1.5px solid var(--line)}
@@ -110,7 +110,7 @@
     .priv-note::before{content:"🔒";font-size:13px}
 
     /* ============= STEP 2: ASSESSMENT ============= */
-    .assess-progress{position:sticky;top:64px;z-index:20;background:rgba(255,255,255,0.94);backdrop-filter:blur(14px);padding:14px 18px;border-radius:14px;margin-bottom:18px;border:1px solid var(--line);box-shadow:0 4px 16px rgba(13,10,46,0.04);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .assess-progress{position:sticky;top:64px;z-index:20;background:rgba(255,255,255,0.94);backdrop-filter:blur(14px);padding:14px 18px;border-radius:14px;margin-bottom:18px;border:1px solid var(--line);box-shadow:0 4px 16px rgba(10,14,42,0.04);display:flex;align-items:center;gap:14px;flex-wrap:wrap}
     .ap-text{font-size:13px;font-weight:600;color:var(--ink);flex-shrink:0}
     .ap-text strong{color:var(--primary)}
     .ap-bar{flex:1;min-width:120px;height:6px;background:var(--paper-deep);border-radius:3px;overflow:hidden}
@@ -129,10 +129,10 @@
 
     /* بطاقة المؤشر */
     .ind-card{background:#fff;border:1px solid var(--line);border-radius:16px;margin-bottom:10px;overflow:hidden;transition:all 0.2s}
-    .ind-card:hover{border-color:var(--line-soft);box-shadow:0 4px 12px rgba(13,10,46,0.04)}
-    .ind-card.expanded{box-shadow:0 8px 22px rgba(13,10,46,0.06);border-color:var(--line-soft)}
+    .ind-card:hover{border-color:var(--line-soft);box-shadow:0 4px 12px rgba(10,14,42,0.04)}
+    .ind-card.expanded{box-shadow:0 8px 22px rgba(10,14,42,0.06);border-color:var(--line-soft)}
     .ind-head{display:flex;align-items:center;gap:14px;padding:16px 18px;cursor:pointer;background:var(--paper-warm);border-bottom:1px solid transparent;transition:background 0.2s}
-    .ind-card.expanded .ind-head{background:linear-gradient(135deg,rgba(79,63,223,0.04) 0%,rgba(34,211,164,0.03) 100%);border-bottom-color:var(--line-soft)}
+    .ind-card.expanded .ind-head{background:linear-gradient(135deg,rgba(0,25,125,0.04) 0%,rgba(34,211,164,0.03) 100%);border-bottom-color:var(--line-soft)}
     .ind-num{width:36px;height:36px;border-radius:10px;background:var(--grad);color:#fff;display:grid;place-items:center;font-weight:800;font-size:13px;flex-shrink:0;font-family:'IBM Plex Sans Arabic'}
     .ind-info{flex:1;min-width:0}
     .ind-name{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:2px;letter-spacing:-0.2px}
@@ -150,7 +150,7 @@
     /* الممارسة */
     .practice-card{background:var(--paper-warm);border:1px solid var(--line-soft);border-radius:12px;padding:14px 16px;margin-bottom:10px}
     .practice-head{display:flex;align-items:center;gap:10px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px dashed var(--line)}
-    .practice-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--primary);background:rgba(79,63,223,0.08);padding:3px 8px;border-radius:6px}
+    .practice-num{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;color:var(--primary);background:rgba(0,25,125,0.08);padding:3px 8px;border-radius:6px}
     .practice-name{flex:1;font-size:13.5px;font-weight:700;color:var(--ink);letter-spacing:-0.1px}
     .practice-weight{font-size:11px;color:var(--muted-soft);font-family:'JetBrains Mono',monospace;letter-spacing:0.3px}
 
@@ -180,7 +180,7 @@
     .std-summary strong{color:var(--ink);font-weight:700}
 
     /* ============= STEP 3: RESULTS ============= */
-    .result-hero{background:#fff;border-radius:24px;padding:38px 30px;text-align:center;margin-bottom:22px;border:1px solid var(--line);box-shadow:0 24px 60px rgba(13,10,46,0.08);position:relative;overflow:hidden}
+    .result-hero{background:#fff;border-radius:24px;padding:38px 30px;text-align:center;margin-bottom:22px;border:1px solid var(--line);box-shadow:0 24px 60px rgba(10,14,42,0.08);position:relative;overflow:hidden}
     .result-hero::before{content:"";position:absolute;top:-100px;right:-100px;width:300px;height:300px;background:var(--grad);border-radius:50%;filter:blur(80px);opacity:0.16}
     .result-hero>*{position:relative;z-index:1}
     .res-eye{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--primary);font-weight:700;margin-bottom:12px}
@@ -200,14 +200,14 @@
     .res-tier.t-low{background:rgba(230,69,96,0.1);color:var(--danger)}
     .res-tier.t-mid{background:rgba(255,122,89,0.12);color:var(--warn)}
     .res-tier.t-good{background:rgba(34,211,164,0.12);color:var(--accent-deep)}
-    .res-tier.t-elite{background:rgba(79,63,223,0.1);color:var(--primary)}
+    .res-tier.t-elite{background:rgba(0,25,125,0.1);color:var(--primary)}
 
     .res-tagline{font-size:15px;color:var(--ink-soft);max-width:480px;margin:0 auto;line-height:1.75}
 
     .std-results{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:22px}
     @media(max-width:660px){.std-results{grid-template-columns:1fr}}
     .sr-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px 20px;text-align:center;transition:transform 0.2s}
-    .sr-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(13,10,46,0.06)}
+    .sr-card:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(10,14,42,0.06)}
     .sr-num{font-weight:800;font-size:13px;color:var(--muted);margin-bottom:10px;font-family:'JetBrains Mono',monospace}
     .sr-name{font-size:14.5px;font-weight:700;color:var(--ink);margin-bottom:14px}
     .sr-bar{height:10px;background:var(--paper-deep);border-radius:5px;overflow:hidden;margin-bottom:10px}
@@ -248,17 +248,11 @@
 <header>
   <div class="header-row">
     <a href="../" class="logo" aria-label="بُعد التمكين">
-      <svg class="logo-mark" viewBox="0 0 80 80" fill="none" aria-hidden="true">
-        <defs>
-          <linearGradient id="bgrad" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#4f3fdf"/>
-            <stop offset="100%" stop-color="#7c66ff"/>
-          </linearGradient>
-        </defs>
-        <path d="M55 8 L72 11 L52 28 L36 25 Z" fill="url(#bgrad)"/>
-        <path d="M28 25 L60 28 L44 44 L14 41 Z" fill="url(#bgrad)"/>
-        <path d="M5 41 L48 44 L34 60 L-7 57 Z" fill="url(#bgrad)"/>
-        <circle cx="74" cy="6" r="3" fill="url(#bgrad)"/>
+      <svg class="logo-mark" viewBox="345 200 120 100" fill="currentColor" aria-hidden="true">
+        <path d="M435.38,218.726c-2.73,0.134-5.459,0.276-8.188,0.427c-21.134,1.166-42.239,2.838-63.229,5.645c1.258-5.905,2.517-11.811,3.775-17.716c18.104,2.384,36.297,3.851,54.52,4.888c2.934,0.166,5.87,0.323,8.806,0.469L435.38,218.726z"/>
+        <path d="M357.184,256.608c29.472-14.866,61.282-23.089,93.699-28.522c-1.258-1.814-2.517-3.628-3.775-5.442c-29.131,3.028-58.13,7.502-86.148,16.248C359.701,244.798,358.442,250.703,357.184,256.608z"/>
+        <path d="M442.879,241.998c-33.371,10.071-64.724,24.701-92.474,46.419c1.258-5.904,2.517-11.809,3.775-17.715c26.11-16.629,54.736-27.379,84.515-34.798L442.879,241.998z"/>
+        <rect x="399.8" y="270.933" transform="matrix(0.7071 0.7071 -0.7071 0.7071 318.1767 -207.2817)" width="18.999" height="18.999"/>
       </svg>
       <span class="logo-text">
         <span class="logo-ar">بُعد التمكين</span>
@@ -395,7 +389,7 @@
           <svg class="gauge-svg" viewBox="0 0 200 200">
             <defs>
               <linearGradient id="gradFill" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#4f3fdf"/>
+                <stop offset="0%" stop-color="#00197D"/>
                 <stop offset="100%" stop-color="#22d3a4"/>
               </linearGradient>
             </defs>
