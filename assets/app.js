@@ -1812,7 +1812,8 @@ ${contentHTML}
     const scoreEl = document.querySelector('[data-std-text="'+stdId+'"]');
     const modalScore = document.getElementById('modal-overall-score');
     if(scoreEl && modalScore) modalScore.textContent = scoreEl.textContent;
-    // فتح النافذة
+    // فتح النافذة (مع إزالة الإخفاء المباشر إن وُجد)
+    modal.style.display = '';
     modal.classList.add('show');
     document.body.style.overflow = 'hidden';
     modal.dataset.activeStd = stdId;
@@ -1822,6 +1823,7 @@ ${contentHTML}
     const modal = document.getElementById('std-modal');
     if(!modal) return;
     modal.classList.remove('show');
+    modal.style.display = 'none';
     document.body.style.overflow = '';
   }
 
