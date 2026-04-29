@@ -1803,13 +1803,95 @@ ${contentHTML}
   }
 
   function startNewAssessment(){
-    if(!confirm('هل تريد بدء تقييم جديد؟ ستُعاد قيم الإجابات الحالية.')) return;
-    document.querySelectorAll('#panel-assess input[type=radio]').forEach(r=>r.checked=false);
-    recalcOverallScore();
+    if(!confirm('هل تريد بدء تقييم جديد؟ سيُعاد ضبط جميع الإجابات الحالية.')) return;
+    document.querySelectorAll('#panel-assess .qrow').forEach(qr=>{
+      qr.classList.remove('answered-yes','answered-no','answered-na');
+      qr.querySelectorAll('.qpill').forEach(p=>p.classList.remove('active'));
+    });
+    recalcAllScores();
+  }
+
+  // الإجابة على سؤال (نعم/لا/غير منطبق)
+  function answerQ(btn,val){
+    const qrow = btn.closest('.qrow');
+    if(!qrow) return;
+    qrow.classList.remove('answered-yes','answered-no','answered-na');
+    qrow.querySelectorAll('.qpill').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    qrow.classList.add('answered-'+val);
+    recalcAllScores();
+  }
+
+  function arNum(n){
+    const m = '٠١٢٣٤٥٦٧٨٩';
+    return String(n).split('').map(c=>m[+c]||c).join('');
+  }
+
+  // إعادة حساب درجات المؤشرات والدرجة الإجمالية
+  function recalcAllScores(){
+    let totalAll = 0, totalYesAll = 0;
+    document.querySelectorAll('#panel-assess .ind-card').forEach(card=>{
+      let total = 0, yes = 0;
+      card.querySelectorAll('.qrow').forEach(qr=>{
+        if(qr.classList.contains('answered-yes')){ total++; yes++; }
+        else if(qr.classList.contains('answered-no')){ total++; }
+      });
+      const pct = total>0 ? Math.round((yes/total)*100) : 0;
+      const gauge = card.querySelector('.ind-gauge');
+      if(gauge){
+        const circle = gauge.querySelector('.gauge-fill');
+        const text = gauge.querySelector('.gauge-text');
+        if(circle){
+          const circumference = 2 * Math.PI * 28;
+          const offset = circumference * (1 - pct/100);
+          circle.setAttribute('stroke-dashoffset', offset.toFixed(2));
+          circle.classList.remove('green','amber','red');
+          circle.classList.add(pct >= 75 ? 'green' : pct >= 50 ? 'amber' : 'red');
+        }
+        if(text) text.textContent = arNum(pct) + '٪';
+      }
+      totalAll += total;
+      totalYesAll += yes;
+    });
+    if(totalAll>0){
+      const overall = Math.round((totalYesAll/totalAll)*100);
+      const el = document.getElementById('overall-score');
+      const barCompliance = document.getElementById('bar-compliance');
+      const valCompliance = document.getElementById('val-compliance');
+      if(el) el.textContent = overall;
+      if(barCompliance) barCompliance.style.width = overall+'%';
+      if(valCompliance) valCompliance.textContent = overall+'%';
+    }
   }
 
   function exportAssessment(){
-    alert('سيتم تصدير تقرير التقييم الذاتي بصيغة PDF شامل المؤشرات الـ9 والممارسات الـ45 والإجابات الحالية.');
+    let report = 'تقرير التقييم الذاتي للحوكمة\n';
+    report += '='.repeat(40) + '\n\n';
+    let totalAll=0, yesAll=0;
+    document.querySelectorAll('#panel-assess .ind-card').forEach(card=>{
+      const name = card.querySelector('.ind-name').textContent;
+      const weight = card.querySelector('.ind-weight').textContent;
+      let total=0, yes=0, no=0, na=0;
+      card.querySelectorAll('.qrow').forEach(qr=>{
+        if(qr.classList.contains('answered-yes')){ total++; yes++; totalAll++; yesAll++; }
+        else if(qr.classList.contains('answered-no')){ total++; no++; totalAll++; }
+        else if(qr.classList.contains('answered-na')){ na++; }
+      });
+      const pct = total>0 ? Math.round((yes/total)*100) : 0;
+      report += name + ' (' + weight + ')\n';
+      report += '  الدرجة: ' + pct + '% — نعم: ' + yes + ', لا: ' + no + ', غير منطبق: ' + na + '\n\n';
+    });
+    const overall = totalAll>0 ? Math.round((yesAll/totalAll)*100) : 0;
+    report += '='.repeat(40) + '\n';
+    report += 'الدرجة الإجمالية لمعيار الامتثال: ' + overall + '%\n';
+
+    const blob = new Blob([report], {type:'text/plain;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'تقرير-التقييم-الذاتي-للحوكمة.txt';
+    a.click();
+    URL.revokeObjectURL(url);
   }
 
   function goToReg(target){
@@ -1821,28 +1903,9 @@ ${contentHTML}
     },200);
   }
 
-  function recalcOverallScore(){
-    let totalAnswered = 0, totalYes = 0;
-    document.querySelectorAll('#panel-assess .qrow').forEach(qr=>{
-      const radios = qr.querySelectorAll('input[type=radio]');
-      if(radios.length>=2){
-        totalAnswered++;
-        if(radios[0].checked) totalYes++;
-      }
-    });
-    if(totalAnswered>0){
-      const pct = Math.round((totalYes/totalAnswered)*100);
-      const el = document.getElementById('overall-score');
-      const barCompliance = document.getElementById('bar-compliance');
-      const valCompliance = document.getElementById('val-compliance');
-      if(el) el.textContent = pct;
-      if(barCompliance) barCompliance.style.width = pct+'%';
-      if(valCompliance) valCompliance.textContent = pct+'%';
-    }
-  }
-
-  document.addEventListener('change',function(e){
-    if(e.target && e.target.matches && e.target.matches('#panel-assess input[type=radio]')){
-      recalcOverallScore();
+  // احتساب أولي عند تحميل الصفحة
+  document.addEventListener('DOMContentLoaded', function(){
+    if(document.querySelector('#panel-assess .ind-card')){
+      recalcAllScores();
     }
   });
