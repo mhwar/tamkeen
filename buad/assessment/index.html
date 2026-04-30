@@ -159,17 +159,23 @@
     .qrow:first-child{border-top:none;padding-top:6px}
     .qn{flex:0 0 22px;height:22px;border-radius:50%;background:var(--paper-deep);color:var(--muted);display:grid;place-items:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;margin-top:2px}
     .qrow.answered-yes .qn{background:var(--accent);color:#fff}
+    .qrow.answered-partial .qn{background:var(--warn);color:#fff}
     .qrow.answered-no .qn{background:var(--danger);color:#fff}
     .qrow.answered-na .qn{background:var(--muted-soft);color:#fff}
-    .qt{flex:1;min-width:0;font-size:13.5px;color:var(--ink);font-weight:500;line-height:1.7;letter-spacing:-0.05px}
-    .qopts{display:flex;gap:5px;flex-shrink:0;margin-top:1px}
+    .qt{flex:1;min-width:0;font-size:13.5px;color:var(--ink);font-weight:500;line-height:1.7;letter-spacing:-0.05px;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+    .q-pts{font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;color:var(--primary);background:rgba(0,25,125,0.08);padding:2px 7px;border-radius:30px;letter-spacing:0.3px;flex-shrink:0}
+    .qopts{display:flex;gap:5px;flex-shrink:0;margin-top:1px;flex-wrap:wrap}
     @media(max-width:520px){.qopts{margin-right:32px;margin-top:6px;width:100%}}
-    .qpill{padding:7px 12px;background:#fff;border:1.5px solid var(--line);border-radius:8px;font-family:inherit;font-size:12px;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:4px;white-space:nowrap}
+    .qpill{padding:7px 11px;background:#fff;border:1.5px solid var(--line);border-radius:8px;font-family:inherit;font-size:12px;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;display:inline-flex;align-items:center;gap:4px;white-space:nowrap;line-height:1.3}
     .qpill:hover{border-color:var(--primary);color:var(--primary)}
     .qpill.yes.selected{background:var(--accent);border-color:var(--accent);color:#fff}
+    .qpill.partial.selected{background:var(--warn);border-color:var(--warn);color:#fff}
     .qpill.no.selected{background:var(--danger);border-color:var(--danger);color:#fff}
     .qpill.na.selected{background:var(--muted-soft);border-color:var(--muted-soft);color:#fff}
     .qp-ico{font-size:12px;line-height:1}
+
+    /* شارة وزن المؤشر */
+    .ind-weight-badge{font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;color:var(--primary);background:rgba(0,25,125,0.08);padding:3px 8px;border-radius:30px;letter-spacing:0.3px;white-space:nowrap}
 
     /* أدوات سريعة */
     .quick-actions{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px;flex-wrap:wrap}
@@ -576,6 +582,8 @@
         if(idx === 0) card.classList.add('expanded');
 
         const totalQ = ind.practices.reduce((s,p) => s + p.questions.length, 0);
+        const weightBadge = (typeof ind.weight_pct === 'number')
+          ? `<span class="ind-weight-badge">وزن ${ind.weight_pct}٪</span>` : '';
         const head = document.createElement('div');
         head.className = 'ind-head';
         head.onclick = (e) => { if(!e.target.closest('.qpill')) card.classList.toggle('expanded'); };
@@ -586,6 +594,7 @@
             <div class="ind-meta">${ind.meta || (ind.practices.length + ' ممارسات · ' + totalQ + ' أسئلة')}</div>
           </div>
           <div class="ind-stats">
+            ${weightBadge}
             <span class="ind-mini-pct" data-ind-pct="${std}-${ind.id}">—</span>
           </div>
           <div class="ind-toggle">▼</div>
@@ -597,22 +606,14 @@
         ind.practices.forEach(p => {
           const pc = document.createElement('div');
           pc.className = 'practice-card';
-          let qsHtml = p.questions.map(q => `
-            <div class="qrow" data-q="${q.id}">
-              <span class="qn">${q.num}</span>
-              <span class="qt">${q.text}</span>
-              <div class="qopts">
-                <button type="button" class="qpill yes" onclick="answer(this,'yes')"><span class="qp-ico">✓</span> نعم</button>
-                <button type="button" class="qpill no" onclick="answer(this,'no')"><span class="qp-ico">✗</span> لا</button>
-                <button type="button" class="qpill na" onclick="answer(this,'na')">— غ.م</button>
-              </div>
-            </div>
-          `).join('');
+          let qsHtml = p.questions.map(q => buildQuestionHtml(q)).join('');
+          const practiceScore = (typeof p.score === 'number')
+            ? `<span class="practice-weight">${p.score} درجة</span>` : (p.weight ? `<span class="practice-weight">${p.weight}</span>` : '');
           pc.innerHTML = `
             <div class="practice-head">
               <span class="practice-num">${p.num}</span>
               <span class="practice-name">${p.name}</span>
-              ${p.weight ? `<span class="practice-weight">${p.weight}</span>` : ''}
+              ${practiceScore}
             </div>
             ${qsHtml}
           `;
@@ -625,6 +626,54 @@
     });
   }
 
+  // --- بناء HTML سؤال واحد بناءً على states المرفقة ---
+  const DEFAULT_STATES = [
+    {key:"yes",label:"نعم",factor:1},
+    {key:"no",label:"لا",factor:0},
+    {key:"na",label:"غ.م",factor:null}
+  ];
+  function getStates(q){ return Array.isArray(q.states) && q.states.length ? q.states : DEFAULT_STATES; }
+  function stateCss(s){
+    if(s.factor === 1) return 'yes';
+    if(s.factor === 0.5) return 'partial';
+    if(s.factor === 0) return 'no';
+    return 'na';
+  }
+  function stateIcon(s){
+    if(s.factor === 1) return '<span class="qp-ico">✓</span> ';
+    if(s.factor === 0.5) return '<span class="qp-ico">◐</span> ';
+    if(s.factor === 0) return '<span class="qp-ico">✗</span> ';
+    return '— ';
+  }
+  function buildQuestionHtml(q){
+    const states = getStates(q);
+    const ptsLbl = (typeof q.points === 'number') ? `<span class="q-pts">${q.points} د</span>` : '';
+    const buttons = states.map(s =>
+      `<button type="button" class="qpill ${stateCss(s)}" data-state="${s.key}" onclick="answer(this,'${s.key}')">${stateIcon(s)}${escapeAttr(s.label)}</button>`
+    ).join('');
+    return `
+      <div class="qrow" data-q="${q.id}">
+        <span class="qn">${q.num}</span>
+        <span class="qt">${q.text}${ptsLbl}</span>
+        <div class="qopts">${buttons}</div>
+      </div>`;
+  }
+  function escapeAttr(s){ return String(s).replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+  // إيجاد سؤال بمعرّفه (لتسهيل الحساب)
+  function findQuestion(qid){
+    for(const std of Object.keys(QUESTIONS||{})){
+      for(const ind of QUESTIONS[std]){
+        for(const p of ind.practices){
+          for(const q of p.questions){
+            if(q.id === qid) return {std, ind, p, q};
+          }
+        }
+      }
+    }
+    return null;
+  }
+
   function expandAll(std, expand){
     document.querySelectorAll(`.std-content[data-std="${std}"] .ind-card`).forEach(c => {
       c.classList.toggle('expanded', expand);
@@ -634,20 +683,33 @@
   function answerAll(std, val){
     if(!confirm(`سيتم تعيين "${val==='yes'?'نعم':val==='no'?'لا':'غير منطبق'}" لكل أسئلة هذا المعيار. متابعة؟`)) return;
     document.querySelectorAll(`.std-content[data-std="${std}"] .qrow`).forEach(qr => {
-      const btn = qr.querySelector(`.qpill.${val}`);
-      if(btn) answer(btn, val);
+      // اختر أول زرّ يطابق الحالة المطلوبة (yes/no) في كل سؤال
+      const btn = qr.querySelector(`.qpill[data-state="${val}"]`) || qr.querySelector(`.qpill.${val}`);
+      if(btn) answer(btn, btn.dataset.state || val);
     });
   }
 
   // ----- الإجابة على سؤال -----
-  function answer(btn, val){
+  function answer(btn, key){
     const qrow = btn.closest('.qrow');
     const qid = qrow.dataset.q;
     qrow.querySelectorAll('.qpill').forEach(b => b.classList.remove('selected'));
     btn.classList.add('selected');
-    qrow.classList.remove('answered-yes','answered-no','answered-na');
-    qrow.classList.add('answered-'+val);
-    answers[qid] = val;
+    // إزالة فئات الحالة القديمة وإضافة فئة موحّدة "answered"
+    qrow.classList.remove('answered-yes','answered-no','answered-na','answered-partial','answered');
+    qrow.classList.add('answered');
+    // أضف فئة وفق نوع الإجابة (للون النقطة)
+    const ctx = findQuestion(qid);
+    if(ctx){
+      const state = getStates(ctx.q).find(s => s.key === key);
+      if(state){
+        if(state.factor === 1) qrow.classList.add('answered-yes');
+        else if(state.factor === 0.5) qrow.classList.add('answered-partial');
+        else if(state.factor === 0) qrow.classList.add('answered-no');
+        else qrow.classList.add('answered-na');
+      }
+    }
+    answers[qid] = key;
     updateScores();
   }
 
@@ -658,18 +720,15 @@
     document.getElementById('answered-count').textContent = arNum(answered);
     document.getElementById('answered-bar').style.width = (answered/total*100)+'%';
 
-    // درجة كل معيار
     const scores = computeScores();
     document.getElementById('overall-pct').innerHTML =
       'الدرجة المؤقتة <strong style="color:var(--primary);font-family:IBM Plex Sans Arabic;font-size:14px">'+arNum(scores.overall.pct)+'٪</strong>';
 
-    // تحديث ملخص كل معيار
     Object.entries(scores.byStd).forEach(([std, s]) => {
       const sumEl = document.getElementById('std-sum-'+std);
       if(sumEl) sumEl.innerHTML = `<strong>${arNum(s.answered)}</strong> من ${arNum(s.totalQ)} مُجاب · <strong>${arNum(s.pct)}٪</strong>`;
     });
 
-    // تحديث نسبة كل مؤشر
     Object.entries(scores.byInd).forEach(([key, pct]) => {
       const el = document.querySelector(`[data-ind-pct="${key}"]`);
       if(el){
@@ -680,41 +739,62 @@
     });
   }
 
-  function computeScores(){
-    let oYes = 0, oTotal = 0;
-    const byStd = {};
-    const byInd = {};
-    Object.entries(QUESTIONS).forEach(([std, indicators]) => {
-      let stdYes = 0, stdAnswered = 0, stdTotalQ = 0;
-      indicators.forEach(ind => {
-        let yes = 0, total = 0; // total = answered yes + answered no
-        ind.practices.forEach(p => p.questions.forEach(q => {
-          stdTotalQ++;
-          const a = answers[q.id];
-          if(a === 'yes'){ yes++; total++; stdYes++; stdAnswered++; oYes++; oTotal++; }
-          else if(a === 'no'){ total++; stdAnswered++; oTotal++; }
-          else if(a === 'na'){ stdAnswered++; }
-        }));
-        byInd[std+'-'+ind.id] = total > 0 ? Math.round(yes/total*100) : null;
-      });
-      byStd[std] = {
-        pct: stdAnswered ? Math.round(stdYes / Math.max(1, stdAnswered - countNa(std)) * 100) : 0,
-        answered: stdAnswered,
-        totalQ: stdTotalQ
-      };
-    });
-    return {
-      overall: { pct: oTotal>0 ? Math.round(oYes/oTotal*100) : 0 },
-      byStd, byInd
-    };
+  // إعطاء سؤال نتيجته مع وزنه (يدعم points المخصّصة وحالات custom)
+  function getQuestionResult(q, ans){
+    const points = (typeof q.points === 'number') ? q.points : 1;
+    if(!ans) return { achieved: 0, max: points, answered: false, excluded: false };
+    const state = getStates(q).find(s => s.key === ans);
+    if(!state) return { achieved: 0, max: points, answered: false, excluded: false };
+    if(state.factor === null) return { achieved: 0, max: points, answered: true, excluded: true };
+    return { achieved: points * state.factor, max: points, answered: true, excluded: false };
   }
 
-  function countNa(std){
-    let n = 0;
-    QUESTIONS[std].forEach(ind => ind.practices.forEach(p => p.questions.forEach(q => {
-      if(answers[q.id] === 'na') n++;
-    })));
-    return n;
+  function computeScores(){
+    const byStd = {};
+    const byInd = {};
+    let stdPctSum = 0, stdCount = 0;
+
+    Object.entries(QUESTIONS).forEach(([std, indicators]) => {
+      let stdAchieved = 0, stdMax = 0, stdAnswered = 0, stdTotalQ = 0;
+      let weightedAchieved = 0, weightedMax = 0;
+
+      indicators.forEach(ind => {
+        let indAchieved = 0, indMax = 0;
+        ind.practices.forEach(p => p.questions.forEach(q => {
+          stdTotalQ++;
+          const r = getQuestionResult(q, answers[q.id]);
+          if(r.answered) stdAnswered++;
+          if(r.excluded) return;
+          indAchieved += r.achieved;
+          indMax      += r.max;
+          stdAchieved += r.achieved;
+          stdMax      += r.max;
+        }));
+        const indPct = indMax > 0 ? indAchieved / indMax * 100 : null;
+        byInd[std+'-'+ind.id] = indPct == null ? null : Math.round(indPct);
+
+        // إن كان للمؤشر وزن صريح، استخدمه
+        if(typeof ind.weight_pct === 'number'){
+          weightedAchieved += (indPct == null ? 0 : indPct) * ind.weight_pct;
+          weightedMax += ind.weight_pct * 100;
+        }
+      });
+
+      // إن وُجدت أوزان، استخدم الجمع الموزون. وإلا اجمع النقاط مباشرة.
+      let stdPct = 0;
+      if(weightedMax > 0){
+        stdPct = Math.round(weightedAchieved / weightedMax * 100);
+      } else {
+        stdPct = stdMax > 0 ? Math.round(stdAchieved / stdMax * 100) : 0;
+      }
+      byStd[std] = { pct: stdPct, answered: stdAnswered, totalQ: stdTotalQ, achieved: stdAchieved, max: stdMax };
+      stdPctSum += stdPct; stdCount++;
+    });
+
+    return {
+      overall: { pct: stdCount > 0 ? Math.round(stdPctSum / stdCount) : 0 },
+      byStd, byInd
+    };
   }
 
   function arNum(n){ return String(n); }
