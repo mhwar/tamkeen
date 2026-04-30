@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>التقييم الذاتي للحوكمة — بُعد التمكين</title>
-  <meta name="description" content="قياس درجة حوكمة جمعيتك على ٦٠ مؤشر و٢٥٦ سؤال وفق معايير المركز الوطني لتنمية القطاع غير الربحي.">
+  <meta name="description" content="قياس درجة حوكمة جمعيتك على 60 مؤشر و256 سؤال وفق معايير المركز الوطني لتنمية القطاع غير الربحي.">
   <meta name="theme-color" content="#00197D">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -267,9 +267,9 @@
 <div class="steps-bar">
   <div class="steps-row">
     <div class="step-line"><div class="step-line-fill" id="step-line-fill"></div></div>
-    <div class="step active" data-step="1"><div class="step-circle"><span class="step-num">١</span></div><div class="step-label">التسجيل</div></div>
-    <div class="step" data-step="2"><div class="step-circle"><span class="step-num">٢</span></div><div class="step-label">التقييم</div></div>
-    <div class="step" data-step="3"><div class="step-circle"><span class="step-num">٣</span></div><div class="step-label">النتيجة</div></div>
+    <div class="step active" data-step="1"><div class="step-circle"><span class="step-num">1</span></div><div class="step-label">التسجيل</div></div>
+    <div class="step" data-step="2"><div class="step-circle"><span class="step-num">2</span></div><div class="step-label">التقييم</div></div>
+    <div class="step" data-step="3"><div class="step-circle"><span class="step-num">3</span></div><div class="step-label">النتيجة</div></div>
   </div>
 </div>
 
@@ -281,7 +281,7 @@
       <div class="panel-head">
         <span class="panel-eye">الخطوة الأولى</span>
         <h1>سجّل بيانات <span class="gradient-text">جمعيتك</span></h1>
-        <p class="panel-sub">دقيقة واحدة لتسجيل بياناتك، ثم تبدأ التقييم على ٢٥٦ سؤال موزّعة على ٦٠ مؤشر معتمد. سنرسل تقريراً مفصّلاً على بريدك بعد الانتهاء.</p>
+        <p class="panel-sub">دقيقة واحدة لتسجيل بياناتك، ثم تبدأ التقييم على 256 سؤال موزّعة على 60 مؤشر معتمد. سنرسل تقريراً مفصّلاً على بريدك بعد الانتهاء.</p>
       </div>
       <div class="reg-card">
         <form id="reg-form" name="buad-assessment" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="return submitRegistration(event)">
@@ -329,19 +329,19 @@
               <select name="org_age" id="f-age">
                 <option value="">اختر</option>
                 <option value="< سنة">أقل من سنة</option>
-                <option value="١-٣ سنوات">من ١ إلى ٣ سنوات</option>
-                <option value="٣-٧ سنوات">من ٣ إلى ٧ سنوات</option>
-                <option value="٧+ سنوات">أكثر من ٧ سنوات</option>
+                <option value="1-3 سنوات">من 1 إلى 3 سنوات</option>
+                <option value="3-7 سنوات">من 3 إلى 7 سنوات</option>
+                <option value="7+ سنوات">أكثر من 7 سنوات</option>
               </select>
             </div>
             <div class="form-row">
               <label>عدد الموظفين</label>
               <select name="org_size" id="f-size">
                 <option value="">اختر</option>
-                <option value="< 10">أقل من ١٠</option>
-                <option value="10-30">١٠–٣٠</option>
-                <option value="30-100">٣٠–١٠٠</option>
-                <option value="100+">أكثر من ١٠٠</option>
+                <option value="< 10">أقل من 10</option>
+                <option value="10-30">10–30</option>
+                <option value="30-100">30–100</option>
+                <option value="100+">أكثر من 100</option>
               </select>
             </div>
           </div>
@@ -357,11 +357,11 @@
       <div class="panel-head">
         <span class="panel-eye">الخطوة الثانية</span>
         <h1>قِس درجة <span class="gradient-text">حوكمة جمعيتك</span></h1>
-        <p class="panel-sub">٢٥٦ سؤال على ٦٠ مؤشر — كل سؤال له ٣ خيارات: نعم / لا / غير منطبق. اضغط على المؤشر لتوسيعه ورؤية أسئلته.</p>
+        <p class="panel-sub">256 سؤال على 60 مؤشر — كل سؤال له 3 خيارات: نعم / لا / غير منطبق. اضغط على المؤشر لتوسيعه ورؤية أسئلته.</p>
       </div>
 
       <div class="assess-progress">
-        <div class="ap-text">أُجبت على <strong id="answered-count">٠</strong> من <span id="total-q">…</span></div>
+        <div class="ap-text">أُجبت على <strong id="answered-count">0</strong> من <span id="total-q">…</span></div>
         <div class="ap-bar"><div class="ap-bar-fill" id="answered-bar"></div></div>
         <span class="std-summary" id="overall-pct">— ٪</span>
       </div>
@@ -407,21 +407,21 @@
 
       <div class="std-results">
         <div class="sr-card">
-          <div class="sr-num">٠١</div>
+          <div class="sr-num">01</div>
           <div class="sr-name">الالتزام والامتثال</div>
           <div class="sr-bar"><div class="sr-fill" id="sr-c-fill"></div></div>
           <div class="sr-pct"><span id="sr-c-pct">0</span><sub>٪</sub></div>
           <div class="sr-detail" id="sr-c-detail">—</div>
         </div>
         <div class="sr-card">
-          <div class="sr-num">٠٢</div>
+          <div class="sr-num">02</div>
           <div class="sr-name">الشفافية والإفصاح</div>
           <div class="sr-bar"><div class="sr-fill" id="sr-t-fill"></div></div>
           <div class="sr-pct"><span id="sr-t-pct">0</span><sub>٪</sub></div>
           <div class="sr-detail" id="sr-t-detail">—</div>
         </div>
         <div class="sr-card">
-          <div class="sr-num">٠٣</div>
+          <div class="sr-num">03</div>
           <div class="sr-name">السلامة المالية</div>
           <div class="sr-bar"><div class="sr-fill" id="sr-f-fill"></div></div>
           <div class="sr-pct"><span id="sr-f-pct">0</span><sub>٪</sub></div>
@@ -431,7 +431,7 @@
 
       <div class="cta-block">
         <h3 id="cta-title">احجز جلسة تشخيص مجانية</h3>
-        <p id="cta-desc">سيتواصل معك أحد مستشارينا خلال ٢٤ ساعة عمل لتقديم خطة عمل مفصّلة بناءً على نتيجتك.</p>
+        <p id="cta-desc">سيتواصل معك أحد مستشارينا خلال 24 ساعة عمل لتقديم خطة عمل مفصّلة بناءً على نتيجتك.</p>
         <a href="../#contact" class="btn">تواصل مع مستشار ←</a>
       </div>
 
@@ -445,7 +445,7 @@
 </main>
 
 <footer>
-  © ٢٠٢٦ شركة بُعد التمكين · <a href="../">العودة للموقع</a>
+  © 2026 شركة بُعد التمكين · <a href="../">العودة للموقع</a>
 </footer>
 
 <script>
@@ -476,7 +476,7 @@
     window.scrollTo({top:0, behavior:'smooth'});
   }
 
-  // ----- خطوة ١: تسجيل -----
+  // ----- خطوة 1: تسجيل -----
   function submitRegistration(e){
     e.preventDefault();
     const get = id => document.getElementById(id).value.trim();
@@ -717,9 +717,7 @@
     return n;
   }
 
-  function arNum(n){
-    return String(n).replace(/[0-9]/g, d => '٠١٢٣٤٥٦٧٨٩'[d]);
-  }
+  function arNum(n){ return String(n); }
 
   // ----- إنهاء التقييم -----
   function finishAssessment(){
@@ -739,17 +737,17 @@
       tier = 'يحتاج دعم عاجل'; tierClass='t-low';
       tagline = 'هناك فجوات جوهرية في منظومة الحوكمة. الخطر مرتفع على التراخيص ومستحقات النفع العام.';
       ctaTitle = 'احجز جلسة طوارئ مجانية';
-      ctaDesc = 'سنخصّص لك جلسة عاجلة (٤٥ دقيقة) لإعداد خطة إنقاذ سريعة قبل التقييم الرسمي القادم.';
+      ctaDesc = 'سنخصّص لك جلسة عاجلة (45 دقيقة) لإعداد خطة إنقاذ سريعة قبل التقييم الرسمي القادم.';
     } else if(overall < 70){
       tier = 'وضع متوسط'; tierClass='t-mid';
-      tagline = 'الأساسيات موجودة، لكن هناك فجوات تمنعك من تجاوز عتبة جمع التبرعات (٥٠٪) بأمان.';
+      tagline = 'الأساسيات موجودة، لكن هناك فجوات تمنعك من تجاوز عتبة جمع التبرعات (50٪) بأمان.';
       ctaTitle = 'احجز جلسة تشخيص مفصّل';
-      ctaDesc = 'سنحلّل معك الفجوات الـ ٥ الأكثر أثراً ونرسم خارطة طريق للوصول إلى ٧٥٪+.';
+      ctaDesc = 'سنحلّل معك الفجوات الـ 5 الأكثر أثراً ونرسم خارطة طريق للوصول إلى 75٪+.';
     } else if(overall < 85){
       tier = 'وضع جيّد'; tierClass='t-good';
       tagline = 'حوكمتك في موقف قوي. تحتاج تحسينات استراتيجية للوصول إلى صفة النفع العام.';
       ctaTitle = 'احجز استشارة استراتيجية';
-      ctaDesc = 'جلسة موسّعة (ساعة) لنحدّد كيف تتجاوز عتبة الـ ٨٥٪ وتفتح بوابات النفع العام والمكافآت.';
+      ctaDesc = 'جلسة موسّعة (ساعة) لنحدّد كيف تتجاوز عتبة الـ 85٪ وتفتح بوابات النفع العام والمكافآت.';
     } else {
       tier = 'ممتاز'; tierClass='t-elite';
       tagline = 'حوكمة استثنائية! أنت في النخبة. استمر في الحفاظ على هذا المستوى.';
@@ -823,7 +821,7 @@
     Object.keys(answers).forEach(k => delete answers[k]);
     document.querySelectorAll('.qpill.selected').forEach(b => b.classList.remove('selected'));
     document.querySelectorAll('.qrow').forEach(r => r.classList.remove('answered-yes','answered-no','answered-na'));
-    document.getElementById('answered-count').textContent = '٠';
+    document.getElementById('answered-count').textContent = '0';
     document.getElementById('answered-bar').style.width = '0%';
     goToStep(1);
   }

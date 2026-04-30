@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>بُعد التمكين — حوكمة الجمعيات الخيرية</title>
-  <meta name="description" content="قِس درجة حوكمة جمعيتك في دقائق على ٢٥٦ سؤال وفق معايير المركز الوطني، واحصل على تقرير مفصّل وخطة عمل واضحة.">
+  <meta name="description" content="قِس درجة حوكمة جمعيتك في دقائق على 256 سؤال وفق معايير المركز الوطني، واحصل على تقرير مفصّل وخطة عمل واضحة.">
   <meta property="og:title" content="بُعد التمكين — حوكمة الجمعيات الخيرية">
   <meta property="og:description" content="ابدأ التقييم الذاتي المجاني الآن واحصل على تقرير مفصّل خلال دقائق.">
   <meta property="og:type" content="website">
@@ -115,32 +115,65 @@
     .ts-num{font-weight:900;font-size:clamp(28px,4vw,42px);line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:6px;letter-spacing:-1.2px}
     .ts-lbl{font-size:13px;color:var(--muted);font-weight:500;line-height:1.5}
 
-    /* ===== كيف يعمل ===== */
-    .how{padding:80px 0}
-    .how-head{text-align:center;margin-bottom:46px}
+    /* ===== عنوان قسم عام ===== */
     .section-eye{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--primary);font-weight:700;margin-bottom:14px;padding:6px 14px;background:rgba(0,25,125,0.08);border-radius:30px}
     .section-title{font-size:clamp(26px,3.5vw,38px);margin-bottom:14px;letter-spacing:-0.8px}
-    .section-sub{color:var(--muted);font-size:15px;max-width:560px;margin:0 auto;line-height:1.85}
+    .section-sub{color:var(--muted);font-size:15px;max-width:580px;margin:0 auto;line-height:1.85}
 
-    .how-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    @media(max-width:760px){.how-steps{grid-template-columns:1fr}}
-    .hs-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px 24px;transition:all 0.25s;position:relative}
-    .hs-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:0 20px 44px rgba(0,25,125,0.1)}
-    .hs-num{display:inline-flex;width:42px;height:42px;border-radius:12px;background:var(--grad);color:#fff;font-weight:900;font-size:18px;align-items:center;justify-content:center;margin-bottom:18px}
-    .hs-card h3{font-size:18px;margin-bottom:8px}
-    .hs-card p{font-size:13.5px;color:var(--muted);line-height:1.75}
+    /* ===== اختر طريقك ===== */
+    .choose{padding:84px 0 50px}
+    .choose-head{text-align:center;margin-bottom:46px}
+    .choose-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+    @media(max-width:840px){.choose-grid{grid-template-columns:1fr}}
+    .path-card{display:flex;flex-direction:column;background:#fff;border:1.5px solid var(--line);border-radius:24px;padding:36px 32px;transition:all 0.3s ease;text-decoration:none;color:inherit;position:relative;overflow:hidden}
+    .path-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--grad);opacity:0;transition:opacity 0.3s}
+    .path-card:hover{transform:translateY(-6px);border-color:var(--primary);box-shadow:0 28px 50px rgba(0,25,125,0.12)}
+    .path-card:hover::before{opacity:1}
+    .path-card.path-self{background:linear-gradient(180deg,#fff 0%,rgba(34,211,164,0.04) 100%)}
+    .path-card.path-self:hover{border-color:var(--accent)}
+    .path-tag{display:inline-block;align-self:flex-start;font-family:'JetBrains Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--primary);background:rgba(0,25,125,0.08);padding:5px 12px;border-radius:30px;margin-bottom:22px}
+    .path-card.path-self .path-tag{color:var(--accent-deep);background:rgba(34,211,164,0.1)}
+    .path-ico{width:54px;height:54px;border-radius:14px;background:var(--grad);color:#fff;display:grid;place-items:center;margin-bottom:20px;box-shadow:0 12px 30px rgba(0,25,125,0.25)}
+    .path-card.path-self .path-ico{background:linear-gradient(135deg,#22d3a4,#0fb487);box-shadow:0 12px 30px rgba(34,211,164,0.32)}
+    .path-ico svg{width:26px;height:26px}
+    .path-card h3{font-size:22px;margin-bottom:10px;letter-spacing:-0.5px}
+    .path-card>p{color:var(--muted);font-size:14.5px;line-height:1.85;margin-bottom:18px}
+    .path-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:24px;flex:1}
+    .path-list li{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;color:var(--ink-soft);font-weight:500;line-height:1.6}
+    .path-list li::before{content:"✓";flex:0 0 18px;height:18px;border-radius:50%;background:var(--accent);color:#fff;font-size:10px;display:grid;place-items:center;font-weight:900;margin-top:2px}
+    .path-cta{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:var(--primary);padding:12px 18px;background:var(--paper-warm);border-radius:14px;transition:all 0.25s;align-self:flex-start}
+    .path-card.path-self .path-cta{color:var(--accent-deep)}
+    .path-card:hover .path-cta{background:var(--ink);color:#fff;transform:translateX(-4px)}
 
-    /* ===== CTA Banner ===== */
-    .cta-banner{padding:60px 0 80px}
-    .cta-box{background:var(--grad);border-radius:30px;padding:54px 44px;color:#fff;text-align:center;position:relative;overflow:hidden}
-    .cta-box::before,.cta-box::after{content:"";position:absolute;border-radius:50%;filter:blur(60px);opacity:0.5}
-    .cta-box::before{width:280px;height:280px;background:#fff;top:-100px;right:-50px;opacity:0.15}
-    .cta-box::after{width:240px;height:240px;background:var(--accent);bottom:-80px;left:-30px;opacity:0.4}
-    .cta-box>*{position:relative;z-index:1}
-    .cta-box h2{font-size:clamp(24px,3.4vw,36px);color:#fff;margin-bottom:14px;letter-spacing:-1px}
-    .cta-box p{color:rgba(255,255,255,0.88);font-size:15px;margin-bottom:28px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.8}
-    .cta-box .btn-primary{background:#fff;color:var(--primary);box-shadow:0 12px 30px rgba(0,0,0,0.18)}
-    .cta-box .btn-primary:hover{background:var(--ink);color:#fff;transform:translateY(-3px)}
+    /* ===== Contact ===== */
+    .contact{padding:60px 0 90px}
+    .contact-grid{display:grid;grid-template-columns:0.85fr 1.15fr;gap:50px;align-items:start}
+    @media(max-width:880px){.contact-grid{grid-template-columns:1fr;gap:36px}}
+    .contact-info{padding:6px 0}
+    .contact-info .section-title{margin-left:0;margin-right:0;text-align:right}
+    .contact-info .section-sub{text-align:right;margin-right:0;margin-left:0;max-width:none}
+    .ci-list{display:flex;flex-direction:column;gap:14px}
+    .ci-item{display:flex;align-items:center;gap:14px}
+    .ci-ico{width:42px;height:42px;border-radius:12px;background:var(--grad-soft);color:var(--primary);display:grid;place-items:center;flex-shrink:0}
+    .ci-ico svg{width:18px;height:18px}
+    .ci-item small{display:block;color:var(--muted-soft);font-size:11.5px;letter-spacing:0.5px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;margin-bottom:2px}
+    .ci-item strong{display:block;color:var(--ink);font-weight:700;font-size:14.5px}
+    .contact-form{background:#fff;border:1px solid var(--line);border-radius:24px;padding:34px 32px;box-shadow:0 24px 60px rgba(10,14,42,0.06)}
+    @media(max-width:540px){.contact-form{padding:26px 22px}}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media(max-width:540px){.form-grid{grid-template-columns:1fr}}
+    .form-row{display:flex;flex-direction:column;gap:6px}
+    .form-row.full{grid-column:1/-1}
+    .form-row label{font-size:12.5px;font-weight:600;color:var(--ink-soft)}
+    .form-row label .req{color:var(--primary)}
+    .form-row input,.form-row select,.form-row textarea{padding:13px 16px;border:1.5px solid var(--line);border-radius:12px;font-size:14px;color:var(--ink);background:#fff;outline:none;transition:all 0.2s;direction:rtl;width:100%;font-family:inherit}
+    .form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(0,25,125,0.1)}
+    .form-row textarea{resize:vertical;min-height:80px;line-height:1.6}
+    .form-success{display:none;padding:14px;background:rgba(34,211,164,0.1);border:1px solid var(--accent);border-radius:12px;color:var(--accent-deep);font-weight:600;text-align:center;margin-top:14px;font-size:14px}
+    .form-success.show{display:block;animation:fadeIn 0.4s}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .form-note{font-size:12px;color:var(--muted-soft);margin-top:12px;text-align:center;line-height:1.55}
+    .hp{position:absolute;left:-9999px}
 
     /* ===== Footer ===== */
     footer{background:var(--ink);color:rgba(255,255,255,0.7);padding:36px 0 24px;font-size:13.5px}
@@ -183,16 +216,17 @@
   <div class="container">
     <div class="hero-grid">
       <div>
-        <span class="hero-eyebrow">حوكمة الجمعيات الخيرية · ٢٠٢٦</span>
-        <h1>اعرف درجة حوكمة جمعيتك في <span class="gradient-text">دقائق</span></h1>
-        <p class="lead">تقييم ذاتي مجاني على ٢٥٦ سؤال موزّعة على ٦٠ مؤشر معتمد من المركز الوطني لتنمية القطاع غير الربحي. ستحصل على تقرير مفصّل بدرجتك على المعايير الثلاثة وتوصيات خطوة بخطوة.</p>
+        <span class="hero-eyebrow">حوكمة الجمعيات الخيرية · 2026</span>
+        <h1>ارفع درجة حوكمة جمعيتك إلى <span class="gradient-text">المستوى التالي</span></h1>
+        <p class="lead">سواء تريد قياس وضعك الحالي بنفسك أو تطلب خدمة حوكمة كاملة من فريق متخصص — نحن جاهزون. اختر المسار المناسب لجمعيتك واحصل على نتائج ملموسة.</p>
         <div class="cta-row">
-          <a href="assessment/" class="btn btn-primary">ابدأ التقييم الذاتي المجاني</a>
+          <a href="#choose" class="btn btn-primary">اختر طريقك معنا</a>
+          <a href="#contact" class="btn btn-ghost">تواصل مباشر</a>
         </div>
         <ul class="quick-bullets">
-          <li>مجاني بالكامل · بدون رسوم أو اشتراك</li>
-          <li>تقرير مفصّل على بريدك الإلكتروني فوراً</li>
-          <li>توصيات عمل واضحة لتحسين كل معيار</li>
+          <li>تقييم مبدئي مجاني — تقرير فوري</li>
+          <li>خدمة حوكمة كاملة — استشارة مخصّصة</li>
+          <li>وفق معايير المركز الوطني الرسمية</li>
         </ul>
       </div>
       <div class="hero-visual">
@@ -200,14 +234,14 @@
         <div class="hv-card">
           <div class="hv-mini-row">
             <span>درجة الحوكمة</span>
-            <span>↑ +٣٤</span>
+            <span>↑ +34</span>
           </div>
-          <div class="hv-score">٨٧<sup>٪</sup></div>
+          <div class="hv-score">87<sup>٪</sup></div>
           <div class="hv-label">جمعية أنموذج الخيرية</div>
           <div class="hv-bars">
-            <div class="hv-bar"><span class="hv-bar-name">الالتزام</span><span class="hv-bar-track"><span class="hv-bar-fill"></span></span><span class="hv-bar-val">٩٢٪</span></div>
-            <div class="hv-bar"><span class="hv-bar-name">الشفافية</span><span class="hv-bar-track"><span class="hv-bar-fill"></span></span><span class="hv-bar-val">٨٤٪</span></div>
-            <div class="hv-bar"><span class="hv-bar-name">السلامة المالية</span><span class="hv-bar-track"><span class="hv-bar-fill"></span></span><span class="hv-bar-val">٧٦٪</span></div>
+            <div class="hv-bar"><span class="hv-bar-name">الالتزام</span><span class="hv-bar-track"><span class="hv-bar-fill"></span></span><span class="hv-bar-val">92٪</span></div>
+            <div class="hv-bar"><span class="hv-bar-name">الشفافية</span><span class="hv-bar-track"><span class="hv-bar-fill"></span></span><span class="hv-bar-val">84٪</span></div>
+            <div class="hv-bar"><span class="hv-bar-name">السلامة المالية</span><span class="hv-bar-track"><span class="hv-bar-fill"></span></span><span class="hv-bar-val">76٪</span></div>
           </div>
         </div>
       </div>
@@ -219,49 +253,130 @@
 <section class="trust">
   <div class="container">
     <div class="trust-grid">
-      <div><div class="ts-num">٢٥٦</div><div class="ts-lbl">سؤال موثّق رسمياً</div></div>
-      <div><div class="ts-num">٦٠</div><div class="ts-lbl">مؤشر حوكمة معتمد</div></div>
-      <div><div class="ts-num">٣</div><div class="ts-lbl">معايير رئيسية للقياس</div></div>
-      <div><div class="ts-num">٥</div><div class="ts-lbl">دقائق فقط لإكمال التقييم</div></div>
+      <div><div class="ts-num">256</div><div class="ts-lbl">سؤال موثّق رسمياً</div></div>
+      <div><div class="ts-num">60</div><div class="ts-lbl">مؤشر حوكمة معتمد</div></div>
+      <div><div class="ts-num">3</div><div class="ts-lbl">معايير رئيسية للقياس</div></div>
+      <div><div class="ts-num">100%</div><div class="ts-lbl">سرّي وآمن</div></div>
     </div>
   </div>
 </section>
 
-<!-- ============= HOW IT WORKS ============= -->
-<section class="how">
+<!-- ============= CHOOSE YOUR PATH ============= -->
+<section class="choose" id="choose">
   <div class="container">
-    <div class="how-head">
-      <span class="section-eye">كيف يعمل</span>
-      <h2 class="section-title">ثلاث خطوات بسيطة</h2>
-      <p class="section-sub">من التسجيل إلى التقرير في أقل من ١٠ دقائق — بدون أي التزام مالي.</p>
+    <div class="choose-head">
+      <span class="section-eye">اختر طريقك</span>
+      <h2 class="section-title">طريقتان تبدأ بهما معنا</h2>
+      <p class="section-sub">إما أن تقيس وضع جمعيتك بنفسك في دقائق، أو تطلب خدمة حوكمة كاملة من فريقنا المتخصص.</p>
     </div>
-    <div class="how-steps">
-      <div class="hs-card">
-        <div class="hs-num">١</div>
-        <h3>سجّل بياناتك</h3>
-        <p>اسم الجهة، اسم المسؤول، الجوال، والبريد الإلكتروني. دقيقة واحدة لتأكيد هويتك.</p>
-      </div>
-      <div class="hs-card">
-        <div class="hs-num">٢</div>
-        <h3>أجِب على الأسئلة</h3>
-        <p>٢٥٦ سؤال موزّعة على ٦٠ مؤشر — لكل سؤال ٣ خيارات: نعم / لا / غير منطبق.</p>
-      </div>
-      <div class="hs-card">
-        <div class="hs-num">٣</div>
-        <h3>احصل على التقرير</h3>
-        <p>درجتك الإجمالية + درجات المعايير الثلاثة + توصيات عمل مخصّصة لجمعيتك.</p>
-      </div>
+    <div class="choose-grid">
+      <a href="assessment/" class="path-card path-self">
+        <div class="path-tag">مجاني · فوري</div>
+        <div class="path-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h3>التقييم المبدئي الذاتي</h3>
+        <p>قِس درجة حوكمة جمعيتك بنفسك على المعايير الثلاثة الرسمية في أقل من 10 دقائق، واحصل على تقرير فوري بدرجاتك وتوصيات قابلة للتنفيذ.</p>
+        <ul class="path-list">
+          <li>256 سؤال على 60 مؤشر معتمد</li>
+          <li>تقرير مرئي بالنتيجة + توصيات</li>
+          <li>بدون أي التزام أو رسوم</li>
+        </ul>
+        <span class="path-cta">ابدأ التقييم الآن →</span>
+      </a>
+      <a href="#contact" class="path-card path-service">
+        <div class="path-tag">احترافي · متابعة كاملة</div>
+        <div class="path-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <h3>خدمة الحوكمة الكاملة</h3>
+        <p>فريق متخصص يقود جمعيتك خطوة بخطوة من التشخيص إلى التنفيذ — استشارة، إعداد لوائح وسياسات، تأسيس مجلس، امتثال PDPL وAML، والمتابعة بعد التسليم.</p>
+        <ul class="path-list">
+          <li>استشارة أولية مجانية</li>
+          <li>عرض سعر مخصّص لجمعيتك</li>
+          <li>ضمان رفع 25 نقطة في 100 يوم</li>
+        </ul>
+        <span class="path-cta">اطلب الخدمة عبر النموذج ↓</span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ============= CTA BANNER ============= -->
-<section class="cta-banner">
+<!-- ============= CONTACT FORM ============= -->
+<section class="contact" id="contact">
   <div class="container">
-    <div class="cta-box">
-      <h2>ابدأ تقييم جمعيتك الآن</h2>
-      <p>تقييم ذاتي مجاني تحصل بعده على تقرير مفصّل ودرجة حوكمتك على معايير المركز الوطني الثلاثة. لن تستغرق أكثر من ١٠ دقائق.</p>
-      <a href="assessment/" class="btn btn-primary">ابدأ التقييم الذاتي المجاني</a>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <span class="section-eye">تواصل معنا</span>
+        <h2 class="section-title">اطلب خدمة الحوكمة لجمعيتك</h2>
+        <p class="section-sub" style="margin-bottom:30px">عبّئ النموذج وسيتواصل معك أحد مستشارينا خلال 24 ساعة عمل لجلسة استشارية مجانية وعرض سعر مخصّص لجمعيتك.</p>
+        <div class="ci-list">
+          <div class="ci-item">
+            <div class="ci-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div><small>البريد</small><strong>info@buadaltamkin.sa</strong></div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div><small>الهاتف</small><strong dir="ltr">+966 55 295 2477</strong></div>
+          </div>
+          <div class="ci-item">
+            <div class="ci-ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div><small>المقر</small><strong>أبها · المملكة العربية السعودية</strong></div>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form" name="buad-service-request" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="return submitContact(event)">
+        <input type="hidden" name="form-name" value="buad-service-request">
+        <p class="hp"><label>لا تملأ: <input name="bot-field"></label></p>
+        <div class="form-grid">
+          <div class="form-row full">
+            <label>اسم الجهة <span class="req">*</span></label>
+            <input type="text" name="org_name" required placeholder="مثال: جمعية أنموذج الخيرية">
+          </div>
+          <div class="form-row">
+            <label>اسم المسؤول <span class="req">*</span></label>
+            <input type="text" name="contact_name" required placeholder="الاسم الكامل">
+          </div>
+          <div class="form-row">
+            <label>الصفة الوظيفية</label>
+            <input type="text" name="role" placeholder="مدير تنفيذي / رئيس مجلس...">
+          </div>
+          <div class="form-row">
+            <label>الجوال <span class="req">*</span></label>
+            <input type="tel" name="phone" required placeholder="05XXXXXXXX" pattern="[0-9+\s\-]{8,}">
+          </div>
+          <div class="form-row">
+            <label>البريد الإلكتروني <span class="req">*</span></label>
+            <input type="email" name="email" required placeholder="info@yourorg.sa">
+          </div>
+          <div class="form-row full">
+            <label>الخدمة المطلوبة <span class="req">*</span></label>
+            <select name="service_type" required>
+              <option value="">اختر الخدمة</option>
+              <option value="استشارة عامة">استشارة عامة في الحوكمة</option>
+              <option value="إعداد اللوائح">إعداد اللوائح والسياسات (47 وثيقة)</option>
+              <option value="تأسيس المجلس">تأسيس مجلس الإدارة وميثاقه</option>
+              <option value="الامتثال">الامتثال (PDPL · AML · المستفيد الحقيقي)</option>
+              <option value="حزمة كاملة">حزمة الحوكمة الكاملة (100 يوم)</option>
+              <option value="رفع درجة">رفع درجة الحوكمة لتقييم رسمي قادم</option>
+              <option value="آخر">احتياج آخر</option>
+            </select>
+          </div>
+          <div class="form-row full">
+            <label>تفاصيل إضافية (اختياري)</label>
+            <textarea name="message" rows="3" placeholder="أخبرنا عن مرحلة جمعيتك، التحديات، أو أي تفصيل يساعدنا في التحضير للجلسة..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;margin-top:18px">إرسال الطلب</button>
+        <div class="form-success" id="form-success">✓ تم استلام طلبك. سيتواصل معك مستشار خلال 24 ساعة عمل.</div>
+        <p class="form-note">بياناتك آمنة ومشفّرة · لن نشاركها مع أي طرف ثالث</p>
+      </form>
     </div>
   </div>
 </section>
@@ -287,9 +402,28 @@
         <span>أبها · المملكة العربية السعودية</span>
       </div>
     </div>
-    <div class="footer-bottom">© ٢٠٢٦ شركة بُعد التمكين · جميع الحقوق محفوظة</div>
+    <div class="footer-bottom">© 2026 شركة بُعد التمكين · جميع الحقوق محفوظة</div>
   </div>
 </footer>
+
+<script>
+  function submitContact(e){
+    e.preventDefault();
+    const form = e.target;
+    const data = new FormData(form);
+    fetch(location.pathname, {
+      method:'POST',
+      headers:{'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(data).toString()
+    }).then(()=>{
+      const ok = form.querySelector('#form-success');
+      if(ok){ ok.classList.add('show'); }
+      form.reset();
+      setTimeout(()=>{ if(ok) ok.classList.remove('show'); }, 9000);
+    }).catch(()=>{ alert('حدث خطأ، حاول مرة أخرى'); });
+    return false;
+  }
+</script>
 
 </body>
 </html>
