@@ -1800,7 +1800,7 @@
     const titles = {
       compliance: { title:'معيار الالتزام والامتثال', meta:'9 مؤشرات · 45 ممارسة · 77 سؤالاً', eye:'المعيار الأول · إصدار 2021 V2' },
       transparency: { title:'معيار الشفافية والإفصاح', meta:'14 من 21 عنصر · قيد الإعداد', eye:'المعيار الثاني · إصدار 2021 V2' },
-      financial: { title:'معيار السلامة المالية', meta:'16 من 25 عنصر · قيد الإعداد', eye:'المعيار الثالث · قيد الإعداد' }
+      financial: { title:'معيار السلامة المالية', meta:'5 مؤشرات · 11 ممارسة · 32 سؤال', eye:'المعيار الثالث · إصدار مايو 2025م' }
     };
     const info = titles[stdId] || titles.compliance;
     document.getElementById('std-modal-title').textContent = info.title;
