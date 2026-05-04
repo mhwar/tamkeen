@@ -95,6 +95,10 @@
     .form-row input:focus,.form-row select:focus{border-color:var(--primary);box-shadow:0 0 0 4px rgba(0,25,125,0.1)}
     .form-error{display:none;padding:12px 14px;background:rgba(230,69,96,0.08);border:1px solid rgba(230,69,96,0.3);border-radius:10px;color:var(--danger);font-size:13px;margin-top:14px}
     .form-error.show{display:block}
+    .member-status{margin-top:6px;padding:9px 14px;border-radius:10px;font-size:12.5px;font-weight:600;display:flex;gap:8px;align-items:center}
+    .member-status.ok{background:rgba(34,180,123,0.10);color:#138155;border:1px solid rgba(34,180,123,0.25)}
+    .member-status.warn{background:rgba(245,158,11,0.10);color:#a05a00;border:1px solid rgba(245,158,11,0.30)}
+    .member-status .ms-ico{font-size:14px}
 
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 28px;border-radius:14px;font-size:14.5px;font-weight:700;cursor:pointer;border:none;transition:all 0.25s ease;text-decoration:none;letter-spacing:-0.2px;font-family:inherit}
     .btn-primary{background:var(--ink);color:#fff;box-shadow:0 8px 22px rgba(10,14,42,0.18)}
@@ -119,10 +123,14 @@
     /* تبويبات المعايير */
     .std-tabs{display:flex;gap:6px;margin-bottom:18px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:5px;overflow-x:auto;scrollbar-width:none}
     .std-tabs::-webkit-scrollbar{display:none}
-    .std-tab{flex:1;min-width:160px;padding:10px 16px;background:transparent;border:none;border-radius:10px;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1.3}
+    .std-tab{flex:1;min-width:160px;padding:10px 16px;background:transparent;border:none;border-radius:10px;font-family:inherit;font-size:13.5px;font-weight:600;color:var(--ink-soft);cursor:pointer;transition:all 0.2s;display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1.3;position:relative}
     .std-tab:hover{background:var(--paper-deep)}
     .std-tab.active{background:var(--ink);color:#fff}
     .std-tab small{font-size:10.5px;font-family:'JetBrains Mono',monospace;font-weight:500;opacity:0.7;letter-spacing:0.3px}
+    .std-tab-bonus{background:linear-gradient(135deg,rgba(245,158,11,0.10),rgba(245,158,11,0.04));border:1px dashed rgba(245,158,11,0.35);color:#a05a00}
+    .std-tab-bonus.active{background:linear-gradient(135deg,#a05a00,#d97706);color:#fff;border-color:transparent}
+    .std-tab-bonus::before{content:'★';position:absolute;top:5px;left:8px;font-size:10px;color:#d97706}
+    .std-tab-bonus.active::before{color:#fde68a}
 
     .std-content{display:none}
     .std-content.active{display:block;animation:fadeUp 0.35s}
@@ -207,6 +215,16 @@
     .res-tier.t-mid{background:rgba(255,122,89,0.12);color:var(--warn)}
     .res-tier.t-good{background:rgba(34,211,164,0.12);color:var(--accent-deep)}
     .res-tier.t-elite{background:rgba(0,25,125,0.1);color:var(--primary)}
+    .res-breakdown{margin-top:18px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-radius:14px;max-width:420px;margin-inline:auto;box-shadow:0 6px 22px rgba(10,14,42,0.04)}
+    .rb-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;font-size:13.5px;color:var(--ink-soft)}
+    .rb-row + .rb-row{border-top:1px dashed var(--line)}
+    .rb-row .rb-val{font-weight:700;color:var(--ink);font-family:'JetBrains Mono',monospace}
+    .rb-row.rb-bonus .rb-lbl{color:#a05a00}
+    .rb-row.rb-bonus .rb-val{color:#a05a00}
+    .rb-row.rb-final{padding-top:11px;font-size:14.5px}
+    .rb-row.rb-final .rb-lbl{font-weight:700;color:var(--ink)}
+    .rb-row.rb-final .rb-val{font-size:18px;color:var(--primary)}
+    .rb-note{margin-top:10px;font-size:11.5px;color:var(--ink-soft);line-height:1.55;border-top:1px dashed var(--line);padding-top:10px}
 
     .res-tagline{font-size:15px;color:var(--ink-soft);max-width:480px;margin:0 auto;line-height:1.75}
 
@@ -294,10 +312,13 @@
           <input type="hidden" name="form-name" value="buad-assessment">
           <p class="hp"><label>لا تملأ: <input name="bot-field"></label></p>
           <input type="hidden" name="overall_score" id="hidden-overall">
+          <input type="hidden" name="base_score" id="hidden-base">
+          <input type="hidden" name="bonus_earned" id="hidden-bonus">
           <input type="hidden" name="compliance_score" id="hidden-compliance">
           <input type="hidden" name="transparency_score" id="hidden-transparency">
           <input type="hidden" name="financial_score" id="hidden-financial">
           <input type="hidden" name="answered_count" id="hidden-answered">
+          <input type="hidden" name="bonus_eligible" id="hidden-bonus-eligible">
 
           <div class="form-grid">
             <div class="form-row full">
@@ -350,6 +371,33 @@
                 <option value="100+">أكثر من 100</option>
               </select>
             </div>
+            <div class="form-row">
+              <label>الإيرادات السنوية <span class="req">*</span></label>
+              <select name="revenue_tier" id="f-revenue" required onchange="updateMinMembers()">
+                <option value="">اختر الفئة</option>
+                <option value="very_small">متناهية الصغر — حتى 500,000 ريال</option>
+                <option value="small">صغيرة — 500,001 إلى 2,000,000 ريال</option>
+                <option value="medium">متوسطة — 2,000,001 إلى 8,000,000 ريال</option>
+                <option value="large">كبيرة — 8,000,001 إلى 30,000,000 ريال</option>
+                <option value="very_large">متناهية الكبر — أكثر من 30,000,000 ريال</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <label>النطاق الجغرافي للجمعية <span class="req">*</span></label>
+              <select name="geo_scope" id="f-geo" required onchange="updateMinMembers()">
+                <option value="">اختر النطاق</option>
+                <option value="major_city">مقر إمارة / مدينة كبيرة (الرياض، جدة، أبها...)</option>
+                <option value="governorate_a">محافظة فئة (أ)</option>
+                <option value="governorate_b">محافظة فئة (ب)</option>
+                <option value="center_a">مركز فئة (أ)</option>
+                <option value="center_b">مركز فئة (ب)</option>
+              </select>
+            </div>
+            <div class="form-row full">
+              <label>عدد أعضاء الجمعية العمومية الفعلي <span class="req">*</span></label>
+              <input type="number" name="ga_members" id="f-ga-members" min="0" max="10000" step="1" required placeholder="مثال: 120" oninput="updateMinMembers()">
+              <div class="member-status" id="member-status" style="display:none"></div>
+            </div>
           </div>
           <div class="form-error" id="reg-error"></div>
           <button type="submit" class="btn btn-primary btn-block">ابدأ التقييم ←</button>
@@ -363,7 +411,7 @@
       <div class="panel-head">
         <span class="panel-eye">الخطوة الثانية</span>
         <h1>قِس درجة <span class="gradient-text">حوكمة جمعيتك</span></h1>
-        <p class="panel-sub">191 سؤال على 21 مؤشر — أسئلة محورية لها درجة، وأسئلة تابعة لتنظيم المسار. اضغط على المؤشر لتوسيعه ورؤية أسئلته.</p>
+        <p class="panel-sub">191 سؤال أساسي + 2 سؤال محفّزات إضافية (بونص حتى 1.24 درجة) — كل تبويب يضم مؤشراته وممارساته. اضغط على المؤشر لتوسيعه ورؤية أسئلته.</p>
       </div>
 
       <div class="assess-progress">
@@ -409,6 +457,12 @@
         </div>
         <div class="res-tier" id="res-tier">جارٍ الحساب...</div>
         <p class="res-tagline" id="res-tagline">—</p>
+        <div class="res-breakdown" id="res-breakdown" style="display:none">
+          <div class="rb-row"><span class="rb-lbl">الدرجة الأساسية</span><span class="rb-val" id="rb-base">—</span></div>
+          <div class="rb-row rb-bonus"><span class="rb-lbl">★ بونص محفّزات إضافية</span><span class="rb-val" id="rb-bonus">—</span></div>
+          <div class="rb-row rb-final"><span class="rb-lbl">الدرجة النهائية (بحدّ أقصى 100)</span><span class="rb-val" id="rb-final">—</span></div>
+          <div class="rb-note" id="rb-note"></div>
+        </div>
       </div>
 
       <div class="std-results">
@@ -458,7 +512,8 @@
   const STD_LABELS = {
     compliance: { name:'الالتزام والامتثال', short:'الالتزام', short_en:'Compliance' },
     transparency: { name:'الشفافية والإفصاح', short:'الشفافية', short_en:'Transparency' },
-    financial: { name:'السلامة المالية', short:'المالية', short_en:'Financial' }
+    financial: { name:'السلامة المالية', short:'المالية', short_en:'Financial' },
+    bonus: { name:'محفّزات إضافية', short:'محفّزات', short_en:'Bonus' }
   };
   let QUESTIONS = null;
   let userData = {};
@@ -482,10 +537,48 @@
     window.scrollTo({top:0, behavior:'smooth'});
   }
 
+  // ----- مصفوفة الحد الأدنى لأعضاء الجمعية العمومية وفق دليل الدرجات الإضافية -----
+  // (الفئة المالية × النطاق الجغرافي → عدد الأعضاء المطلوب)
+  const MIN_MEMBERS = {
+    very_small:  {major_city:50,  governorate_a:50,  governorate_b:50,  center_a:50, center_b:50},
+    small:       {major_city:70,  governorate_a:70,  governorate_b:70,  center_a:70, center_b:50},
+    medium:      {major_city:100, governorate_a:100, governorate_b:100, center_a:70, center_b:50},
+    large:       {major_city:150, governorate_a:150, governorate_b:100, center_a:70, center_b:50},
+    very_large:  {major_city:200, governorate_a:150, governorate_b:100, center_a:70, center_b:50}
+  };
+  const TIER_LABEL = {
+    very_small:'متناهية الصغر', small:'صغيرة', medium:'متوسطة', large:'كبيرة', very_large:'متناهية الكبر'
+  };
+  function getMinRequiredMembers(tier, scope){
+    if(!tier || !scope || !MIN_MEMBERS[tier]) return null;
+    return MIN_MEMBERS[tier][scope] || null;
+  }
+  function updateMinMembers(){
+    const tier = document.getElementById('f-revenue').value;
+    const scope = document.getElementById('f-geo').value;
+    const actual = parseInt(document.getElementById('f-ga-members').value, 10);
+    const status = document.getElementById('member-status');
+    const required = getMinRequiredMembers(tier, scope);
+    if(!required){ status.style.display = 'none'; return; }
+    status.style.display = 'flex';
+    if(isNaN(actual)){
+      status.className = 'member-status warn';
+      status.innerHTML = `<span class="ms-ico">ⓘ</span> الحدّ الأدنى لفئتك (${TIER_LABEL[tier]}): <strong>${required}</strong> عضو لتحقيق الدرجة الإضافية`;
+    } else if(actual >= required){
+      status.className = 'member-status ok';
+      status.innerHTML = `<span class="ms-ico">✓</span> مستوفٍ الحدّ الأدنى (${required} عضو) — مؤهّل للدرجة الإضافية`;
+    } else {
+      const gap = required - actual;
+      status.className = 'member-status warn';
+      status.innerHTML = `<span class="ms-ico">⚠</span> أقل بـ <strong>${gap}</strong> عضواً عن الحدّ الأدنى (${required} عضو لفئتك). الدرجة الإضافية لن تُحتسب حتى يكتمل العدد.`;
+    }
+  }
+
   // ----- خطوة 1: تسجيل -----
   function submitRegistration(e){
     e.preventDefault();
     const get = id => document.getElementById(id).value.trim();
+    const ga = parseInt(get('f-ga-members'), 10);
     userData = {
       org_name: get('f-org'),
       contact_name: get('f-name'),
@@ -493,9 +586,16 @@
       phone: get('f-phone'),
       email: get('f-email'),
       org_age: get('f-age'),
-      org_size: get('f-size')
+      org_size: get('f-size'),
+      revenue_tier: get('f-revenue'),
+      geo_scope: get('f-geo'),
+      ga_members: isNaN(ga) ? null : ga
     };
-    if(!userData.org_name || !userData.contact_name || !userData.phone || !userData.email || !userData.role){
+    userData.min_required_members = getMinRequiredMembers(userData.revenue_tier, userData.geo_scope);
+    userData.bonus_eligible = (userData.min_required_members != null && userData.ga_members != null
+                               && userData.ga_members >= userData.min_required_members);
+    if(!userData.org_name || !userData.contact_name || !userData.phone || !userData.email || !userData.role
+       || !userData.revenue_tier || !userData.geo_scope || userData.ga_members == null){
       const err = document.getElementById('reg-error');
       err.textContent = 'يرجى تعبئة الحقول الإلزامية المعلَّمة بـ *';
       err.classList.add('show');
@@ -531,6 +631,9 @@
     return n;
   }
 
+  function isBonusStd(std){
+    return QUESTIONS && QUESTIONS[std] && QUESTIONS[std][0] && QUESTIONS[std][0].is_bonus === true;
+  }
   function renderTabs(){
     const tabsEl = document.getElementById('std-tabs');
     tabsEl.innerHTML = '';
@@ -538,9 +641,12 @@
       const cnt = QUESTIONS[std].reduce((s, ind) => s + ind.practices.reduce((s2,p)=>s2+p.questions.length, 0), 0);
       const inds = QUESTIONS[std].length;
       const btn = document.createElement('button');
-      btn.className = 'std-tab' + (std === currentTab ? ' active' : '');
+      btn.className = 'std-tab' + (std === currentTab ? ' active' : '') + (isBonusStd(std) ? ' std-tab-bonus' : '');
       btn.dataset.std = std;
-      btn.innerHTML = `<span>${STD_LABELS[std].name}</span><small>${arNum(inds)} مؤشر · ${arNum(cnt)} سؤال</small>`;
+      const subtitle = isBonusStd(std)
+        ? `بونص حتى 1.24 درجة`
+        : `${arNum(inds)} مؤشر · ${arNum(cnt)} سؤال`;
+      btn.innerHTML = `<span>${STD_LABELS[std].name}</span><small>${subtitle}</small>`;
       btn.onclick = () => switchTab(std);
       tabsEl.appendChild(btn);
     });
@@ -752,9 +858,11 @@
   function computeScores(){
     const byStd = {};
     const byInd = {};
-    let stdPctSum = 0, stdCount = 0;
+    let basePctSum = 0, baseCount = 0;
+    let bonusAchievedRaw = 0, bonusMaxRaw = 0; // درجات مطلقة (نقاط)، لا نسبة مئوية
 
     Object.entries(QUESTIONS).forEach(([std, indicators]) => {
+      const isBonus = indicators[0] && indicators[0].is_bonus === true;
       let stdAchieved = 0, stdMax = 0, stdAnswered = 0, stdTotalQ = 0;
       let weightedAchieved = 0, weightedMax = 0;
 
@@ -773,26 +881,39 @@
         const indPct = indMax > 0 ? indAchieved / indMax * 100 : null;
         byInd[std+'-'+ind.id] = indPct == null ? null : Math.round(indPct);
 
-        // إن كان للمؤشر وزن صريح، استخدمه
         if(typeof ind.weight_pct === 'number'){
           weightedAchieved += (indPct == null ? 0 : indPct) * ind.weight_pct;
           weightedMax += ind.weight_pct * 100;
         }
       });
 
-      // إن وُجدت أوزان، استخدم الجمع الموزون. وإلا اجمع النقاط مباشرة.
       let stdPct = 0;
       if(weightedMax > 0){
         stdPct = Math.round(weightedAchieved / weightedMax * 100);
       } else {
         stdPct = stdMax > 0 ? Math.round(stdAchieved / stdMax * 100) : 0;
       }
-      byStd[std] = { pct: stdPct, answered: stdAnswered, totalQ: stdTotalQ, achieved: stdAchieved, max: stdMax };
-      stdPctSum += stdPct; stdCount++;
+      byStd[std] = { pct: stdPct, answered: stdAnswered, totalQ: stdTotalQ, achieved: stdAchieved, max: stdMax, is_bonus: isBonus };
+
+      if(isBonus){
+        // البونص لا يُحسب في المتوسط، بل كنقاط مضافة (تخضع لشرط الأهلية لاحقاً)
+        bonusAchievedRaw = stdAchieved;
+        bonusMaxRaw = stdMax;
+      } else {
+        basePctSum += stdPct; baseCount++;
+      }
     });
 
+    const basePct = baseCount > 0 ? Math.round(basePctSum / baseCount) : 0;
+    const bonusEligible = userData && userData.bonus_eligible === true;
+    const bonusEarned = bonusEligible ? bonusAchievedRaw : 0;
+    // بعد إضافة البونص نحدّ السقف عند 100
+    const finalPct = Math.min(100, Math.round((basePct + bonusEarned) * 100) / 100);
+
     return {
-      overall: { pct: stdCount > 0 ? Math.round(stdPctSum / stdCount) : 0 },
+      overall: { pct: finalPct },
+      base: { pct: basePct },
+      bonus: { earned: Math.round(bonusEarned * 100) / 100, max: bonusMaxRaw, eligible: bonusEligible },
       byStd, byInd
     };
   }
@@ -844,11 +965,37 @@
     document.getElementById('cta-title').textContent = ctaTitle;
     document.getElementById('cta-desc').textContent = ctaDesc;
 
+    // عرض تفصيل الأساسي + البونص + النهائي
+    const breakdown = document.getElementById('res-breakdown');
+    if(scores.bonus && scores.bonus.max > 0){
+      breakdown.style.display = 'block';
+      document.getElementById('rb-base').textContent = arNum(scores.base.pct) + '٪';
+      document.getElementById('rb-bonus').textContent = '+' + scores.bonus.earned.toFixed(2);
+      document.getElementById('rb-final').textContent = arNum(overall) + '٪';
+      const noteEl = document.getElementById('rb-note');
+      const reqMin = userData.min_required_members;
+      const actual = userData.ga_members;
+      let noteParts = [];
+      if(scores.bonus.eligible){
+        if(scores.bonus.earned > 0){
+          noteParts.push(`الجمعية مستوفية الحدّ الأدنى للأعضاء (${reqMin}) — تم احتساب ${scores.bonus.earned.toFixed(2)} من ${scores.bonus.max.toFixed(2)} درجة بونص.`);
+        } else {
+          noteParts.push(`الجمعية مؤهّلة للبونص لكن لم تُجِب على أسئلة المحفّزات بنعم.`);
+        }
+        if(scores.base.pct >= 100){
+          noteParts.push('الدرجة الأساسية بلغت 100٪، ولن يضيف البونص فوقها (وفق الدليل الرسمي).');
+        }
+      } else {
+        noteParts.push(`عدد الأعضاء (${actual}) أقل من الحدّ الأدنى (${reqMin}) لفئة الجمعية. الدرجة الإضافية لا تُحتسب وفق الدليل.`);
+      }
+      noteEl.innerHTML = noteParts.join(' ');
+    }
+
     setStdResult('c', c, scores.byStd.compliance);
     setStdResult('t', t, scores.byStd.transparency);
     setStdResult('f', f, scores.byStd.financial);
 
-    sendToNetlify(overall, c, t, f, answered);
+    sendToNetlify(overall, scores.base.pct, scores.bonus.earned, c, t, f, answered, scores.bonus.eligible);
     goToStep(3);
   }
 
@@ -881,12 +1028,15 @@
     }, 30);
   }
 
-  function sendToNetlify(overall, c, t, f, answered){
+  function sendToNetlify(overall, base, bonus, c, t, f, answered, bonusEligible){
     document.getElementById('hidden-overall').value = overall;
+    document.getElementById('hidden-base').value = base;
+    document.getElementById('hidden-bonus').value = (bonus || 0).toFixed(2);
     document.getElementById('hidden-compliance').value = c;
     document.getElementById('hidden-transparency').value = t;
     document.getElementById('hidden-financial').value = f;
     document.getElementById('hidden-answered').value = answered;
+    document.getElementById('hidden-bonus-eligible').value = bonusEligible ? 'yes' : 'no';
     const form = document.getElementById('reg-form');
     const data = new FormData(form);
     fetch(location.pathname, {
