@@ -2886,22 +2886,22 @@
       </div>
     </div>
 
-    <div class="std-card std-clickable std-soon" data-std="financial" onclick="openStdAssessment('financial')">
+    <div class="std-card std-clickable" data-std="financial" onclick="openStdAssessment('financial')">
       <div class="std-card-top">
         <div class="std-num">٠٣</div>
         <div class="std-score-ring">
           <svg width="56" height="56" viewBox="0 0 56 56" style="overflow:visible">
             <circle fill="none" class="ring-bg" cx="28" cy="28" r="24"/>
-            <circle fill="none" class="ring-fill amber" cx="28" cy="28" r="24" stroke-dasharray="150.8" stroke-dashoffset="54.29" data-std-score="financial"/>
+            <circle fill="none" class="ring-fill amber" cx="28" cy="28" r="24" stroke-dasharray="150.8" stroke-dashoffset="150.8" data-std-score="financial"/>
           </svg>
-          <span class="ring-text" data-std-text="financial">٦٤٪</span>
+          <span class="ring-text" data-std-text="financial">٠٪</span>
         </div>
       </div>
       <div class="std-title">معيار السلامة المالية</div>
-      <div class="std-desc">صحّة الإدارة المالية، فصل الأموال المقيدة، احتياطي السيولة، تنوع التمويل، نسبة المصروفات البرامجية.</div>
-      <div class="std-progress"><span>إجمالي العناصر</span><strong>١٦ / ٢٥</strong></div>
+      <div class="std-desc">الهيكل التنظيمي، تفعيل السياسات والإجراءات، السجلات والمستندات، التقارير، والإجراءات المالية والمحاسبية وفق دليل المركز الوطني (مايو 2025).</div>
+      <div class="std-progress"><span>إجمالي الممارسات</span><strong>١١ / ١١</strong></div>
       <div class="std-stats">
-        <span>أيام السيولة: ٧٢</span>
+        <span>الإصدار: مايو 2025</span>
         <span class="std-cta">ابدأ التقييم ←</span>
       </div>
     </div>
@@ -5314,16 +5314,17 @@
         <button class="ind-btn primary" onclick="exportAssessment()">تصدير التقرير ↓</button>
       </div>
       <div class="ind-section-summary">
-        <strong>معيار السلامة المالية - التنظيم المالي</strong> · 16 مؤشرات · 31 ممارسات · 65 أسئلة
+        <strong>معيار السلامة المالية — التنظيم المالي</strong> · إصدار مايو 2025م · المركز الوطني لتنمية القطاع غير الربحي · 5 مؤشرات · 11 ممارسة · 32 سؤال · 100 درجة
       </div>
       <div class="indicators-list">
-      <!-- المؤشر 1 -->
+
+      <!-- المؤشر 1: الهيكل التنظيمي (الوزن 17%) -->
       <div class="ind-card" data-ind="1">
         <div class="ind-head" onclick="toggleIndicator(this)">
           <div class="ind-num">١</div>
           <div class="ind-info">
-            <div class="ind-name">الهيكل التنظيمي المالي</div>
-            <div class="ind-meta">الوظائف والاعتماد · 2 ممارسات · 4 أسئلة</div>
+            <div class="ind-name">الهيكل التنظيمي</div>
+            <div class="ind-meta">الوزن 17٪ · 3 ممارسات · 5 أسئلة · 17 درجة</div>
           </div>
           <div class="ind-stats">
             <div class="ind-gauge">
@@ -5341,35 +5342,45 @@
           <div class="practice-card">
             <div class="practice-head">
               <div class="practice-num">1.1</div>
-              <div class="practice-name">هيكل تنظيمي معتمد</div>
-              <div class="practice-weight">2 درجات</div>
+              <div class="practice-name">الهيكل التنظيمي والوصف الوظيفي للوظائف المالية</div>
+              <div class="practice-weight">8 درجات</div>
             </div>
             <div class="questions">
-              <div class="qrow" data-q="q-financial-1-1-1"><span class="qn">١</span><span class="qt">هل يوجد هيكل تنظيمي للوظائف المالية في الجمعية ضمن هيكل الجمعية معتمد من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-1-1-2"><span class="qn">٢</span><span class="qt">هل هو مفعل في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-1-1-1"><span class="qn">١</span><span class="qt">هل يوجد هيكل تنظيمي للوظائف المالية في الجمعية ضمن هيكل الجمعية معتمد من مجلس الإدارة؟ <em>(4 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-1-1-2"><span class="qn">٢</span><span class="qt">هل يوجد وصف وظيفي للوظائف المالية واضح يحدد مسؤوليات واختصاصات كل موظف في الوظائف المالية المعتمدة في الهيكل التنظيمي؟ <em>(4 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
             </div>
           </div>
           <div class="practice-card">
             <div class="practice-head">
               <div class="practice-num">1.2</div>
-              <div class="practice-name">الوصف الوظيفي</div>
-              <div class="practice-weight">2 درجات</div>
+              <div class="practice-name">الصلاحيات المالية والإدارية</div>
+              <div class="practice-weight">5 درجات</div>
             </div>
             <div class="questions">
-              <div class="qrow" data-q="q-financial-1-2-1"><span class="qn">١</span><span class="qt">هل يوجد وصف وظيفي للوظائف المالية واضح يحدد مسؤوليات واختصاصات كل موظف في الوظائف المالية المعتمدة في الهيكل التنظيمي؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-1-2-2"><span class="qn">٢</span><span class="qt">هل هو مفعل في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-1-2-1"><span class="qn">١</span><span class="qt">هل يوجد لائحة صلاحيات مالية للمجلس والصلاحيات الممنوحة من المجلس للإدارة التنفيذية؟ <em>(3 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-1-2-2"><span class="qn">٢</span><span class="qt">هل هي متطابقة مع المستويات الموجودة في الهيكل التنظيمي المعتمد؟ <em>(درجتان)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+            </div>
+          </div>
+          <div class="practice-card">
+            <div class="practice-head">
+              <div class="practice-num">1.3</div>
+              <div class="practice-name">اختصاصات مجلس الإدارة في الرقابة والمتابعة</div>
+              <div class="practice-weight">4 درجات</div>
+            </div>
+            <div class="questions">
+              <div class="qrow" data-q="q-financial-1-3-1"><span class="qn">١</span><span class="qt">هل يرفع المراجع الداخلي التقارير لمجلس الإدارة والإدارة التنفيذية؟ <em>(4 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- المؤشر 2 -->
+      <!-- المؤشر 2: تفعيل السياسات والإجراءات (الوزن 51%) -->
       <div class="ind-card" data-ind="2">
         <div class="ind-head" onclick="toggleIndicator(this)">
           <div class="ind-num">٢</div>
           <div class="ind-info">
-            <div class="ind-name">لائحة الصلاحيات المالية</div>
-            <div class="ind-meta">تفويض الصلاحيات · 1 ممارسات · 2 أسئلة</div>
+            <div class="ind-name">تفعيل السياسات والإجراءات</div>
+            <div class="ind-meta">الوزن 51٪ · 4 ممارسات · 19 سؤال · 51 درجة</div>
           </div>
           <div class="ind-stats">
             <div class="ind-gauge">
@@ -5387,24 +5398,68 @@
           <div class="practice-card">
             <div class="practice-head">
               <div class="practice-num">2.1</div>
-              <div class="practice-name">لائحة الصلاحيات</div>
-              <div class="practice-weight">2 درجات</div>
+              <div class="practice-name">لائحة السياسات المالية</div>
+              <div class="practice-weight">7 درجات</div>
             </div>
             <div class="questions">
-              <div class="qrow" data-q="q-financial-2-1-1"><span class="qn">١</span><span class="qt">هل يوجد لائحة صلاحيات مالية للمجلس والصلاحيات الممنوحة من المجلس للإدارة التنفيذية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-2-1-2"><span class="qn">٢</span><span class="qt">هل هي متطابقة مع المستويات الموجودة في الهيكل التنظيمي المعتمد؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-1-1"><span class="qn">١</span><span class="qt">هل توجد لائحة للسياسات المالية؟ <em>(3 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-1-2"><span class="qn">٢</span><span class="qt">هل تم اعتماد اللائحة من مجلس الإدارة؟ <em>(درجتان)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-1-3"><span class="qn">٣</span><span class="qt">هل هي مفعّلة في واقع العمل المالي في الجمعية؟ <em>(درجتان)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+            </div>
+          </div>
+          <div class="practice-card">
+            <div class="practice-head">
+              <div class="practice-num">2.2</div>
+              <div class="practice-name">دليل الإجراءات المالي</div>
+              <div class="practice-weight">7 درجات</div>
+            </div>
+            <div class="questions">
+              <div class="qrow" data-q="q-financial-2-2-1"><span class="qn">١</span><span class="qt">هل يوجد لدى الجمعية دليل إجراءات مالي؟ <em>(4 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-2-2"><span class="qn">٢</span><span class="qt">هل تم اعتماد الدليل من مجلس الإدارة؟ <em>(درجتان)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-2-3"><span class="qn">٣</span><span class="qt">هل هو مفعّل في واقع العمل المالي في الجمعية؟ <em>(درجة واحدة)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+            </div>
+          </div>
+          <div class="practice-card">
+            <div class="practice-head">
+              <div class="practice-num">2.3</div>
+              <div class="practice-name">جمع التبرعات والصرف والاشتراكات والمشتريات</div>
+              <div class="practice-weight">19 درجة</div>
+            </div>
+            <div class="questions">
+              <div class="qrow" data-q="q-financial-2-3-1"><span class="qn">١</span><span class="qt">هل لدى الجمعية إجراءات ملائمة للتعامل مع المقبوضات في الجمعية؟ <em>(3 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-3-2"><span class="qn">٢</span><span class="qt">هل هي مفعّلة في واقع العمل المالي في الجمعية؟ <em>(درجتان)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-3-3"><span class="qn">٣</span><span class="qt">هل يوجد سجل يدوي أو عبر البرنامج المحاسبي لمتابعة اشتراكات الأعضاء؟ <em>(3 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-3-4"><span class="qn">٤</span><span class="qt">هل يوجد لدى الجمعية لائحة وإجراءات للمشتريات؟ <em>(3 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-3-5"><span class="qn">٥</span><span class="qt">هل تم اعتماد اللائحة من مجلس الإدارة؟ <em>(درجتان)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-3-6"><span class="qn">٦</span><span class="qt">هل هي مفعّلة في واقع العمل المالي في الجمعية؟ <em>(درجة واحدة)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-3-7"><span class="qn">٧</span><span class="qt">هل توجد لدى الجمعية سياسات وإجراءات خاصة بعمليات الصرف للبرامج والأنشطة؟ <em>(3 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-3-8"><span class="qn">٨</span><span class="qt">هل تم اعتماد السياسات من مجلس الإدارة؟ <em>(درجتان)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+            </div>
+          </div>
+          <div class="practice-card">
+            <div class="practice-head">
+              <div class="practice-num">2.4</div>
+              <div class="practice-name">موافقة الجمعية العمومية على التملك والاستثمار</div>
+              <div class="practice-weight">18 درجة</div>
+            </div>
+            <div class="questions">
+              <div class="qrow" data-q="q-financial-2-4-1"><span class="qn">١</span><span class="qt">هل توجد لدى الجمعية سياسات وإجراءات مالية للاستثمار في الجمعية؟ <em>(3 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-4-2"><span class="qn">٢</span><span class="qt">هل تم اعتماد السياسات من مجلس الإدارة؟ <em>(درجتان)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-4-3"><span class="qn">٣</span><span class="qt">هل لدى الجمعية استثمارات أو أصول أقرّتها الجمعية العمومية واقترحت مجالاتها؟ <em>(4 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-4-4"><span class="qn">٤</span><span class="qt">هل يتم تقييم الاستثمارات الحالية بشكل دوري لضمان تحقيق العوائد المستهدفة، مع آلية واضحة لتخصيص العوائد لدعم المشاريع والبرامج؟ <em>(7 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-2-4-5"><span class="qn">٥</span><span class="qt">هل لدى الجمعية تنوّع في محفظتها الاستثمارية لتقليل المخاطر؟ <em>(درجتان)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- المؤشر 3 -->
+      <!-- المؤشر 3: السجلات والمستندات (الوزن 6%) -->
       <div class="ind-card" data-ind="3">
         <div class="ind-head" onclick="toggleIndicator(this)">
           <div class="ind-num">٣</div>
           <div class="ind-info">
-            <div class="ind-name">اختصاصات المشرف المالي</div>
-            <div class="ind-meta">التحديد والمؤهلات · 3 ممارسات · 3 أسئلة</div>
+            <div class="ind-name">السجلات والمستندات</div>
+            <div class="ind-meta">الوزن 6٪ · 1 ممارسة · 1 سؤال · 6 درجات</div>
           </div>
           <div class="ind-stats">
             <div class="ind-gauge">
@@ -5422,43 +5477,23 @@
           <div class="practice-card">
             <div class="practice-head">
               <div class="practice-num">3.1</div>
-              <div class="practice-name">تحديد الاختصاصات</div>
-              <div class="practice-weight">1 درجة</div>
+              <div class="practice-name">تفعيل السجلات الإدارية والمحاسبية</div>
+              <div class="practice-weight">6 درجات</div>
             </div>
             <div class="questions">
-              <div class="qrow" data-q="q-financial-3-1-1"><span class="qn">١</span><span class="qt">هل تم تحديد اختصاصات المشرف المالي في اللائحة الأساسية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">3.2</div>
-              <div class="practice-name">مؤهلات المشرف المالي</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-3-2-1"><span class="qn">١</span><span class="qt">هل مؤهلات المشرف المالي تتناسب مع عضويته في مجلس الإدارة كمشرف مالي؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">3.3</div>
-              <div class="practice-name">ممارسة المهام</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-3-3-1"><span class="qn">١</span><span class="qt">هل يمارس المشرف المهام الموكلة إليه؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-3-1-1"><span class="qn">١</span><span class="qt">هل يوجد لدى الجمعية السجلات والدفاتر الإدارية والمحاسبية التي تحتاجها وفقًا للأنظمة واللوائح والتعليمات ومتطلبات العمل المالي والمحاسبي لكافة العمليات المحاسبية؟ <em>(6 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- المؤشر 4 -->
+      <!-- المؤشر 4: التقارير (الوزن 4%) -->
       <div class="ind-card" data-ind="4">
         <div class="ind-head" onclick="toggleIndicator(this)">
           <div class="ind-num">٤</div>
           <div class="ind-info">
-            <div class="ind-name">المحاسب</div>
-            <div class="ind-meta">السعودة والتعيين · 1 ممارسات · 3 أسئلة</div>
+            <div class="ind-name">التقارير</div>
+            <div class="ind-meta">الوزن 4٪ · 1 ممارسة · 1 سؤال · 4 درجات</div>
           </div>
           <div class="ind-stats">
             <div class="ind-gauge">
@@ -5476,25 +5511,23 @@
           <div class="practice-card">
             <div class="practice-head">
               <div class="practice-num">4.1</div>
-              <div class="practice-name">وجود محاسب</div>
-              <div class="practice-weight">2 درجات</div>
+              <div class="practice-name">إعداد التقارير المالية (الموازنة التقديرية)</div>
+              <div class="practice-weight">4 درجات</div>
             </div>
             <div class="questions">
-              <div class="qrow" data-q="q-financial-4-1-1"><span class="qn">١</span><span class="qt">هل يوجد لدى الجمعية محاسب؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-4-1-2"><span class="qn">٢</span><span class="qt">هل المحاسب سعودي الجنسية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-4-1-3"><span class="qn">٣</span><span class="qt">هل تم تكليفه أو تعيينه من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-4-1-1"><span class="qn">١</span><span class="qt">هل للجمعية موازنة تقديرية للعام الجديد وتم إعدادها بناءً على الخطة التشغيلية المعتمدة للجمعية؟ <em>(4 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- المؤشر 5 -->
+      <!-- المؤشر 5: الإجراءات المالية والمحاسبية (الوزن 22%) -->
       <div class="ind-card" data-ind="5">
         <div class="ind-head" onclick="toggleIndicator(this)">
           <div class="ind-num">٥</div>
           <div class="ind-info">
-            <div class="ind-name">المراجع الداخلي</div>
-            <div class="ind-meta">نظام الرقابة والمراجعة · 3 ممارسات · 8 أسئلة</div>
+            <div class="ind-name">الإجراءات المالية والمحاسبية</div>
+            <div class="ind-meta">الوزن 22٪ · 2 ممارسات · 6 أسئلة · 22 درجة</div>
           </div>
           <div class="ind-stats">
             <div class="ind-gauge">
@@ -5512,538 +5545,30 @@
           <div class="practice-card">
             <div class="practice-head">
               <div class="practice-num">5.1</div>
-              <div class="practice-name">وجود مراجع داخلي</div>
-              <div class="practice-weight">2 درجات</div>
+              <div class="practice-name">تطبيق المعايير المحاسبية المعتمدة</div>
+              <div class="practice-weight">6 درجات</div>
             </div>
             <div class="questions">
-              <div class="qrow" data-q="q-financial-5-1-1"><span class="qn">١</span><span class="qt">هل يوجد مراجع داخلي لمراجعة وتحديث اللوائح والسياسات الداخلية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-5-1-2"><span class="qn">٢</span><span class="qt">هل تم تكليفه أو تعيينه من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-5-1-3"><span class="qn">٣</span><span class="qt">هل يرفع المراجع الداخلي التقارير لمجلس الإدارة والإدارة التنفيذية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-5-1-1"><span class="qn">١</span><span class="qt">هل تتقيد الجمعية في عملياتها المالية بالمعايير المحاسبية الصادرة من الهيئة السعودية للمحاسبين القانونيين وبالنماذج والتقارير المحاسبية التي يصدرها المركز؟ <em>(6 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
             </div>
           </div>
           <div class="practice-card">
             <div class="practice-head">
               <div class="practice-num">5.2</div>
-              <div class="practice-name">نظام الرقابة الداخلي</div>
-              <div class="practice-weight">2 درجات</div>
+              <div class="practice-name">استخدام البرنامج المحاسبي والالتزام بدليل الحسابات الموحد</div>
+              <div class="practice-weight">16 درجة</div>
             </div>
             <div class="questions">
-              <div class="qrow" data-q="q-financial-5-2-1"><span class="qn">١</span><span class="qt">هل يوجد نظام للرقابة الداخلية لمراجعة الصرف وباقي الإجراءات المالية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-5-2-2"><span class="qn">٢</span><span class="qt">هل تم اعتماد نظام الرقابة الداخلي من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-5-2-3"><span class="qn">٣</span><span class="qt">هل هو مفعل في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">5.3</div>
-              <div class="practice-name">لجنة التدقيق</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-5-3-1"><span class="qn">١</span><span class="qt">هل توجد لجنة تدقيق ومراجعة داخلية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-5-3-2"><span class="qn">٢</span><span class="qt">هل يرأس المشرف المالي في مجلس الإدارة هذه اللجنة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-5-2-1"><span class="qn">١</span><span class="qt">هل يوجد لدى الجمعية برنامج محاسبي؟ <em>(4 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-5-2-2"><span class="qn">٢</span><span class="qt">هل هو مفعّل في واقع العمل المالي في الجمعية؟ <em>(4 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-5-2-3"><span class="qn">٣</span><span class="qt">هل تطبّق الجمعية دليل الحسابات الموحد في الجمعيات الأهلية المعتمد من المركز بشكل صحيح؟ <em>(4 درجات)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-5-2-4"><span class="qn">٤</span><span class="qt">هل يحتوي البرنامج المحاسبي على دليل مراكز التكلفة وتسلسل الصلاحيات (عدم الجمع بين الإدخال والتعديل والحذف لدى موظف واحد)؟ <em>(درجتان)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
+              <div class="qrow" data-q="q-financial-5-2-5"><span class="qn">٥</span><span class="qt">هل تتوفّر آلية موثوقة للنسخ الاحتياطي للبيانات المحاسبية؟ <em>(درجتان)</em></span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- المؤشر 6 -->
-      <div class="ind-card" data-ind="6">
-        <div class="ind-head" onclick="toggleIndicator(this)">
-          <div class="ind-num">٦</div>
-          <div class="ind-info">
-            <div class="ind-name">لائحة السياسات المالية</div>
-            <div class="ind-meta">السياسات والاعتماد · 1 ممارسات · 3 أسئلة</div>
-          </div>
-          <div class="ind-stats">
-            <div class="ind-gauge">
-              <svg width="48" height="48" viewBox="0 0 48 48">
-                <circle fill="none" class="gauge-bg" cx="24" cy="24" r="20"/>
-                <circle fill="none" class="gauge-fill red" cx="24" cy="24" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
-              </svg>
-              <div class="gauge-text">٠٪</div>
-            </div>
-            <div class="ind-weight">٦</div>
-          </div>
-          <button class="ind-toggle"></button>
-        </div>
-        <div class="ind-body">
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">6.1</div>
-              <div class="practice-name">وجود الئحة السياسات المالية</div>
-              <div class="practice-weight">2 درجات</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-6-1-1"><span class="qn">١</span><span class="qt">هل توجد لائحة للسياسات المالية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-6-1-2"><span class="qn">٢</span><span class="qt">هل تم اعتماد اللائحة من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-6-1-3"><span class="qn">٣</span><span class="qt">هل هي مفعلة في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- المؤشر 7 -->
-      <div class="ind-card" data-ind="7">
-        <div class="ind-head" onclick="toggleIndicator(this)">
-          <div class="ind-num">٧</div>
-          <div class="ind-info">
-            <div class="ind-name">دليل الإجراءات المالية</div>
-            <div class="ind-meta">الإجراءات التنفيذية · 1 ممارسات · 3 أسئلة</div>
-          </div>
-          <div class="ind-stats">
-            <div class="ind-gauge">
-              <svg width="48" height="48" viewBox="0 0 48 48">
-                <circle fill="none" class="gauge-bg" cx="24" cy="24" r="20"/>
-                <circle fill="none" class="gauge-fill red" cx="24" cy="24" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
-              </svg>
-              <div class="gauge-text">٠٪</div>
-            </div>
-            <div class="ind-weight">٧</div>
-          </div>
-          <button class="ind-toggle"></button>
-        </div>
-        <div class="ind-body">
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">7.1</div>
-              <div class="practice-name">وجود دليل الإجراءات المالية</div>
-              <div class="practice-weight">2 درجات</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-7-1-1"><span class="qn">١</span><span class="qt">هل يوجد لدى الجمعية دليل إجراءات مالي؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-7-1-2"><span class="qn">٢</span><span class="qt">هل تم اعتماد الدليل من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-7-1-3"><span class="qn">٣</span><span class="qt">هل هو مفعل في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- المؤشر 8 -->
-      <div class="ind-card" data-ind="8">
-        <div class="ind-head" onclick="toggleIndicator(this)">
-          <div class="ind-num">٨</div>
-          <div class="ind-info">
-            <div class="ind-name">السياسات الإلزامية - مالية</div>
-            <div class="ind-meta">تعارض المصالح والإبلاغ والخصوصية · 8 ممارسات · 18 أسئلة</div>
-          </div>
-          <div class="ind-stats">
-            <div class="ind-gauge">
-              <svg width="48" height="48" viewBox="0 0 48 48">
-                <circle fill="none" class="gauge-bg" cx="24" cy="24" r="20"/>
-                <circle fill="none" class="gauge-fill red" cx="24" cy="24" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
-              </svg>
-              <div class="gauge-text">٠٪</div>
-            </div>
-            <div class="ind-weight">٨</div>
-          </div>
-          <button class="ind-toggle"></button>
-        </div>
-        <div class="ind-body">
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">8.1</div>
-              <div class="practice-name">سياسة تعارض المصالح</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-8-1-1"><span class="qn">١</span><span class="qt">هل توجد سياسة لتعارض المصالح معتمدة من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-8-1-2"><span class="qn">٢</span><span class="qt">هل هي مفعلة في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">8.2</div>
-              <div class="practice-name">سياسة الإبلاغ عن المخالفات</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-8-2-1"><span class="qn">١</span><span class="qt">هل توجد سياسة للإبلاغ عن المخالفات وحماية مقدمي البلاغات معتمدة من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-8-2-2"><span class="qn">٢</span><span class="qt">هل هي مفعلة في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">8.3</div>
-              <div class="practice-name">سياسة خصوصية البيانات</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-8-3-1"><span class="qn">١</span><span class="qt">هل توجد سياسة لخصوصية البيانات معتمدة من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-8-3-2"><span class="qn">٢</span><span class="qt">هل هي مفعلة في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">8.4</div>
-              <div class="practice-name">سياسة الاحتفاظ بالوثائق</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-8-4-1"><span class="qn">١</span><span class="qt">هل توجد سياسة للاحتفاظ بالوثائق وإتلافها معتمدة من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-8-4-2"><span class="qn">٢</span><span class="qt">هل هي مفعلة في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">8.5</div>
-              <div class="practice-name">سياسة مكافحة غسل الأموال</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-8-5-1"><span class="qn">١</span><span class="qt">هل توجد سياسة لمكافحة غسل الأموال ومكافحة جرائم الإرهاب وتمويله؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-8-5-2"><span class="qn">٢</span><span class="qt">هل هي مفعلة في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">8.6</div>
-              <div class="practice-name">سياسة جمع التبرعات</div>
-              <div class="practice-weight">2 درجات</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-8-6-1"><span class="qn">١</span><span class="qt">هل توجد سياسة جمع التبرعات معتمدة من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-8-6-2"><span class="qn">٢</span><span class="qt">هل هي مفعلة في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">8.7</div>
-              <div class="practice-name">سياسة الصرف</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-8-7-1"><span class="qn">١</span><span class="qt">هل توجد لدى الجمعية سياسات وإجراءات خاصة بعمليات الصرف للبرامج والأنشطة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-8-7-2"><span class="qn">٢</span><span class="qt">هل تم اعتمادها من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-8-7-3"><span class="qn">٣</span><span class="qt">هل هي مفعلة في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">8.8</div>
-              <div class="practice-name">سياسة الاستثمار</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-8-8-1"><span class="qn">١</span><span class="qt">هل توجد لدى الجمعية سياسات وإجراءات مالية للاستثمار؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-8-8-2"><span class="qn">٢</span><span class="qt">هل تم اعتمادها من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-8-8-3"><span class="qn">٣</span><span class="qt">هل هي مفعلة في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- المؤشر 9 -->
-      <div class="ind-card" data-ind="9">
-        <div class="ind-head" onclick="toggleIndicator(this)">
-          <div class="ind-num">٩</div>
-          <div class="ind-info">
-            <div class="ind-name">المشتريات</div>
-            <div class="ind-meta">اللائحة والاعتماد · 1 ممارسات · 3 أسئلة</div>
-          </div>
-          <div class="ind-stats">
-            <div class="ind-gauge">
-              <svg width="48" height="48" viewBox="0 0 48 48">
-                <circle fill="none" class="gauge-bg" cx="24" cy="24" r="20"/>
-                <circle fill="none" class="gauge-fill red" cx="24" cy="24" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
-              </svg>
-              <div class="gauge-text">٠٪</div>
-            </div>
-            <div class="ind-weight">٩</div>
-          </div>
-          <button class="ind-toggle"></button>
-        </div>
-        <div class="ind-body">
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">9.1</div>
-              <div class="practice-name">لائحة المشتريات</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-9-1-1"><span class="qn">١</span><span class="qt">هل يوجد لدى الجمعية لائحة وإجراءات للمشتريات؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-9-1-2"><span class="qn">٢</span><span class="qt">هل تم اعتماد اللائحة من مجلس الإدارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-9-1-3"><span class="qn">٣</span><span class="qt">هل هي مفعلة في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- المؤشر 10 -->
-      <div class="ind-card" data-ind="10">
-        <div class="ind-head" onclick="toggleIndicator(this)">
-          <div class="ind-num">١٠</div>
-          <div class="ind-info">
-            <div class="ind-name">اشتراكات الأعضاء</div>
-            <div class="ind-meta">السجل والمتابعة · 1 ممارسات · 1 أسئلة</div>
-          </div>
-          <div class="ind-stats">
-            <div class="ind-gauge">
-              <svg width="48" height="48" viewBox="0 0 48 48">
-                <circle fill="none" class="gauge-bg" cx="24" cy="24" r="20"/>
-                <circle fill="none" class="gauge-fill red" cx="24" cy="24" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
-              </svg>
-              <div class="gauge-text">٠٪</div>
-            </div>
-            <div class="ind-weight">١٠</div>
-          </div>
-          <button class="ind-toggle"></button>
-        </div>
-        <div class="ind-body">
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">10.1</div>
-              <div class="practice-name">سجل اشتراكات الأعضاء</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-10-1-1"><span class="qn">١</span><span class="qt">هل يوجد سجل يدوي أو عبر البرامج المحاسبية لمتابعة اشتراكات الأعضاء؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- المؤشر 11 -->
-      <div class="ind-card" data-ind="11">
-        <div class="ind-head" onclick="toggleIndicator(this)">
-          <div class="ind-num">١١</div>
-          <div class="ind-info">
-            <div class="ind-name">العقارات والاستثمارات</div>
-            <div class="ind-meta">ملكية الجمعية · 1 ممارسات · 3 أسئلة</div>
-          </div>
-          <div class="ind-stats">
-            <div class="ind-gauge">
-              <svg width="48" height="48" viewBox="0 0 48 48">
-                <circle fill="none" class="gauge-bg" cx="24" cy="24" r="20"/>
-                <circle fill="none" class="gauge-fill red" cx="24" cy="24" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
-              </svg>
-              <div class="gauge-text">٠٪</div>
-            </div>
-            <div class="ind-weight">١١</div>
-          </div>
-          <button class="ind-toggle"></button>
-        </div>
-        <div class="ind-body">
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">11.1</div>
-              <div class="practice-name">عقارات أو استثمارات</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-11-1-1"><span class="qn">١</span><span class="qt">هل لدى الجمعية استثمارات أو عقارات في ملكيتها؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-11-1-2"><span class="qn">٢</span><span class="qt">هل توجد موافقة من الجمعية العمومية قبل التملك أو تم إقراره في أول اجتماع تالٍ لها؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-11-1-3"><span class="qn">٣</span><span class="qt">هل أقرّت الجمعية العمومية خطة هذه الاستثمارات والأصول وتقترح تنميتها؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- المؤشر 12 -->
-      <div class="ind-card" data-ind="12">
-        <div class="ind-head" onclick="toggleIndicator(this)">
-          <div class="ind-num">١٢</div>
-          <div class="ind-info">
-            <div class="ind-name">السجلات الإدارية والمحاسبية</div>
-            <div class="ind-meta">التطبيق الصحيح · 2 ممارسات · 3 أسئلة</div>
-          </div>
-          <div class="ind-stats">
-            <div class="ind-gauge">
-              <svg width="48" height="48" viewBox="0 0 48 48">
-                <circle fill="none" class="gauge-bg" cx="24" cy="24" r="20"/>
-                <circle fill="none" class="gauge-fill red" cx="24" cy="24" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
-              </svg>
-              <div class="gauge-text">٠٪</div>
-            </div>
-            <div class="ind-weight">١٢</div>
-          </div>
-          <button class="ind-toggle"></button>
-        </div>
-        <div class="ind-body">
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">12.1</div>
-              <div class="practice-name">وجود السجلات</div>
-              <div class="practice-weight">6 درجات</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-12-1-1"><span class="qn">١</span><span class="qt">هل يوجد لدى الجمعية السجلات الإدارية والمحاسبية التي تحتاجها وفقاً للأنظمة واللوائح والتعليمات ومتطلبات العمل المالي والمحاسبي بالكفاءة العملية المحاسبية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-12-1-2"><span class="qn">٢</span><span class="qt">هل هي مفعلة في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">12.2</div>
-              <div class="practice-name">تطبيق المحاسبة</div>
-              <div class="practice-weight">8 درجات</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-12-2-1"><span class="qn">١</span><span class="qt">هل تطبق الجمعية دليل الحسابات والقوائم المالية الموحد الخاص بالجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- المؤشر 13 -->
-      <div class="ind-card" data-ind="13">
-        <div class="ind-head" onclick="toggleIndicator(this)">
-          <div class="ind-num">١٣</div>
-          <div class="ind-info">
-            <div class="ind-name">البرنامج المحاسبي</div>
-            <div class="ind-meta">النظام الإلكتروني · 1 ممارسات · 3 أسئلة</div>
-          </div>
-          <div class="ind-stats">
-            <div class="ind-gauge">
-              <svg width="48" height="48" viewBox="0 0 48 48">
-                <circle fill="none" class="gauge-bg" cx="24" cy="24" r="20"/>
-                <circle fill="none" class="gauge-fill red" cx="24" cy="24" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
-              </svg>
-              <div class="gauge-text">٠٪</div>
-            </div>
-            <div class="ind-weight">١٣</div>
-          </div>
-          <button class="ind-toggle"></button>
-        </div>
-        <div class="ind-body">
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">13.1</div>
-              <div class="practice-name">وجود برنامج محاسبي</div>
-              <div class="practice-weight">6 درجات</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-13-1-1"><span class="qn">١</span><span class="qt">هل يوجد لدى الجمعية برنامج محاسبي؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-13-1-2"><span class="qn">٢</span><span class="qt">هل هو مفعل في واقع العمل المالي في الجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-13-1-3"><span class="qn">٣</span><span class="qt">هل تطبق الجمعية المعايير المحاسبية للمنشآت غير الهادفة للربح والمعتمدة من الوزارة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- المؤشر 14 -->
-      <div class="ind-card" data-ind="14">
-        <div class="ind-head" onclick="toggleIndicator(this)">
-          <div class="ind-num">١٤</div>
-          <div class="ind-info">
-            <div class="ind-name">إصدار القوائم المالية</div>
-            <div class="ind-meta">السنة المالية والاعتماد · 3 ممارسات · 3 أسئلة</div>
-          </div>
-          <div class="ind-stats">
-            <div class="ind-gauge">
-              <svg width="48" height="48" viewBox="0 0 48 48">
-                <circle fill="none" class="gauge-bg" cx="24" cy="24" r="20"/>
-                <circle fill="none" class="gauge-fill red" cx="24" cy="24" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
-              </svg>
-              <div class="gauge-text">٠٪</div>
-            </div>
-            <div class="ind-weight">١٤</div>
-          </div>
-          <button class="ind-toggle"></button>
-        </div>
-        <div class="ind-body">
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">14.1</div>
-              <div class="practice-name">إصدار القوائم</div>
-              <div class="practice-weight">2 درجات</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-14-1-1"><span class="qn">١</span><span class="qt">هل تم إصدار القوائم المالية للجمعية من قبل المحاسب القانوني؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">14.2</div>
-              <div class="practice-name">تقرير المراجع</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-14-2-1"><span class="qn">١</span><span class="qt">هل تمت دراسة تقرير مراجع الحسابات عن القوائم المالية واعتمادها من قبل الجمعية العمومية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">14.3</div>
-              <div class="practice-name">إرسال للوزارة</div>
-              <div class="practice-weight">1 درجة</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-14-3-1"><span class="qn">١</span><span class="qt">هل تم رفعه للوزارة خلال الأربعة أشهر من نهاية السنة المالية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- المؤشر 15 -->
-      <div class="ind-card" data-ind="15">
-        <div class="ind-head" onclick="toggleIndicator(this)">
-          <div class="ind-num">١٥</div>
-          <div class="ind-info">
-            <div class="ind-name">التقارير المالية الربعية</div>
-            <div class="ind-meta">الإعداد والمراجعة · 1 ممارسات · 4 أسئلة</div>
-          </div>
-          <div class="ind-stats">
-            <div class="ind-gauge">
-              <svg width="48" height="48" viewBox="0 0 48 48">
-                <circle fill="none" class="gauge-bg" cx="24" cy="24" r="20"/>
-                <circle fill="none" class="gauge-fill red" cx="24" cy="24" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
-              </svg>
-              <div class="gauge-text">٠٪</div>
-            </div>
-            <div class="ind-weight">١٥</div>
-          </div>
-          <button class="ind-toggle"></button>
-        </div>
-        <div class="ind-body">
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">15.1</div>
-              <div class="practice-name">إعداد التقارير الربعية</div>
-              <div class="practice-weight">2 درجات</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-15-1-1"><span class="qn">١</span><span class="qt">هل قام المشرف المالي بإعداد التقارير المالية الدورية الربعية خلال السنة المالية الحالية والسابقة؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-15-1-2"><span class="qn">٢</span><span class="qt">هل كانت التقارير ربعية ومكتملة (أربعة تقارير في السنة المالية بحيث يكون تقرير واحد كل ثلاثة أشهر)؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-15-1-3"><span class="qn">٣</span><span class="qt">هل تم عرضها على مجلس الإدارة ومناقشتها؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-              <div class="qrow" data-q="q-financial-15-1-4"><span class="qn">٤</span><span class="qt">هل تم تزويد الوزارة بنسخة منها؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- المؤشر 16 -->
-      <div class="ind-card" data-ind="16">
-        <div class="ind-head" onclick="toggleIndicator(this)">
-          <div class="ind-num">١٦</div>
-          <div class="ind-info">
-            <div class="ind-name">الموازنة التقديرية</div>
-            <div class="ind-meta">الإعداد والاعتماد · 1 ممارسات · 1 أسئلة</div>
-          </div>
-          <div class="ind-stats">
-            <div class="ind-gauge">
-              <svg width="48" height="48" viewBox="0 0 48 48">
-                <circle fill="none" class="gauge-bg" cx="24" cy="24" r="20"/>
-                <circle fill="none" class="gauge-fill red" cx="24" cy="24" r="20" stroke-dasharray="125.66" stroke-dashoffset="125.66"/>
-              </svg>
-              <div class="gauge-text">٠٪</div>
-            </div>
-            <div class="ind-weight">١٦</div>
-          </div>
-          <button class="ind-toggle"></button>
-        </div>
-        <div class="ind-body">
-          <div class="practice-card">
-            <div class="practice-head">
-              <div class="practice-num">16.1</div>
-              <div class="practice-name">موازنة تقديرية</div>
-              <div class="practice-weight">2 درجات</div>
-            </div>
-            <div class="questions">
-              <div class="qrow" data-q="q-financial-16-1-1"><span class="qn">١</span><span class="qt">هل يوجد للجمعية موازنة تقديرية تم إعدادها بناءً على الخطة التشغيلية المعتمدة للجمعية؟</span><div class="qopts"><button type="button" class="qpill yes" onclick="answerQ(this,'yes')"><span class="qp-ico">✓</span> نعم</button><button type="button" class="qpill no" onclick="answerQ(this,'no')"><span class="qp-ico">✗</span> لا</button><button type="button" class="qpill na" onclick="answerQ(this,'na')">— غ.م</button></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
       </div>
     </div>
     </div>
