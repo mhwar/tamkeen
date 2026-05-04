@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
   <title>التقييم الذاتي للحوكمة — بُعد التمكين</title>
-  <meta name="description" content="قياس درجة حوكمة جمعيتك على 40 مؤشر و216 سؤال وفق معايير المركز الوطني لتنمية القطاع غير الربحي.">
+  <meta name="description" content="قياس درجة حوكمة جمعيتك على 21 مؤشر و191 سؤال وفق معايير المركز الوطني لتنمية القطاع غير الربحي.">
   <meta name="theme-color" content="#00197D">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -287,7 +287,7 @@
       <div class="panel-head">
         <span class="panel-eye">الخطوة الأولى</span>
         <h1>سجّل بيانات <span class="gradient-text">جمعيتك</span></h1>
-        <p class="panel-sub">دقيقة واحدة لتسجيل بياناتك، ثم تبدأ التقييم على 216 سؤال موزّعة على 40 مؤشر معتمد. سنرسل تقريراً مفصّلاً على بريدك بعد الانتهاء.</p>
+        <p class="panel-sub">دقيقة واحدة لتسجيل بياناتك، ثم تبدأ التقييم على 191 سؤال موزّعة على 21 مؤشر معتمد. سنرسل تقريراً مفصّلاً على بريدك بعد الانتهاء.</p>
       </div>
       <div class="reg-card">
         <form id="reg-form" name="buad-assessment" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="return submitRegistration(event)">
@@ -363,7 +363,7 @@
       <div class="panel-head">
         <span class="panel-eye">الخطوة الثانية</span>
         <h1>قِس درجة <span class="gradient-text">حوكمة جمعيتك</span></h1>
-        <p class="panel-sub">216 سؤال على 40 مؤشر — كل سؤال له خياران أو ثلاثة بحسب طبيعته (نعم / لا / غير منطبق). اضغط على المؤشر لتوسيعه ورؤية أسئلته.</p>
+        <p class="panel-sub">191 سؤال على 21 مؤشر — أسئلة محورية لها درجة، وأسئلة تابعة لتنظيم المسار. اضغط على المؤشر لتوسيعه ورؤية أسئلته.</p>
       </div>
 
       <div class="assess-progress">
@@ -647,7 +647,7 @@
   }
   function buildQuestionHtml(q){
     const states = getStates(q);
-    const ptsLbl = (typeof q.points === 'number') ? `<span class="q-pts">${q.points} د</span>` : '';
+    const ptsLbl = (typeof q.points === 'number') ? `<span class="q-pts">${q.points > 0 ? q.points + ' د' : 'تابع'}</span>` : '';
     const buttons = states.map(s =>
       `<button type="button" class="qpill ${stateCss(s)}" data-state="${s.key}" onclick="answer(this,'${s.key}')">${stateIcon(s)}${escapeAttr(s.label)}</button>`
     ).join('');
